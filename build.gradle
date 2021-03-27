@@ -6,6 +6,7 @@ plugins {
 	id 'java'
 }
 
+
 group = 'study'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
@@ -31,6 +32,7 @@ dependencies {
 
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'mysql:mysql-connector-java'
+	runtimeOnly 'com.h2database:h2'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
@@ -40,6 +42,7 @@ dependencies {
 test {
 	useJUnitPlatform()
 }
+
 
 //querydsl 추가 시작
 def querydslDir = "$buildDir/generated/querydsl"
@@ -57,3 +60,7 @@ compileQuerydsl {
 	options.annotationProcessorPath = configurations.querydsl
 }
 //querydsl 추가 끝
+bootRun {
+	String activeProfile = System.properties['spring.profiles.active']
+	systemProperty "spring.profiles.active", activeProfile
+}

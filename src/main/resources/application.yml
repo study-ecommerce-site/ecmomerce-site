@@ -3,13 +3,12 @@ server:
   port: 8080
 spring:
   profiles:
-    active: test
+    active: default
   datasource:
     url: jdbc:mysql://localhost:3306/book?serverTimezone=UTC&characterEncoding=UTF-8
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
-
   jpa:
     database: mysql
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
