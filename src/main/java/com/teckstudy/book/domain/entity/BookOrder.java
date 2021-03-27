@@ -48,12 +48,6 @@ public class BookOrder {
     private List<BookOrderProduct> bookOrderProduct = new ArrayList<>();
 
     public BookOrder(Long member_sn, YesNoStatus order_yn, Integer order_price, String order_address, OrderStatus order_status) {
-//        BookOrder bookOrder = new BookOrder();
-//        bookOrder.setMember(member);
-//        bookOrder.setOrder_yn(order_yn);
-//        bookOrder.setOrder_price(order_price);
-//        bookOrder.setOrder_address(order_address);
-//        bookOrder.setOrder_status(order_status);
         this.member_sn = member_sn;
         this.order_yn = order_yn;
         this.order_price = order_price;

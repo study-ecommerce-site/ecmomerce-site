@@ -4,10 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.teckstudy.book.domain.entity.enums.Gender;
 import com.teckstudy.book.domain.entity.enums.MemberStatus;
 import com.teckstudy.book.domain.entity.enums.YesNoStatus;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -18,6 +15,8 @@ import static javax.persistence.FetchType.LAZY;
 
 @Entity
 @Getter @Setter
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Member extends BaseEntity {
 
@@ -66,18 +65,18 @@ public class Member extends BaseEntity {
     @OneToMany(mappedBy = "member")
     private List<Favorite> favorite = new ArrayList<>();
 
-//    @OneToMany(mappedBy = "member")
-//    private List<Board> boards = new ArrayList<>();
+    @OneToMany(mappedBy = "member")
+    private List<Board> boards = new ArrayList<>();
 
-    public Member(String member_id, String password, String name, Gender sex, String birthday, String phone_number, String address, YesNoStatus sns_yn, MemberStatus member_status) {
-        this.member_id = member_id;
-        this.password = password;
-        this.name = name;
-        this.sex = sex;
-        this.birthday = birthday;
-        this.phone_number = phone_number;
-        this.address = address;
-        this.sns_yn = sns_yn;
-        this.member_status = member_status;
-    }
+//    public Member(String member_id, String password, String name, Gender sex, String birthday, String phone_number, String address, YesNoStatus sns_yn, MemberStatus member_status) {
+//        this.member_id = member_id;
+//        this.password = password;
+//        this.name = name;
+//        this.sex = sex;
+//        this.birthday = birthday;
+//        this.phone_number = phone_number;
+//        this.address = address;
+//        this.sns_yn = sns_yn;
+//        this.member_status = member_status;
+//    }
 }

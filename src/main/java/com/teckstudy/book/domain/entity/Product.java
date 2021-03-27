@@ -36,6 +36,9 @@ public class Product {
     @OneToMany(mappedBy = "product")
     private List<BookOrderProduct> bookOrderProduct = new ArrayList<>();
 
+    @OneToMany(mappedBy = "product")
+    private List<ProductOption> productOptions = new ArrayList<>();
+
     public Product(String product_name, ProductType product_option, Integer price, Integer stock_cnt) {
         this.product_name = product_name;
         this.product_option = product_option;

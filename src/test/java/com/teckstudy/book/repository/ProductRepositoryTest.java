@@ -16,7 +16,7 @@ import javax.persistence.EntityManager;
 import java.util.List;
 
 import static com.teckstudy.book.domain.entity.QProduct.product;
-import static com.teckstudy.book.domain.entity.QProductOption.productOption1;
+import static com.teckstudy.book.domain.entity.QProductOption.productOption;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -67,9 +67,26 @@ class ProductRepositoryTest {
         productRepository.save(product1);
         productRepository.save(product2);
 
-        ProductOption productOptionOne = new ProductOption(product1.getProduct_sn(), "DB모음집 시리즈", 4500, 20);
-        ProductOption productOptionTwo = new ProductOption(product1.getProduct_sn(), "파우치", 1500, 100);
-        ProductOption productOptionThree = new ProductOption(product1.getProduct_sn(), "악세사리", 500, 200);
+        ProductOption productOptionOne = ProductOption.builder()
+                        .product(product1)
+                        .product_option_name("DB모음집 시리즈")
+                        .plus_price(4500)
+                        .stock_cnt(30)
+                        .build();
+
+        ProductOption productOptionTwo = ProductOption.builder()
+                .product(product1)
+                .product_option_name("파우치")
+                .plus_price(5500)
+                .stock_cnt(20)
+                .build();
+
+        ProductOption productOptionThree = ProductOption.builder()
+                .product(product1)
+                .product_option_name("전우치")
+                .plus_price(25000)
+                .stock_cnt(50)
+                .build();
 
         productOptionRepository.save(productOptionOne);
         productOptionRepository.save(productOptionTwo);
@@ -81,9 +98,9 @@ class ProductRepositoryTest {
 //                .fetch();
 
         List<Tuple> result = queryFactory
-                .select(productOption1, product)
-                .from(productOption1)
-                .leftJoin(product).on(product.product_sn.eq(productOption1.product_sn))
+                .select(productOption, product)
+                .from(productOption)
+                .leftJoin(product).on(product.product_sn.eq(productOption.product.product_sn))
                 .fetch();
 
         for (Tuple results : result) {

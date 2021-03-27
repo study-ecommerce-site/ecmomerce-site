@@ -2,10 +2,7 @@ package com.teckstudy.book.domain.entity;
 
 import com.teckstudy.book.domain.entity.enums.Category;
 import com.teckstudy.book.domain.entity.enums.YesNoStatus;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -13,6 +10,8 @@ import static javax.persistence.FetchType.LAZY;
 
 @Entity
 @Getter @Setter
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Board extends BaseEntity {
 
@@ -20,11 +19,11 @@ public class Board extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long board_sn;
 
-    private Category category;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "member_sn")
+    private Member member;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "name")
-//    private Member member;
+    private Category category;
 
     private String name;
 
@@ -36,9 +35,8 @@ public class Board extends BaseEntity {
 
     private String file_path;
 
-    public Board(String name, Category category, String subject, String content, YesNoStatus top_show_yn, String file_path) {
+    public Board(Category category, String subject, String content, YesNoStatus top_show_yn, String file_path) {
         this.category = category;
-        this.name = name;
         this.subject = subject;
         this.content = content;
         this.top_show_yn = top_show_yn;

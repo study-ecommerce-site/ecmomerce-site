@@ -40,11 +40,31 @@ class BoardRepositoryTest {
     public void testEntity() {
         queryFactory = new JPAQueryFactory(em);
         //given
-        Member member1 = new Member("member1", "1234", "백성락", Gender.MALE,
-                "1990-09-12", "010-2027-1163", "서울특별시 봉천동",  YesNoStatus.Y,  MemberStatus.NORMAL);
+        Member member1 = Member.builder()
+                .member_id("member1")
+                .password("1234")
+                .name("홍길동")
+                .sex(Gender.MALE)
+                .birthday("1990-09-12")
+                .phone_number("010-2027-1163")
+                .address("서울특별시 봉천동")
+                .sns_yn(YesNoStatus.Y)
+                .member_status(MemberStatus.NORMAL)
+                .build();
         memberRepository.save(member1);
 
-        Board board1 = new Board(member1.getName(), Category.NOTICE, "테스트합니다", "등록합니다", YesNoStatus.N, "C드라이브");
+//        Board board1 = new Board(
+//                member1.getName(), Category.NOTICE, "테스트합니다", "등록합니다", YesNoStatus.N, "C드라이브");
+
+        Board board1 = Board.builder()
+                .category(Category.NOTICE)
+                .name("이비자")
+                .subject("아이스 아메리카노")
+                .content("냠냠 맛있다")
+                .top_show_yn(YesNoStatus.Y)
+                .file_path("D드라이브")
+                .build();
+
         boardRepository.save(board1);
     }
 
