@@ -35,11 +35,4 @@ public class Board extends BaseEntity {
 
     private String file_path;
 
-    public Board(Category category, String subject, String content, YesNoStatus top_show_yn, String file_path) {
-        this.category = category;
-        this.subject = subject;
-        this.content = content;
-        this.top_show_yn = top_show_yn;
-        this.file_path = file_path;
-    }
 }

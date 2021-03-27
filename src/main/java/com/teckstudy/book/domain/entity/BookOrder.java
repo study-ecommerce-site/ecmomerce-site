@@ -2,10 +2,7 @@ package com.teckstudy.book.domain.entity;
 
 import com.teckstudy.book.domain.entity.enums.OrderStatus;
 import com.teckstudy.book.domain.entity.enums.YesNoStatus;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -16,6 +13,8 @@ import static javax.persistence.FetchType.LAZY;
 
 @Entity
 @Getter @Setter
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class BookOrder {
 
@@ -23,7 +22,9 @@ public class BookOrder {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long order_sn;
 
-    private Long member_sn;
+    @ManyToOne(fetch = LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "member_sn")
+    private Member member;
 
     @Enumerated(EnumType.STRING)
     private YesNoStatus order_yn;
@@ -37,21 +38,11 @@ public class BookOrder {
     @Enumerated(EnumType.STRING)
     private OrderStatus order_status;
 
-//    @ManyToOne(fetch = LAZY, cascade = CascadeType.ALL)
-//    @JoinColumn(name = "member_sn")
-//    private Member member;
-
     @OneToOne(fetch = LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "order_sn")
     private PayInfo payInfo;
 
     @OneToMany(mappedBy = "bookOrder")
     private List<BookOrderProduct> bookOrderProduct = new ArrayList<>();
 
-    public BookOrder(Long member_sn, YesNoStatus order_yn, Integer order_price, String order_address, OrderStatus order_status) {
-        this.member_sn = member_sn;
-        this.order_yn = order_yn;
-        this.order_price = order_price;
-        this.order_address = order_address;
-        this.order_status = order_status;
-    }
 }

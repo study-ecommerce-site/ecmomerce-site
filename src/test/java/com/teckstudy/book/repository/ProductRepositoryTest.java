@@ -13,7 +13,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.Random;
 
 import static com.teckstudy.book.domain.entity.QProduct.product;
 import static com.teckstudy.book.domain.entity.QProductOption.productOption;
@@ -35,6 +38,8 @@ class ProductRepositoryTest {
     @Autowired
     ProductOptionRepository productOptionRepository;
 
+    private Random random = new Random();
+
     /**
      * 상품등록 테스트
      */
@@ -43,10 +48,19 @@ class ProductRepositoryTest {
     public void testProduct() {
         queryFactory = new JPAQueryFactory(em);
         //given
-        Product product1 = new Product("해리포터", ProductType.RADIO, 50000, 30);
-        Product product2 = new Product("반지의제왕", ProductType.CHECK, 35000, 50);
-        productRepository.save(product1);
-        productRepository.save(product2);
+
+        String[] bookList = {"해리포터", "반지의 제왕", "이것이 자바다", "기분이 없는 기분"};
+
+        for(int i=0; i<bookList.length; i++) {
+            Product product= Product.builder()
+                    .product_name(bookList[i])
+                    .product_option(random.nextInt(2) % 2 == 0 ? ProductType.RADIO : ProductType.CHECK)
+                    .price(Integer.valueOf(random.nextInt(99999)+1))
+                    .stock_cnt(Integer.valueOf(random.nextInt(99)+1))
+                    .build();
+
+            productRepository.save(product);
+        }
 
         List<Product> products = productRepository.findAll();
         for (Product product : products) {
@@ -62,40 +76,32 @@ class ProductRepositoryTest {
     public void testProductOption() {
         queryFactory = new JPAQueryFactory(em);
         //given
-        Product product1 = new Product("오라클과 SQL", ProductType.RADIO, 50000, 30);
-        Product product2 = new Product("Real Mysql", ProductType.CHECK, 35000, 50);
-        productRepository.save(product1);
-        productRepository.save(product2);
+        String[] bookList = {"해리포터", "반지의 제왕", "이것이 자바다", "기분이 없는 기분"};
+        for(int i=0; i<bookList.length; i++) {
+            Product product= Product.builder()
+                    .product_name(bookList[i])
+                    .product_option(random.nextInt(2) % 2 == 0 ? ProductType.RADIO : ProductType.CHECK)
+                    .price(Integer.valueOf(random.nextInt(99999)+1))
+                    .stock_cnt(Integer.valueOf(random.nextInt(99)+1))
+                    .build();
 
-        ProductOption productOptionOne = ProductOption.builder()
-                        .product(product1)
-                        .product_option_name("DB모음집 시리즈")
-                        .plus_price(4500)
-                        .stock_cnt(30)
-                        .build();
+            productRepository.save(product);
+        }
 
-        ProductOption productOptionTwo = ProductOption.builder()
-                .product(product1)
-                .product_option_name("파우치")
-                .plus_price(5500)
-                .stock_cnt(20)
-                .build();
+        Optional<Product> productSn = productRepository.findById(2L);
 
-        ProductOption productOptionThree = ProductOption.builder()
-                .product(product1)
-                .product_option_name("전우치")
-                .plus_price(25000)
-                .stock_cnt(50)
-                .build();
+        String[] productOptionName = {"DB 모음집 시리즈", "파우치", "전우치"};
 
-        productOptionRepository.save(productOptionOne);
-        productOptionRepository.save(productOptionTwo);
-        productOptionRepository.save(productOptionThree);
+        for(int i=0; i<productOptionName.length; i++) {
+            ProductOption productOption= ProductOption.builder()
+                    .product(productSn.get())
+                    .product_option_name(productOptionName[i])
+                    .plus_price(Integer.valueOf(random.nextInt(99999)+1))
+                    .stock_cnt(Integer.valueOf(random.nextInt(99)+1))
+                    .build();
 
-        // 리스트 조회
-//        List<Product> result = queryFactory
-//                .selectFrom(product)
-//                .fetch();
+            productOptionRepository.save(productOption);
+        }
 
         List<Tuple> result = queryFactory
                 .select(productOption, product)

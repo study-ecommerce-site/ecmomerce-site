@@ -2,10 +2,7 @@ package com.teckstudy.book.domain.entity;
 
 import com.sun.istack.NotNull;
 import com.teckstudy.book.domain.entity.enums.ProductType;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -13,6 +10,8 @@ import java.util.List;
 
 @Entity
 @Getter @Setter
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Product {
 
@@ -39,10 +38,4 @@ public class Product {
     @OneToMany(mappedBy = "product")
     private List<ProductOption> productOptions = new ArrayList<>();
 
-    public Product(String product_name, ProductType product_option, Integer price, Integer stock_cnt) {
-        this.product_name = product_name;
-        this.product_option = product_option;
-        this.price = price;
-        this.stock_cnt = stock_cnt;
-    }
 }

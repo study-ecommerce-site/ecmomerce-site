@@ -59,7 +59,7 @@ public class Member extends BaseEntity {
     @JoinColumn(name = "member_sn")
     private Vertity vertity;
 
-    @OneToMany(mappedBy = "member_sn")
+    @OneToMany(mappedBy = "member")
     private List<BookOrder> bookOrders = new ArrayList<>();
 
     @OneToMany(mappedBy = "member")
@@ -68,15 +68,4 @@ public class Member extends BaseEntity {
     @OneToMany(mappedBy = "member")
     private List<Board> boards = new ArrayList<>();
 
-//    public Member(String member_id, String password, String name, Gender sex, String birthday, String phone_number, String address, YesNoStatus sns_yn, MemberStatus member_status) {
-//        this.member_id = member_id;
-//        this.password = password;
-//        this.name = name;
-//        this.sex = sex;
-//        this.birthday = birthday;
-//        this.phone_number = phone_number;
-//        this.address = address;
-//        this.sns_yn = sns_yn;
-//        this.member_status = member_status;
-//    }
 }

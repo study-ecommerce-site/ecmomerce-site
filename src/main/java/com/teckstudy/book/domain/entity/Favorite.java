@@ -1,15 +1,14 @@
 package com.teckstudy.book.domain.entity;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Favorite {
 
@@ -19,9 +18,4 @@ public class Favorite {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Member member;
-
-    public Favorite(Integer member_sn, Integer product_sn) {
-        this.member_sn = member_sn;
-        this.product_sn = product_sn;
-    }
 }

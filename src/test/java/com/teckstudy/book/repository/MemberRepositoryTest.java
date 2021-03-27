@@ -49,14 +49,22 @@ class MemberRepositoryTest {
                     .member_status(MemberStatus.NORMAL)
                     .build();
 
-//        Member member1 = new Member("member1", "1234", "홍길동", Gender.MALE,
-//                "1990-09-12", "010-2027-1163", "서울특별시 봉천동",  YesNoStatus.Y,  MemberStatus.NORMAL);
         memberRepository.save(member1);
 
-        SnsInfo snsInfo1 = new SnsInfo(member1.getMember_sn(), "123456789", SnsType.K);
+        SnsInfo snsInfo1 = SnsInfo.builder()
+                    .member_sn(member1.getMember_sn())
+                    .sns_code("1234-9988")
+                    .sns_type(SnsType.F)
+                    .build();
         em.persist(snsInfo1);
 
-        Vertity vertity = new Vertity(member1.getMember_sn(), "4684", YesNoStatus.Y, AuthType.PHONE);
+        Vertity vertity = Vertity.builder()
+                    .member_sn(member1.getMember_sn())
+                    .auth_code("HOT-1163")
+                    .auth_yn(YesNoStatus.Y)
+                    .member_auth_type(AuthType.PHONE)
+                    .build();
+
         em.persist(vertity);
 
         // 영속 컨텍스트를 플러시 하는방법

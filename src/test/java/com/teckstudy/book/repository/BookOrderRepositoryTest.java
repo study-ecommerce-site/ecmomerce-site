@@ -2,11 +2,12 @@ package com.teckstudy.book.repository;
 
 import com.querydsl.core.Tuple;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import com.teckstudy.book.domain.entity.BookOrder;
-import com.teckstudy.book.domain.entity.Member;
+import com.teckstudy.book.domain.entity.*;
 import com.teckstudy.book.domain.entity.enums.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
@@ -14,7 +15,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.Random;
 
 import static com.teckstudy.book.domain.entity.QMember.member;
 import static com.teckstudy.book.domain.entity.QBookOrder.bookOrder;
@@ -35,10 +40,22 @@ class BookOrderRepositoryTest {
     MemberRepository memberRepository;
 
     @Autowired
+    ProductRepository productRepository;
+
+    @Autowired // Autowired 대신사용 @InjectMocks에 주입
     BookOrderRepository bookOrderRepository;
+
+    @Autowired
+    ProductOptionRepository productOptionRepository;
+
+    @Autowired
+    BookOrderProductRepository bookOrderProductRepository;
+
+    private Random random = new Random();
 
     @BeforeEach
     public void testEntity() {
+
         queryFactory = new JPAQueryFactory(em);
         //given
         Member member1 = Member.builder()
@@ -53,34 +70,70 @@ class BookOrderRepositoryTest {
                 .member_status(MemberStatus.NORMAL)
                 .build();
 
-        Member member2 = Member.builder()
-                .member_id("member2")
-                .password("4321")
-                .name("최진솔")
-                .sex(Gender.MALE)
-                .birthday("1993-08-03")
-                .phone_number("010-6776-4684")
-                .address("서울특별시 금천구")
-                .sns_yn(YesNoStatus.Y)
-                .member_status(MemberStatus.NORMAL)
+        memberRepository.save(member1);
+
+        Product product1 = Product.builder()
+                .product_name("클린 코드 : 에자일의 소프트웨어")
+                .product_option(ProductType.RADIO)
+                .price(50000)
+                .stock_cnt(30)
                 .build();
 
-        memberRepository.save(member1);
-        memberRepository.save(member2);
+        productRepository.save(product1);
 
-        BookOrder bookOrder1 = new BookOrder(member1.getMember_sn(), YesNoStatus.N, 11000,
-                "서울시 강남구 신사동호랭이", OrderStatus.WAIT);
-        BookOrder bookOrder2 = new BookOrder(member1.getMember_sn(), YesNoStatus.N, 21000,
-                "서울시 관악구 청담동", OrderStatus.PAYCOM);
-        BookOrder bookOrder3 = new BookOrder(member2.getMember_sn(), YesNoStatus.N, 15000,
-                "서울시 강남구 SM엔터테인먼트", OrderStatus.CONFIRM);
-        BookOrder bookOrder4 = new BookOrder(member2.getMember_sn(), YesNoStatus.N, 10000,
-                "서울시 광진구 무민전시회", OrderStatus.COMPLETE);
+        String[] productOptionName = {"DB 모음집 시리즈", "파우치", "전우치"};
+
+        for(int i=0; i<productOptionName.length; i++) {
+            ProductOption productOption= ProductOption.builder()
+                    .product(product1)
+                    .product_option_name(productOptionName[i])
+                    .plus_price(Integer.valueOf(random.nextInt(99999)+1))
+                    .stock_cnt(Integer.valueOf(random.nextInt(99)+1))
+                    .build();
+
+            productOptionRepository.save(productOption);
+        }
+
+        BookOrder bookOrder1 = BookOrder.builder()
+                    .member(member1)
+                    .order_yn(YesNoStatus.Y)
+                    .order_price(11000)
+                    .order_address("서울시 강남구 신사동 사자")
+                    .order_status(OrderStatus.WAIT)
+                    .build();
+
         bookOrderRepository.save(bookOrder1);
-        bookOrderRepository.save(bookOrder2);
-        bookOrderRepository.save(bookOrder3);
-        bookOrderRepository.save(bookOrder4);
+
+        List<String> orderList1 = new ArrayList<>();
+        orderList1.add("1");
+        orderList1.add("2");
+        orderList1.add("3");
+        BookOrderProduct bookOrderProductOne = BookOrderProduct.builder()
+                .bookOrder(bookOrder1)  // order_sn(bookOrder1.getOrder_sn())
+                .product(product1)      // product_sn(product1.getProduct_sn())
+                .product_cnt(10)
+                .product_option_sn("1, 2, 3")
+                .build();
+
+        bookOrderProductRepository.save(bookOrderProductOne);
     }
+
+//    @Test
+//    public void orderPayInfo() {
+//
+//        Optional<BookOrder> bookOrderOne = bookOrderRepository.findById(1L);
+//
+//        System.out.println(bookOrderOne);
+//
+////        PayInfo payInfo = PayInfo.builder()
+////                .bookOrder(bookOrder.order_sn)
+////                .build();
+//    }
+
+//    @Test
+//    public void orderProductTest() {
+//
+//    }
 
     @Test
     public void orderTest() {
