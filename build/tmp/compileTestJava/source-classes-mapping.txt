@@ -1,0 +1,6 @@
+com/teckstudy/book/BookApplicationTests.java
+ com.teckstudy.book.BookApplicationTests
+com/teckstudy/book/repository/BookOrderRepositoryTest.java
+ com.teckstudy.book.repository.BookOrderRepositoryTest
+com/teckstudy/book/repository/MemberRepositoryTest.java
+ com.teckstudy.book.repository.MemberRepositoryTest
