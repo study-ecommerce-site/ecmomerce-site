@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - BookOrderRepositoryTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>BookOrderRepositoryTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/com.teckstudy.book.repository.html">com.teckstudy.book.repository</a> &gt; BookOrderRepositoryTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">1</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">0.794s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">orderTest()</td>
+<td class="success">0.794s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>01:35:57.904 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+01:35:57.916 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+01:35:57.959 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.teckstudy.book.repository.BookOrderRepositoryTest] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+01:35:57.977 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.teckstudy.book.repository.BookOrderRepositoryTest], using SpringBootContextLoader
+01:35:57.982 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.teckstudy.book.repository.BookOrderRepositoryTest]: class path resource [com/teckstudy/book/repository/BookOrderRepositoryTest-context.xml] does not exist
+01:35:57.984 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.teckstudy.book.repository.BookOrderRepositoryTest]: class path resource [com/teckstudy/book/repository/BookOrderRepositoryTestContext.groovy] does not exist
+01:35:57.985 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.teckstudy.book.repository.BookOrderRepositoryTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+01:35:57.985 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.teckstudy.book.repository.BookOrderRepositoryTest]: BookOrderRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+01:35:58.033 [Test worker] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.teckstudy.book.repository.BookOrderRepositoryTest]
+01:35:58.143 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [/Users/gitaejeon/Dev/ecommerce/ecmomerce-site/build/classes/java/main/com/teckstudy/book/BookApplication.class]
+01:35:58.146 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.teckstudy.book.BookApplication for test class com.teckstudy.book.repository.BookOrderRepositoryTest
+01:35:58.256 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [com.teckstudy.book.repository.BookOrderRepositoryTest]: using defaults.
+01:35:58.258 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+01:35:58.272 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@72d891de, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@7573afaf, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@71e29829, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@582de8cf, org.springframework.test.context.support.DirtiesContextTestExecutionListener@6ecdc475, org.springframework.test.context.transaction.TransactionalTestExecutionListener@62b10d4, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@636df3e8, org.springframework.test.context.event.EventPublishingTestExecutionListener@54b114da, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@545f9c55, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@a2c8bba, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@652dba4, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@5a990870, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@728c9a42, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@1c13bef2]
+01:35:58.276 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@66bceac8 testClass = BookOrderRepositoryTest, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@616b5e22 testClass = BookOrderRepositoryTest, locations = '{}', classes = '{class com.teckstudy.book.BookApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@1cb22c1, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@9866877, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@1acefd7b, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@1556ebc9, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@7557e033], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true]], class annotated with @DirtiesContext [false] with mode [null].
+01:35:58.322 [Test worker] DEBUG org.springframework.test.context.support.TestPropertySourceUtils - Adding inlined properties to environment: {spring.jmx.enabled=false, org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.3.8.RELEASE)
+
+2021-03-29 01:35:59.066  INFO 13812 --- [    Test worker] c.t.b.r.BookOrderRepositoryTest          : Starting BookOrderRepositoryTest on gitaeui-MacBookAir.local with PID 13812 (started by gitaejeon in /Users/gitaejeon/Dev/ecommerce/ecmomerce-site)
+2021-03-29 01:35:59.070  INFO 13812 --- [    Test worker] c.t.b.r.BookOrderRepositoryTest          : The following profiles are active: default
+2021-03-29 01:36:00.275  INFO 13812 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-03-29 01:36:00.403  INFO 13812 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 121ms. Found 7 JPA repository interfaces.
+2021-03-29 01:36:01.790  INFO 13812 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-03-29 01:36:01.841  INFO 13812 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.27.Final
+2021-03-29 01:36:01.969  INFO 13812 --- [    Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-03-29 01:36:01.995 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration boolean -&gt; org.hibernate.type.BooleanType@15d0eb6
+2021-03-29 01:36:01.996 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration boolean -&gt; org.hibernate.type.BooleanType@15d0eb6
+2021-03-29 01:36:01.996 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Boolean -&gt; org.hibernate.type.BooleanType@15d0eb6
+2021-03-29 01:36:01.996 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration numeric_boolean -&gt; org.hibernate.type.NumericBooleanType@3b98c4e2
+2021-03-29 01:36:01.997 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration true_false -&gt; org.hibernate.type.TrueFalseType@3a1f96c9
+2021-03-29 01:36:01.997 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration yes_no -&gt; org.hibernate.type.YesNoType@100f92ac
+2021-03-29 01:36:01.998 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte -&gt; org.hibernate.type.ByteType@7b465065
+2021-03-29 01:36:01.998 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte -&gt; org.hibernate.type.ByteType@7b465065
+2021-03-29 01:36:01.998 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Byte -&gt; org.hibernate.type.ByteType@7b465065
+2021-03-29 01:36:01.999 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration character -&gt; org.hibernate.type.CharacterType@c25db38
+2021-03-29 01:36:01.999 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration char -&gt; org.hibernate.type.CharacterType@c25db38
+2021-03-29 01:36:01.999 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Character -&gt; org.hibernate.type.CharacterType@c25db38
+2021-03-29 01:36:02.000 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration short -&gt; org.hibernate.type.ShortType@425b0719
+2021-03-29 01:36:02.001 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration short -&gt; org.hibernate.type.ShortType@425b0719
+2021-03-29 01:36:02.001 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Short -&gt; org.hibernate.type.ShortType@425b0719
+2021-03-29 01:36:02.002 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration integer -&gt; org.hibernate.type.IntegerType@1ac9df8b
+2021-03-29 01:36:02.003 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration int -&gt; org.hibernate.type.IntegerType@1ac9df8b
+2021-03-29 01:36:02.003 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Integer -&gt; org.hibernate.type.IntegerType@1ac9df8b
+2021-03-29 01:36:02.004 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration long -&gt; org.hibernate.type.LongType@1b863c76
+2021-03-29 01:36:02.004 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration long -&gt; org.hibernate.type.LongType@1b863c76
+2021-03-29 01:36:02.004 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Long -&gt; org.hibernate.type.LongType@1b863c76
+2021-03-29 01:36:02.005 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration float -&gt; org.hibernate.type.FloatType@3c0ba5e9
+2021-03-29 01:36:02.007 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration float -&gt; org.hibernate.type.FloatType@3c0ba5e9
+2021-03-29 01:36:02.007 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Float -&gt; org.hibernate.type.FloatType@3c0ba5e9
+2021-03-29 01:36:02.007 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration double -&gt; org.hibernate.type.DoubleType@3e6d55e3
+2021-03-29 01:36:02.007 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration double -&gt; org.hibernate.type.DoubleType@3e6d55e3
+2021-03-29 01:36:02.008 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Double -&gt; org.hibernate.type.DoubleType@3e6d55e3
+2021-03-29 01:36:02.008 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration big_decimal -&gt; org.hibernate.type.BigDecimalType@416cdda1
+2021-03-29 01:36:02.009 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.math.BigDecimal -&gt; org.hibernate.type.BigDecimalType@416cdda1
+2021-03-29 01:36:02.009 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration big_integer -&gt; org.hibernate.type.BigIntegerType@16b24bf9
+2021-03-29 01:36:02.010 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.math.BigInteger -&gt; org.hibernate.type.BigIntegerType@16b24bf9
+2021-03-29 01:36:02.011 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration string -&gt; org.hibernate.type.StringType@251e6cd4
+2021-03-29 01:36:02.011 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.String -&gt; org.hibernate.type.StringType@251e6cd4
+2021-03-29 01:36:02.012 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration nstring -&gt; org.hibernate.type.StringNVarcharType@22cca877
+2021-03-29 01:36:02.013 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration ncharacter -&gt; org.hibernate.type.CharacterNCharType@56af0b9f
+2021-03-29 01:36:02.014 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration url -&gt; org.hibernate.type.UrlType@37ac04fb
+2021-03-29 01:36:02.014 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.net.URL -&gt; org.hibernate.type.UrlType@37ac04fb
+2021-03-29 01:36:02.015 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration Duration -&gt; org.hibernate.type.DurationType@c979b83
+2021-03-29 01:36:02.015 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.Duration -&gt; org.hibernate.type.DurationType@c979b83
+2021-03-29 01:36:02.016 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration Instant -&gt; org.hibernate.type.InstantType@5ec13d07
+2021-03-29 01:36:02.016 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.Instant -&gt; org.hibernate.type.InstantType@5ec13d07
+2021-03-29 01:36:02.017 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalDateTime -&gt; org.hibernate.type.LocalDateTimeType@1015ee75
+2021-03-29 01:36:02.017 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalDateTime -&gt; org.hibernate.type.LocalDateTimeType@1015ee75
+2021-03-29 01:36:02.018 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalDate -&gt; org.hibernate.type.LocalDateType@4162caae
+2021-03-29 01:36:02.018 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalDate -&gt; org.hibernate.type.LocalDateType@4162caae
+2021-03-29 01:36:02.018 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalTime -&gt; org.hibernate.type.LocalTimeType@7bfe6266
+2021-03-29 01:36:02.018 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalTime -&gt; org.hibernate.type.LocalTimeType@7bfe6266
+2021-03-29 01:36:02.019 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetDateTime -&gt; org.hibernate.type.OffsetDateTimeType@7d380954
+2021-03-29 01:36:02.019 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.OffsetDateTime -&gt; org.hibernate.type.OffsetDateTimeType@7d380954
+2021-03-29 01:36:02.020 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetTime -&gt; org.hibernate.type.OffsetTimeType@5ed37ea7
+2021-03-29 01:36:02.023 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.OffsetTime -&gt; org.hibernate.type.OffsetTimeType@5ed37ea7
+2021-03-29 01:36:02.025 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration ZonedDateTime -&gt; org.hibernate.type.ZonedDateTimeType@6adfc0ea
+2021-03-29 01:36:02.025 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.ZonedDateTime -&gt; org.hibernate.type.ZonedDateTimeType@6adfc0ea
+2021-03-29 01:36:02.026 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration date -&gt; org.hibernate.type.DateType@42e0e009
+2021-03-29 01:36:02.026 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Date -&gt; org.hibernate.type.DateType@42e0e009
+2021-03-29 01:36:02.027 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration time -&gt; org.hibernate.type.TimeType@25eb89ec
+2021-03-29 01:36:02.027 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Time -&gt; org.hibernate.type.TimeType@25eb89ec
+2021-03-29 01:36:02.028 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration timestamp -&gt; org.hibernate.type.TimestampType@467e401d
+2021-03-29 01:36:02.028 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Timestamp -&gt; org.hibernate.type.TimestampType@467e401d
+2021-03-29 01:36:02.028 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Date -&gt; org.hibernate.type.TimestampType@467e401d
+2021-03-29 01:36:02.030 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration dbtimestamp -&gt; org.hibernate.type.DbTimestampType@16c99412
+2021-03-29 01:36:02.031 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar -&gt; org.hibernate.type.CalendarType@7965e449
+2021-03-29 01:36:02.031 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Calendar -&gt; org.hibernate.type.CalendarType@7965e449
+2021-03-29 01:36:02.031 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.GregorianCalendar -&gt; org.hibernate.type.CalendarType@7965e449
+2021-03-29 01:36:02.031 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar_date -&gt; org.hibernate.type.CalendarDateType@3c644c94
+2021-03-29 01:36:02.032 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar_time -&gt; org.hibernate.type.CalendarTimeType@149f405d
+2021-03-29 01:36:02.033 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration locale -&gt; org.hibernate.type.LocaleType@6fe2ba87
+2021-03-29 01:36:02.033 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Locale -&gt; org.hibernate.type.LocaleType@6fe2ba87
+2021-03-29 01:36:02.034 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration currency -&gt; org.hibernate.type.CurrencyType@5b56bd3a
+2021-03-29 01:36:02.034 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Currency -&gt; org.hibernate.type.CurrencyType@5b56bd3a
+2021-03-29 01:36:02.035 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration timezone -&gt; org.hibernate.type.TimeZoneType@48311827
+2021-03-29 01:36:02.035 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.TimeZone -&gt; org.hibernate.type.TimeZoneType@48311827
+2021-03-29 01:36:02.035 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration class -&gt; org.hibernate.type.ClassType@2bff3267
+2021-03-29 01:36:02.035 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Class -&gt; org.hibernate.type.ClassType@2bff3267
+2021-03-29 01:36:02.036 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration uuid-binary -&gt; org.hibernate.type.UUIDBinaryType@743ed8b6
+2021-03-29 01:36:02.036 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.UUID -&gt; org.hibernate.type.UUIDBinaryType@743ed8b6
+2021-03-29 01:36:02.036 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration uuid-char -&gt; org.hibernate.type.UUIDCharType@cdc6a12
+2021-03-29 01:36:02.037 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration binary -&gt; org.hibernate.type.BinaryType@791c360d
+2021-03-29 01:36:02.037 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte[] -&gt; org.hibernate.type.BinaryType@791c360d
+2021-03-29 01:36:02.037 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration [B -&gt; org.hibernate.type.BinaryType@791c360d
+2021-03-29 01:36:02.038 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration wrapper-binary -&gt; org.hibernate.type.WrapperBinaryType@327f6ee2
+2021-03-29 01:36:02.038 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration Byte[] -&gt; org.hibernate.type.WrapperBinaryType@327f6ee2
+2021-03-29 01:36:02.038 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration [Ljava.lang.Byte; -&gt; org.hibernate.type.WrapperBinaryType@327f6ee2
+2021-03-29 01:36:02.039 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration row_version -&gt; org.hibernate.type.RowVersionType@6d49d4a6
+2021-03-29 01:36:02.039 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration image -&gt; org.hibernate.type.ImageType@2f1699e9
+2021-03-29 01:36:02.040 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration characters -&gt; org.hibernate.type.CharArrayType@7fc7d8b8
+2021-03-29 01:36:02.040 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration char[] -&gt; org.hibernate.type.CharArrayType@7fc7d8b8
+2021-03-29 01:36:02.040 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration [C -&gt; org.hibernate.type.CharArrayType@7fc7d8b8
+2021-03-29 01:36:02.041 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration wrapper-characters -&gt; org.hibernate.type.CharacterArrayType@5a5a3094
+2021-03-29 01:36:02.041 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration [Ljava.lang.Character; -&gt; org.hibernate.type.CharacterArrayType@5a5a3094
+2021-03-29 01:36:02.041 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration Character[] -&gt; org.hibernate.type.CharacterArrayType@5a5a3094
+2021-03-29 01:36:02.041 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration text -&gt; org.hibernate.type.TextType@240d1f5a
+2021-03-29 01:36:02.042 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration ntext -&gt; org.hibernate.type.NTextType@52b77def
+2021-03-29 01:36:02.043 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration blob -&gt; org.hibernate.type.BlobType@36bf4a17
+2021-03-29 01:36:02.047 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Blob -&gt; org.hibernate.type.BlobType@36bf4a17
+2021-03-29 01:36:02.052 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_blob -&gt; org.hibernate.type.MaterializedBlobType@16d39bb9
+2021-03-29 01:36:02.053 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration clob -&gt; org.hibernate.type.ClobType@18c11bf2
+2021-03-29 01:36:02.053 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Clob -&gt; org.hibernate.type.ClobType@18c11bf2
+2021-03-29 01:36:02.054 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration nclob -&gt; org.hibernate.type.NClobType@414e4f1c
+2021-03-29 01:36:02.055 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.NClob -&gt; org.hibernate.type.NClobType@414e4f1c
+2021-03-29 01:36:02.055 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_clob -&gt; org.hibernate.type.MaterializedClobType@52dce05b
+2021-03-29 01:36:02.055 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_nclob -&gt; org.hibernate.type.MaterializedNClobType@1798aca
+2021-03-29 01:36:02.057 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration serializable -&gt; org.hibernate.type.SerializableType@29e616bb
+2021-03-29 01:36:02.060 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration object -&gt; org.hibernate.type.ObjectType@7fef7f70
+2021-03-29 01:36:02.060 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Object -&gt; org.hibernate.type.ObjectType@7fef7f70
+2021-03-29 01:36:02.061 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_date -&gt; org.hibernate.type.AdaptedImmutableType@2e67b24d
+2021-03-29 01:36:02.061 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_time -&gt; org.hibernate.type.AdaptedImmutableType@7caa9185
+2021-03-29 01:36:02.061 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_timestamp -&gt; org.hibernate.type.AdaptedImmutableType@5ee4b042
+2021-03-29 01:36:02.061 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_dbtimestamp -&gt; org.hibernate.type.AdaptedImmutableType@4e6704be
+2021-03-29 01:36:02.061 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_calendar -&gt; org.hibernate.type.AdaptedImmutableType@5d0122e5
+2021-03-29 01:36:02.062 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_calendar_date -&gt; org.hibernate.type.AdaptedImmutableType@758fa679
+2021-03-29 01:36:02.062 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_binary -&gt; org.hibernate.type.AdaptedImmutableType@e126e2a
+2021-03-29 01:36:02.062 DEBUG 13812 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_serializable -&gt; org.hibernate.type.AdaptedImmutableType@7826c9a2
+2021-03-29 01:36:02.118  INFO 13812 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-03-29 01:36:02.662  INFO 13812 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-03-29 01:36:02.683  INFO 13812 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2021-03-29 01:36:02.793 DEBUG 13812 --- [    Test worker] o.h.type.spi.TypeConfiguration$Scope     : Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@419f575b] to MetadataBuildingContext [org.hibernate.boot.internal.MetadataBuildingContextRootImpl@7592bdf8]
+2021-03-29 01:36:03.061 DEBUG 13812 --- [    Test worker] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum com.teckstudy.book.domain.entity.enums.OrderStatus
+2021-03-29 01:36:03.064 DEBUG 13812 --- [    Test worker] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum com.teckstudy.book.domain.entity.enums.YesNoStatus
+2021-03-29 01:36:03.065 DEBUG 13812 --- [    Test worker] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum com.teckstudy.book.domain.entity.enums.MemberStatus
+2021-03-29 01:36:03.065 DEBUG 13812 --- [    Test worker] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum com.teckstudy.book.domain.entity.enums.Gender
+2021-03-29 01:36:03.065 DEBUG 13812 --- [    Test worker] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum com.teckstudy.book.domain.entity.enums.YesNoStatus
+2021-03-29 01:36:03.066 DEBUG 13812 --- [    Test worker] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum com.teckstudy.book.domain.entity.enums.SnsType
+2021-03-29 01:36:03.066 DEBUG 13812 --- [    Test worker] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum com.teckstudy.book.domain.entity.enums.ProductType
+2021-03-29 01:36:03.067 DEBUG 13812 --- [    Test worker] org.hibernate.type.EnumType              : Using ORDINAL-based conversion for Enum com.teckstudy.book.domain.entity.enums.Category
+2021-03-29 01:36:03.067 DEBUG 13812 --- [    Test worker] org.hibernate.type.EnumType              : Using ORDINAL-based conversion for Enum com.teckstudy.book.domain.entity.enums.YesNoStatus
+2021-03-29 01:36:03.068 DEBUG 13812 --- [    Test worker] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum com.teckstudy.book.domain.entity.enums.YesNoStatus
+2021-03-29 01:36:03.068 DEBUG 13812 --- [    Test worker] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum com.teckstudy.book.domain.entity.enums.AuthType
+2021-03-29 01:36:03.273 DEBUG 13812 --- [    Test worker] o.h.type.spi.TypeConfiguration$Scope     : Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@419f575b] to SessionFactoryImpl [org.hibernate.internal.SessionFactoryImpl@2ebfe72a]
+2021-03-29 01:36:04.050 DEBUG 13812 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    alter table book_order 
+       drop 
+       foreign key FKncsq8embqeh44pyjawhh6817n
+2021-03-29 01:36:04.099  INFO 13812 --- [    Test worker] p6spy                                    : #1616949364099 | took 21ms | statement | connection 1| url jdbc:mysql://52.78.216.7:3306/book?serverTimezone=UTC&amp;characterEncoding=UTF-8
+
+    alter table book_order 
+       drop 
+       foreign key FKncsq8embqeh44pyjawhh6817n
+
+    alter table book_order 
+       drop 
+       foreign key FKncsq8embqeh44pyjawhh6817n;
+2021-03-29 01:36:04.107 DEBUG 13812 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    alter table book_order 
+       drop 
+       foreign key FK6wsh3vxfe0940khamsxvovmu9
+2021-03-29 01:36:04.133  INFO 13812 --- [    Test worker] p6spy                                    : #1616949364133 | took 25ms | statement | connection 1| url jdbc:mysql://52.78.216.7:3306/book?serverTimezone=UTC&amp;characterEncoding=UTF-8
+
+    alter table book_order 
+       drop 
+       foreign key FK6wsh3vxfe0940khamsxvovmu9
+
+    alter table book_order 
+       drop 
+       foreign key FK6wsh3vxfe0940khamsxvovmu9;
+2021-03-29 01:36:04.141 DEBUG 13812 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    alter table book_order_product 
+       drop 
+       foreign key FKcc271m1lg1t0abq3u4jv1okqh
+2021-03-29 01:36:04.162  INFO 13812 --- [    Test worker] p6spy                                    : #1616949364162 | took 20ms | statement | connection 1| url jdbc:mysql://52.78.216.7:3306/book?serverTimezone=UTC&amp;characterEncoding=UTF-8
+
+    alter table book_order_product 
+       drop 
+       foreign key FKcc271m1lg1t0abq3u4jv1okqh
+
+    alter table book_order_product 
+       drop 
+       foreign key FKcc271m1lg1t0abq3u4jv1okqh;
+2021-03-29 01:36:04.175 DEBUG 13812 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    alter table book_order_product 
+       drop 
+       foreign key FKdv5xw3nngdsxa39yg51fwfetw
+2021-03-29 01:36:04.197  INFO 13812 --- [    Test worker] p6spy                                    : #1616949364197 | took 21ms | statement | connection 1| url jdbc:mysql://52.78.216.7:3306/book?serverTimezone=UTC&amp;characterEncoding=UTF-8
+
+    alter table book_order_product 
+       drop 
+       foreign key FKdv5xw3nngdsxa39yg51fwfetw
+
+    alter table book_order_product 
+       drop 
+       foreign key FKdv5xw3nngdsxa39yg51fwfetw;
+2021-03-29 01:36:04.205 DEBUG 13812 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    alter table book_order_product 
+       drop 
+       foreign key FK8cumb7ijk1fob2w8mo4cwakvv
+2021-03-29 01:36:04.242  INFO 13812 --- [    Test worker] p6spy                                    : #1616949364242 | took 37ms | statement | connection 1| url jdbc:mysql://52.78.216.7:3306/book?serverTimezone=UTC&amp;characterEncoding=UTF-8
+
+    alter table book_order_product 
+       drop 
+       foreign key FK8cumb7ijk1fob2w8mo4cwakvv
+
+    alter table book_order_product 
+       drop 
+       foreign key FK8cumb7ijk1fob2w8mo4cwakvv;
+2021-03-29 01:36:04.251 DEBUG 13812 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    alter table favorite 
+       drop 
+       foreign key FKf5cl3jt3wn2qcuif2cx3u06bw
+2021-03-29 01:36:04.273  INFO 13812 --- [    Test worker] p6spy                                    : #1616949364273 | took 21ms | statement | connection 1| url jdbc:mysql://52.78.216.7:3306/book?serverTimezone=UTC&amp;characterEncoding=UTF-8
+
+    alter table favorite 
+       drop 
+       foreign key FKf5cl3jt3wn2qcuif2cx3u06bw
+
+    alter table favorite 
+       drop 
+       foreign key FKf5cl3jt3wn2qcuif2cx3u06bw;
+2021-03-29 01:36:04.282 DEBUG 13812 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    alter table product_option 
+       drop 
+       foreign key FKfhwy9fqqq0sfg6t72c5ahhmra
+2021-03-29 01:36:04.304  INFO 13812 --- [    Test worker] p6spy                                    : #1616949364304 | took 21ms | statement | connection 1| url jdbc:mysql://52.78.216.7:3306/book?serverTimezone=UTC&amp;characterEncoding=UTF-8
+
+    alter table product_option 
+       drop 
+       foreign key FKfhwy9fqqq0sfg6t72c5ahhmra
+
+    alter table product_option 
+       drop 
+       foreign key FKfhwy9fqqq0sfg6t72c5ahhmra;
+2021-03-29 01:36:04.313 DEBUG 13812 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    drop table if exists board
+2021-03-29 01:36:04.343  INFO 13812 --- [    Test worker] p6spy                                    : #1616949364343 | took 28ms | statement | connection 1| url jdbc:mysql://52.78.216.7:3306/book?serverTimezone=UTC&amp;characterEncoding=UTF-8
+
+    drop table if exists board
+
+    drop table if exists board;
+2021-03-29 01:36:04.351 DEBUG 13812 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    drop table if exists book_order
+2021-03-29 01:36:04.377  INFO 13812 --- [    Test worker] p6spy                                    : #1616949364377 | took 24ms | statement | connection 1| url jdbc:mysql://52.78.216.7:3306/book?serverTimezone=UTC&amp;characterEncoding=UTF-8
+
+    drop table if exists book_order
+
+    drop table if exists book_order;
+2021-03-29 01:36:04.385 DEBUG 13812 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    drop table if exists book_order_product
+2021-03-29 01:36:04.411  INFO 13812 --- [    Test worker] p6spy                                    : #1616949364411 | took 25ms | statement | connection 1| url jdbc:mysql://52.78.216.7:3306/book?serverTimezone=UTC&amp;characterEncoding=UTF-8
+
+    drop table if exists book_order_product
+
+    drop table if exists book_order_product;
+2021-03-29 01:36:04.420 DEBUG 13812 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    drop table if exists favorite
+2021-03-29 01:36:04.443  INFO 13812 --- [    Test worker] p6spy                                    : #1616949364443 | took 21ms | statement | connection 1| url jdbc:mysql://52.78.216.7:3306/book?serverTimezone=UTC&amp;characterEncoding=UTF-8
+
+    drop table if exists favorite
+
+    drop table if exists favorite;
+2021-03-29 01:36:04.468 DEBUG 13812 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    drop table if exists member
+2021-03-29 01:36:04.499  INFO 13812 --- [    Test worker] p6spy                                    : #1616949364499 | took 28ms | statement | connection 1| url jdbc:mysql://52.78.216.7:3306/book?serverTimezone=UTC&amp;characterEncoding=UTF-8
+
+    drop table if exists member
+
+    drop table if exists member;
+2021-03-29 01:36:04.518 DEBUG 13812 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    drop table if exists pay_info
+2021-03-29 01:36:04.560  INFO 13812 --- [    Test worker] p6spy                                    : #1616949364560 | took 41ms | statement | connection 1| url jdbc:mysql://52.78.216.7:3306/book?serverTimezone=UTC&amp;characterEncoding=UTF-8
+
+    drop table if exists pay_info
+
+    drop table if exists pay_info;
+2021-03-29 01:36:04.568 DEBUG 13812 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    drop table if exists product
+2021-03-29 01:36:04.589  INFO 13812 --- [    Test worker] p6spy                                    : #1616949364589 | took 21ms | statement | connection 1| url jdbc:mysql://52.78.216.7:3306/book?serverTimezone=UTC&amp;characterEncoding=UTF-8
+
+    drop table if exists product
+
+    drop table if exists product;
+2021-03-29 01:36:04.597 DEBUG 13812 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    drop table if exists product_option
+2021-03-29 01:36:04.623  INFO 13812 --- [    Test worker] p6spy                                    : #1616949364623 | took 25ms | statement | connection 1| url jdbc:mysql://52.78.216.7:3306/book?serverTimezone=UTC&amp;characterEncoding=UTF-8
+
+    drop table if exists product_option
+
+    drop table if exists product_option;
+2021-03-29 01:36:04.640 DEBUG 13812 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    drop table if exists sns_info
+2021-03-29 01:36:04.661  INFO 13812 --- [    Test worker] p6spy                                    : #1616949364661 | took 20ms | statement | connection 1| url jdbc:mysql://52.78.216.7:3306/book?serverTimezone=UTC&amp;characterEncoding=UTF-8
+
+    drop table if exists sns_info
+
+    drop table if exists sns_info;
+2021-03-29 01:36:04.669 DEBUG 13812 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    drop table if exists vertity
+2021-03-29 01:36:04.695  INFO 13812 --- [    Test worker] p6spy                                    : #1616949364695 | took 26ms | statement | connection 1| url jdbc:mysql://52.78.216.7:3306/book?serverTimezone=UTC&amp;characterEncoding=UTF-8
+
+    drop table if exists vertity
+
+    drop table if exists vertity;
+2021-03-29 01:36:04.734 DEBUG 13812 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    create table board (
+       board_sn bigint not null auto_increment,
+        created_by varchar(255),
+        created_date date,
+        last_modified_by varchar(255),
+        last_modified_date date,
+        category integer,
+        content varchar(255),
+        file_path varchar(255),
+        name varchar(255),
+        subject varchar(255),
+        top_show_yn integer,
+        primary key (board_sn)
+    ) engine=InnoDB
+2021-03-29 01:36:04.784  INFO 13812 --- [    Test worker] p6spy                                    : #1616949364784 | took 49ms | statement | connection 2| url jdbc:mysql://52.78.216.7:3306/book?serverTimezone=UTC&amp;characterEncoding=UTF-8
+
+    create table board (
+       board_sn bigint not null auto_increment,
+        created_by varchar(255),
+        created_date date,
+        last_modified_by varchar(255),
+        last_modified_date date,
+        category integer,
+        content varchar(255),
+        file_path varchar(255),
+        name varchar(255),
+        subject varchar(255),
+        top_show_yn integer,
+        primary key (board_sn)
+    ) engine=InnoDB
+
+    create table board (
+       board_sn bigint not null auto_increment,
+        created_by varchar(255),
+        created_date date,
+        last_modified_by varchar(255),
+        last_modified_date date,
+        category integer,
+        content varchar(255),
+        file_path varchar(255),
+        name varchar(255),
+        subject varchar(255),
+        top_show_yn integer,
+        primary key (board_sn)
+    ) engine=InnoDB;
+2021-03-29 01:36:04.803 DEBUG 13812 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    create table book_order (
+       order_sn bigint not null auto_increment,
+        member_sn bigint,
+        order_address varchar(100),
+        order_price integer,
+        order_status varchar(255),
+        order_yn varchar(255),
+        pay_info_pay_sn bigint,
+        primary key (order_sn)
+    ) engine=InnoDB
+2021-03-29 01:36:04.844  INFO 13812 --- [    Test worker] p6spy                                    : #1616949364844 | took 35ms | statement | connection 2| url jdbc:mysql://52.78.216.7:3306/book?serverTimezone=UTC&amp;characterEncoding=UTF-8
+
+    create table book_order (
+       order_sn bigint not null auto_increment,
+        member_sn bigint,
+        order_address varchar(100),
+        order_price integer,
+        order_status varchar(255),
+        order_yn varchar(255),
+        pay_info_pay_sn bigint,
+        primary key (order_sn)
+    ) engine=InnoDB
+
+    create table book_order (
+       order_sn bigint not null auto_increment,
+        member_sn bigint,
+        order_address varchar(100),
+        order_price integer,
+        order_status varchar(255),
+        order_yn varchar(255),
+        pay_info_pay_sn bigint,
+        primary key (order_sn)
+    ) engine=InnoDB;
+2021-03-29 01:36:04.852 DEBUG 13812 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    create table book_order_product (
+       order_product_sn bigint not null auto_increment,
+        order_sn bigint,
+        product_cnt integer,
+        product_option_sn bigint,
+        product_sn bigint,
+        book_order_order_sn bigint,
+        product_product_sn bigint,
+        product_option_product_option_sn bigint,
+        primary key (order_product_sn)
+    ) engine=InnoDB
+2021-03-29 01:36:04.886  INFO 13812 --- [    Test worker] p6spy                                    : #1616949364886 | took 33ms | statement | connection 2| url jdbc:mysql://52.78.216.7:3306/book?serverTimezone=UTC&amp;characterEncoding=UTF-8
+
+    create table book_order_product (
+       order_product_sn bigint not null auto_increment,
+        order_sn bigint,
+        product_cnt integer,
+        product_option_sn bigint,
+        product_sn bigint,
+        book_order_order_sn bigint,
+        product_product_sn bigint,
+        product_option_product_option_sn bigint,
+        primary key (order_product_sn)
+    ) engine=InnoDB
+
+    create table book_order_product (
+       order_product_sn bigint not null auto_increment,
+        order_sn bigint,
+        product_cnt integer,
+        product_option_sn bigint,
+        product_sn bigint,
+        book_order_order_sn bigint,
+        product_product_sn bigint,
+        product_option_product_option_sn bigint,
+        primary key (order_product_sn)
+    ) engine=InnoDB;
+2021-03-29 01:36:04.896 DEBUG 13812 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    create table favorite (
+       member_sn integer not null,
+        product_sn integer,
+        member_member_sn bigint,
+        primary key (member_sn)
+    ) engine=InnoDB
+2021-03-29 01:36:04.935  INFO 13812 --- [    Test worker] p6spy                                    : #1616949364935 | took 38ms | statement | connection 2| url jdbc:mysql://52.78.216.7:3306/book?serverTimezone=UTC&amp;characterEncoding=UTF-8
+
+    create table favorite (
+       member_sn integer not null,
+        product_sn integer,
+        member_member_sn bigint,
+        primary key (member_sn)
+    ) engine=InnoDB
+
+    create table favorite (
+       member_sn integer not null,
+        product_sn integer,
+        member_member_sn bigint,
+        primary key (member_sn)
+    ) engine=InnoDB;
+2021-03-29 01:36:04.943 DEBUG 13812 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    create table member (
+       member_sn bigint not null auto_increment,
+        created_by varchar(255),
+        created_date date,
+        last_modified_by varchar(255),
+        last_modified_date date,
+        address varchar(100),
+        birthday varchar(20),
+        member_id varchar(30),
+        member_status varchar(255),
+        name varchar(20),
+        password varchar(30),
+        phone_number varchar(20),
+        sex varchar(255),
+        sns_yn varchar(255),
+        primary key (member_sn)
+    ) engine=InnoDB
+2021-03-29 01:36:04.981  INFO 13812 --- [    Test worker] p6spy                                    : #1616949364981 | took 37ms | statement | connection 2| url jdbc:mysql://52.78.216.7:3306/book?serverTimezone=UTC&amp;characterEncoding=UTF-8
+
+    create table member (
+       member_sn bigint not null auto_increment,
+        created_by varchar(255),
+        created_date date,
+        last_modified_by varchar(255),
+        last_modified_date date,
+        address varchar(100),
+        birthday varchar(20),
+        member_id varchar(30),
+        member_status varchar(255),
+        name varchar(20),
+        password varchar(30),
+        phone_number varchar(20),
+        sex varchar(255),
+        sns_yn varchar(255),
+        primary key (member_sn)
+    ) engine=InnoDB
+
+    create table member (
+       member_sn bigint not null auto_increment,
+        created_by varchar(255),
+        created_date date,
+        last_modified_by varchar(255),
+        last_modified_date date,
+        address varchar(100),
+        birthday varchar(20),
+        member_id varchar(30),
+        member_status varchar(255),
+        name varchar(20),
+        password varchar(30),
+        phone_number varchar(20),
+        sex varchar(255),
+        sns_yn varchar(255),
+        primary key (member_sn)
+    ) engine=InnoDB;
+2021-03-29 01:36:05.001 DEBUG 13812 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    create table pay_info (
+       pay_sn bigint not null auto_increment,
+        order_sn bigint,
+        total_price integer,
+        primary key (pay_sn)
+    ) engine=InnoDB
+2021-03-29 01:36:05.044  INFO 13812 --- [    Test worker] p6spy                                    : #1616949365044 | took 42ms | statement | connection 2| url jdbc:mysql://52.78.216.7:3306/book?serverTimezone=UTC&amp;characterEncoding=UTF-8
+
+    create table pay_info (
+       pay_sn bigint not null auto_increment,
+        order_sn bigint,
+        total_price integer,
+        primary key (pay_sn)
+    ) engine=InnoDB
+
+    create table pay_info (
+       pay_sn bigint not null auto_increment,
+        order_sn bigint,
+        total_price integer,
+        primary key (pay_sn)
+    ) engine=InnoDB;
+2021-03-29 01:36:05.055 DEBUG 13812 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    create table product (
+       product_sn bigint not null auto_increment,
+        price integer,
+        product_name varchar(30),
+        product_option varchar(255),
+        stock_cnt integer,
+        primary key (product_sn)
+    ) engine=InnoDB
+2021-03-29 01:36:05.097  INFO 13812 --- [    Test worker] p6spy                                    : #1616949365097 | took 41ms | statement | connection 2| url jdbc:mysql://52.78.216.7:3306/book?serverTimezone=UTC&amp;characterEncoding=UTF-8
+
+    create table product (
+       product_sn bigint not null auto_increment,
+        price integer,
+        product_name varchar(30),
+        product_option varchar(255),
+        stock_cnt integer,
+        primary key (product_sn)
+    ) engine=InnoDB
+
+    create table product (
+       product_sn bigint not null auto_increment,
+        price integer,
+        product_name varchar(30),
+        product_option varchar(255),
+        stock_cnt integer,
+        primary key (product_sn)
+    ) engine=InnoDB;
+2021-03-29 01:36:05.105 DEBUG 13812 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    create table product_option (
+       product_option_sn bigint not null auto_increment,
+        plus_price integer,
+        product_option_name varchar(100),
+        stock_cnt integer,
+        product_sn bigint,
+        primary key (product_option_sn)
+    ) engine=InnoDB
+2021-03-29 01:36:05.148  INFO 13812 --- [    Test worker] p6spy                                    : #1616949365148 | took 42ms | statement | connection 2| url jdbc:mysql://52.78.216.7:3306/book?serverTimezone=UTC&amp;characterEncoding=UTF-8
+
+    create table product_option (
+       product_option_sn bigint not null auto_increment,
+        plus_price integer,
+        product_option_name varchar(100),
+        stock_cnt integer,
+        product_sn bigint,
+        primary key (product_option_sn)
+    ) engine=InnoDB
+
+    create table product_option (
+       product_option_sn bigint not null auto_increment,
+        plus_price integer,
+        product_option_name varchar(100),
+        stock_cnt integer,
+        product_sn bigint,
+        primary key (product_option_sn)
+    ) engine=InnoDB;
+2021-03-29 01:36:05.167 DEBUG 13812 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    create table sns_info (
+       member_sn bigint not null,
+        created_by varchar(255),
+        created_date date,
+        last_modified_by varchar(255),
+        last_modified_date date,
+        sns_code varchar(100),
+        sns_type varchar(255),
+        primary key (member_sn)
+    ) engine=InnoDB
+2021-03-29 01:36:05.197  INFO 13812 --- [    Test worker] p6spy                                    : #1616949365197 | took 29ms | statement | connection 2| url jdbc:mysql://52.78.216.7:3306/book?serverTimezone=UTC&amp;characterEncoding=UTF-8
+
+    create table sns_info (
+       member_sn bigint not null,
+        created_by varchar(255),
+        created_date date,
+        last_modified_by varchar(255),
+        last_modified_date date,
+        sns_code varchar(100),
+        sns_type varchar(255),
+        primary key (member_sn)
+    ) engine=InnoDB
+
+    create table sns_info (
+       member_sn bigint not null,
+        created_by varchar(255),
+        created_date date,
+        last_modified_by varchar(255),
+        last_modified_date date,
+        sns_code varchar(100),
+        sns_type varchar(255),
+        primary key (member_sn)
+    ) engine=InnoDB;
+2021-03-29 01:36:05.204 DEBUG 13812 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    create table vertity (
+       auth_serial_sn bigint not null auto_increment,
+        auth_code varchar(100),
+        auth_date datetime,
+        auth_yn varchar(255),
+        member_auth_type varchar(255),
+        member_sn bigint,
+        primary key (auth_serial_sn)
+    ) engine=InnoDB
+2021-03-29 01:36:05.247  INFO 13812 --- [    Test worker] p6spy                                    : #1616949365247 | took 42ms | statement | connection 2| url jdbc:mysql://52.78.216.7:3306/book?serverTimezone=UTC&amp;characterEncoding=UTF-8
+
+    create table vertity (
+       auth_serial_sn bigint not null auto_increment,
+        auth_code varchar(100),
+        auth_date datetime,
+        auth_yn varchar(255),
+        member_auth_type varchar(255),
+        member_sn bigint,
+        primary key (auth_serial_sn)
+    ) engine=InnoDB
+
+    create table vertity (
+       auth_serial_sn bigint not null auto_increment,
+        auth_code varchar(100),
+        auth_date datetime,
+        auth_yn varchar(255),
+        member_auth_type varchar(255),
+        member_sn bigint,
+        primary key (auth_serial_sn)
+    ) engine=InnoDB;
+2021-03-29 01:36:05.256 DEBUG 13812 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    alter table book_order 
+       add constraint FKncsq8embqeh44pyjawhh6817n 
+       foreign key (pay_info_pay_sn) 
+       references pay_info (pay_sn)
+2021-03-29 01:36:05.310  INFO 13812 --- [    Test worker] p6spy                                    : #1616949365310 | took 54ms | statement | connection 2| url jdbc:mysql://52.78.216.7:3306/book?serverTimezone=UTC&amp;characterEncoding=UTF-8
+
+    alter table book_order 
+       add constraint FKncsq8embqeh44pyjawhh6817n 
+       foreign key (pay_info_pay_sn) 
+       references pay_info (pay_sn)
+
+    alter table book_order 
+       add constraint FKncsq8embqeh44pyjawhh6817n 
+       foreign key (pay_info_pay_sn) 
+       references pay_info (pay_sn);
+2021-03-29 01:36:05.319 DEBUG 13812 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    alter table book_order 
+       add constraint FK6wsh3vxfe0940khamsxvovmu9 
+       foreign key (member_sn) 
+       references member (member_sn)
+2021-03-29 01:36:05.379  INFO 13812 --- [    Test worker] p6spy                                    : #1616949365379 | took 59ms | statement | connection 2| url jdbc:mysql://52.78.216.7:3306/book?serverTimezone=UTC&amp;characterEncoding=UTF-8
+
+    alter table book_order 
+       add constraint FK6wsh3vxfe0940khamsxvovmu9 
+       foreign key (member_sn) 
+       references member (member_sn)
+
+    alter table book_order 
+       add constraint FK6wsh3vxfe0940khamsxvovmu9 
+       foreign key (member_sn) 
+       references member (member_sn);
+2021-03-29 01:36:05.387 DEBUG 13812 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    alter table book_order_product 
+       add constraint FKcc271m1lg1t0abq3u4jv1okqh 
+       foreign key (book_order_order_sn) 
+       references book_order (order_sn)
+2021-03-29 01:36:05.464  INFO 13812 --- [    Test worker] p6spy                                    : #1616949365464 | took 76ms | statement | connection 2| url jdbc:mysql://52.78.216.7:3306/book?serverTimezone=UTC&amp;characterEncoding=UTF-8
+
+    alter table book_order_product 
+       add constraint FKcc271m1lg1t0abq3u4jv1okqh 
+       foreign key (book_order_order_sn) 
+       references book_order (order_sn)
+
+    alter table book_order_product 
+       add constraint FKcc271m1lg1t0abq3u4jv1okqh 
+       foreign key (book_order_order_sn) 
+       references book_order (order_sn);
+2021-03-29 01:36:05.473 DEBUG 13812 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    alter table book_order_product 
+       add constraint FKdv5xw3nngdsxa39yg51fwfetw 
+       foreign key (product_product_sn) 
+       references product (product_sn)
+2021-03-29 01:36:05.531  INFO 13812 --- [    Test worker] p6spy                                    : #1616949365531 | took 53ms | statement | connection 2| url jdbc:mysql://52.78.216.7:3306/book?serverTimezone=UTC&amp;characterEncoding=UTF-8
+
+    alter table book_order_product 
+       add constraint FKdv5xw3nngdsxa39yg51fwfetw 
+       foreign key (product_product_sn) 
+       references product (product_sn)
+
+    alter table book_order_product 
+       add constraint FKdv5xw3nngdsxa39yg51fwfetw 
+       foreign key (product_product_sn) 
+       references product (product_sn);
+2021-03-29 01:36:05.542 DEBUG 13812 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    alter table book_order_product 
+       add constraint FK8cumb7ijk1fob2w8mo4cwakvv 
+       foreign key (product_option_product_option_sn) 
+       references product_option (product_option_sn)
+2021-03-29 01:36:05.597  INFO 13812 --- [    Test worker] p6spy                                    : #1616949365597 | took 53ms | statement | connection 2| url jdbc:mysql://52.78.216.7:3306/book?serverTimezone=UTC&amp;characterEncoding=UTF-8
+
+    alter table book_order_product 
+       add constraint FK8cumb7ijk1fob2w8mo4cwakvv 
+       foreign key (product_option_product_option_sn) 
+       references product_option (product_option_sn)
+
+    alter table book_order_product 
+       add constraint FK8cumb7ijk1fob2w8mo4cwakvv 
+       foreign key (product_option_product_option_sn) 
+       references product_option (product_option_sn);
+2021-03-29 01:36:05.616 DEBUG 13812 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    alter table favorite 
+       add constraint FKf5cl3jt3wn2qcuif2cx3u06bw 
+       foreign key (member_member_sn) 
+       references member (member_sn)
+2021-03-29 01:36:05.669  INFO 13812 --- [    Test worker] p6spy                                    : #1616949365669 | took 52ms | statement | connection 2| url jdbc:mysql://52.78.216.7:3306/book?serverTimezone=UTC&amp;characterEncoding=UTF-8
+
+    alter table favorite 
+       add constraint FKf5cl3jt3wn2qcuif2cx3u06bw 
+       foreign key (member_member_sn) 
+       references member (member_sn)
+
+    alter table favorite 
+       add constraint FKf5cl3jt3wn2qcuif2cx3u06bw 
+       foreign key (member_member_sn) 
+       references member (member_sn);
+2021-03-29 01:36:05.682 DEBUG 13812 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    alter table product_option 
+       add constraint FKfhwy9fqqq0sfg6t72c5ahhmra 
+       foreign key (product_sn) 
+       references product (product_sn)
+2021-03-29 01:36:05.739  INFO 13812 --- [    Test worker] p6spy                                    : #1616949365739 | took 56ms | statement | connection 2| url jdbc:mysql://52.78.216.7:3306/book?serverTimezone=UTC&amp;characterEncoding=UTF-8
+
+    alter table product_option 
+       add constraint FKfhwy9fqqq0sfg6t72c5ahhmra 
+       foreign key (product_sn) 
+       references product (product_sn)
+
+    alter table product_option 
+       add constraint FKfhwy9fqqq0sfg6t72c5ahhmra 
+       foreign key (product_sn) 
+       references product (product_sn);
+2021-03-29 01:36:05.756  INFO 13812 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-03-29 01:36:05.780 TRACE 13812 --- [    Test worker] o.h.type.spi.TypeConfiguration$Scope     : Handling #sessionFactoryCreated from [org.hibernate.internal.SessionFactoryImpl@2ebfe72a] for TypeConfiguration
+2021-03-29 01:36:05.782  INFO 13812 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-03-29 01:36:06.424  WARN 13812 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-03-29 01:36:07.441  INFO 13812 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-03-29 01:36:08.154  INFO 13812 --- [    Test worker] c.t.b.r.BookOrderRepositoryTest          : Started BookOrderRepositoryTest in 9.82 seconds (JVM running for 11.514)
+2021-03-29 01:36:08.241  INFO 13812 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Began transaction (1) for test context [DefaultTestContext@66bceac8 testClass = BookOrderRepositoryTest, testInstance = com.teckstudy.book.repository.BookOrderRepositoryTest@ce80e72, testMethod = orderTest@BookOrderRepositoryTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@616b5e22 testClass = BookOrderRepositoryTest, locations = '{}', classes = '{class com.teckstudy.book.BookApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@1cb22c1, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@9866877, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@1acefd7b, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@1556ebc9, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@7557e033], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -&gt; true]]; transaction manager [org.springframework.orm.jpa.JpaTransactionManager@455380a9]; rollback [false]
+2021-03-29 01:36:08.503 DEBUG 13812 --- [    Test worker] org.hibernate.SQL                        : 
+    /* insert com.teckstudy.book.domain.entity.Member
+        */ insert 
+        into
+            member
+            (created_by, created_date, last_modified_by, last_modified_date, address, birthday, member_id, member_status, name, password, phone_number, sex, sns_yn) 
+        values
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2021-03-29 01:36:08.523 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [2136f4e7-dcea-46f9-bc37-b154f24af567]
+2021-03-29 01:36:08.524 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [DATE] - [2021-03-29]
+2021-03-29 01:36:08.527 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [2136f4e7-dcea-46f9-bc37-b154f24af567]
+2021-03-29 01:36:08.528 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [DATE] - [2021-03-29]
+2021-03-29 01:36:08.529 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [서울특별시 봉천동]
+2021-03-29 01:36:08.534 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [VARCHAR] - [1990-09-12]
+2021-03-29 01:36:08.536 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [VARCHAR] - [member1]
+2021-03-29 01:36:08.537 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [8] as [VARCHAR] - [NORMAL]
+2021-03-29 01:36:08.537 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [9] as [VARCHAR] - [백성락]
+2021-03-29 01:36:08.538 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [10] as [VARCHAR] - [1234]
+2021-03-29 01:36:08.538 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [11] as [VARCHAR] - [010-2027-1163]
+2021-03-29 01:36:08.538 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [12] as [VARCHAR] - [MALE]
+2021-03-29 01:36:08.538 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [13] as [VARCHAR] - [Y]
+2021-03-29 01:36:08.558  INFO 13812 --- [    Test worker] p6spy                                    : #1616949368558 | took 16ms | statement | connection 3| url jdbc:mysql://52.78.216.7:3306/book?serverTimezone=UTC&amp;characterEncoding=UTF-8
+/* insert com.teckstudy.book.domain.entity.Member */ insert into member (created_by, created_date, last_modified_by, last_modified_date, address, birthday, member_id, member_status, name, password, phone_number, sex, sns_yn) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+/* insert com.teckstudy.book.domain.entity.Member */ insert into member (created_by, created_date, last_modified_by, last_modified_date, address, birthday, member_id, member_status, name, password, phone_number, sex, sns_yn) values ('2136f4e7-dcea-46f9-bc37-b154f24af567', '2021-03-29T00:00:00.000+0900', '2136f4e7-dcea-46f9-bc37-b154f24af567', '2021-03-29T00:00:00.000+0900', '서울특별시 봉천동', '1990-09-12', 'member1', 'NORMAL', '백성락', '1234', '010-2027-1163', 'MALE', 'Y');
+2021-03-29 01:36:08.570 DEBUG 13812 --- [    Test worker] org.hibernate.SQL                        : 
+    /* insert com.teckstudy.book.domain.entity.Member
+        */ insert 
+        into
+            member
+            (created_by, created_date, last_modified_by, last_modified_date, address, birthday, member_id, member_status, name, password, phone_number, sex, sns_yn) 
+        values
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2021-03-29 01:36:08.575 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [2d63d7a2-7483-4335-b012-1d0866bd4d13]
+2021-03-29 01:36:08.575 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [DATE] - [2021-03-29]
+2021-03-29 01:36:08.576 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [2d63d7a2-7483-4335-b012-1d0866bd4d13]
+2021-03-29 01:36:08.576 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [DATE] - [2021-03-29]
+2021-03-29 01:36:08.576 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [서울특별시 금천구]
+2021-03-29 01:36:08.576 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [VARCHAR] - [1993-08-03]
+2021-03-29 01:36:08.576 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [VARCHAR] - [member2]
+2021-03-29 01:36:08.576 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [8] as [VARCHAR] - [NORMAL]
+2021-03-29 01:36:08.576 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [9] as [VARCHAR] - [최진솔]
+2021-03-29 01:36:08.576 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [10] as [VARCHAR] - [1234]
+2021-03-29 01:36:08.576 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [11] as [VARCHAR] - [010-6776-4684]
+2021-03-29 01:36:08.577 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [12] as [VARCHAR] - [FEMALE]
+2021-03-29 01:36:08.578 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [13] as [VARCHAR] - [Y]
+2021-03-29 01:36:08.588  INFO 13812 --- [    Test worker] p6spy                                    : #1616949368588 | took 8ms | statement | connection 3| url jdbc:mysql://52.78.216.7:3306/book?serverTimezone=UTC&amp;characterEncoding=UTF-8
+/* insert com.teckstudy.book.domain.entity.Member */ insert into member (created_by, created_date, last_modified_by, last_modified_date, address, birthday, member_id, member_status, name, password, phone_number, sex, sns_yn) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+/* insert com.teckstudy.book.domain.entity.Member */ insert into member (created_by, created_date, last_modified_by, last_modified_date, address, birthday, member_id, member_status, name, password, phone_number, sex, sns_yn) values ('2d63d7a2-7483-4335-b012-1d0866bd4d13', '2021-03-29T00:00:00.000+0900', '2d63d7a2-7483-4335-b012-1d0866bd4d13', '2021-03-29T00:00:00.000+0900', '서울특별시 금천구', '1993-08-03', 'member2', 'NORMAL', '최진솔', '1234', '010-6776-4684', 'FEMALE', 'Y');
+2021-03-29 01:36:08.601 DEBUG 13812 --- [    Test worker] org.hibernate.SQL                        : 
+    /* insert com.teckstudy.book.domain.entity.BookOrder
+        */ insert 
+        into
+            book_order
+            (member_sn, order_address, order_price, order_status, order_yn, pay_info_pay_sn) 
+        values
+            (?, ?, ?, ?, ?, ?)
+2021-03-29 01:36:08.603 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2021-03-29 01:36:08.604 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [VARCHAR] - [서울시 강남구 신사동호랭이]
+2021-03-29 01:36:08.605 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [INTEGER] - [11000]
+2021-03-29 01:36:08.605 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [WAIT]
+2021-03-29 01:36:08.605 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [N]
+2021-03-29 01:36:08.605 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [BIGINT] - [null]
+2021-03-29 01:36:08.613  INFO 13812 --- [    Test worker] p6spy                                    : #1616949368613 | took 8ms | statement | connection 3| url jdbc:mysql://52.78.216.7:3306/book?serverTimezone=UTC&amp;characterEncoding=UTF-8
+/* insert com.teckstudy.book.domain.entity.BookOrder */ insert into book_order (member_sn, order_address, order_price, order_status, order_yn, pay_info_pay_sn) values (?, ?, ?, ?, ?, ?)
+/* insert com.teckstudy.book.domain.entity.BookOrder */ insert into book_order (member_sn, order_address, order_price, order_status, order_yn, pay_info_pay_sn) values (1, '서울시 강남구 신사동호랭이', 11000, 'WAIT', 'N', NULL);
+2021-03-29 01:36:08.615 DEBUG 13812 --- [    Test worker] org.hibernate.SQL                        : 
+    /* insert com.teckstudy.book.domain.entity.BookOrder
+        */ insert 
+        into
+            book_order
+            (member_sn, order_address, order_price, order_status, order_yn, pay_info_pay_sn) 
+        values
+            (?, ?, ?, ?, ?, ?)
+2021-03-29 01:36:08.616 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2021-03-29 01:36:08.617 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [VARCHAR] - [서울시 관악구 청담동]
+2021-03-29 01:36:08.617 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [INTEGER] - [21000]
+2021-03-29 01:36:08.617 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [PAYCOM]
+2021-03-29 01:36:08.617 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [N]
+2021-03-29 01:36:08.617 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [BIGINT] - [null]
+2021-03-29 01:36:08.624  INFO 13812 --- [    Test worker] p6spy                                    : #1616949368624 | took 7ms | statement | connection 3| url jdbc:mysql://52.78.216.7:3306/book?serverTimezone=UTC&amp;characterEncoding=UTF-8
+/* insert com.teckstudy.book.domain.entity.BookOrder */ insert into book_order (member_sn, order_address, order_price, order_status, order_yn, pay_info_pay_sn) values (?, ?, ?, ?, ?, ?)
+/* insert com.teckstudy.book.domain.entity.BookOrder */ insert into book_order (member_sn, order_address, order_price, order_status, order_yn, pay_info_pay_sn) values (1, '서울시 관악구 청담동', 21000, 'PAYCOM', 'N', NULL);
+2021-03-29 01:36:08.628 DEBUG 13812 --- [    Test worker] org.hibernate.SQL                        : 
+    /* insert com.teckstudy.book.domain.entity.BookOrder
+        */ insert 
+        into
+            book_order
+            (member_sn, order_address, order_price, order_status, order_yn, pay_info_pay_sn) 
+        values
+            (?, ?, ?, ?, ?, ?)
+2021-03-29 01:36:08.629 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [2]
+2021-03-29 01:36:08.629 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [VARCHAR] - [서울시 강남구 SM엔터테인먼트]
+2021-03-29 01:36:08.629 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [INTEGER] - [15000]
+2021-03-29 01:36:08.630 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [CONFIRM]
+2021-03-29 01:36:08.631 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [N]
+2021-03-29 01:36:08.631 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [BIGINT] - [null]
+2021-03-29 01:36:08.639  INFO 13812 --- [    Test worker] p6spy                                    : #1616949368639 | took 8ms | statement | connection 3| url jdbc:mysql://52.78.216.7:3306/book?serverTimezone=UTC&amp;characterEncoding=UTF-8
+/* insert com.teckstudy.book.domain.entity.BookOrder */ insert into book_order (member_sn, order_address, order_price, order_status, order_yn, pay_info_pay_sn) values (?, ?, ?, ?, ?, ?)
+/* insert com.teckstudy.book.domain.entity.BookOrder */ insert into book_order (member_sn, order_address, order_price, order_status, order_yn, pay_info_pay_sn) values (2, '서울시 강남구 SM엔터테인먼트', 15000, 'CONFIRM', 'N', NULL);
+2021-03-29 01:36:08.641 DEBUG 13812 --- [    Test worker] org.hibernate.SQL                        : 
+    /* insert com.teckstudy.book.domain.entity.BookOrder
+        */ insert 
+        into
+            book_order
+            (member_sn, order_address, order_price, order_status, order_yn, pay_info_pay_sn) 
+        values
+            (?, ?, ?, ?, ?, ?)
+2021-03-29 01:36:08.641 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [2]
+2021-03-29 01:36:08.642 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [VARCHAR] - [서울시 광진구 무민전시회]
+2021-03-29 01:36:08.642 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [INTEGER] - [10000]
+2021-03-29 01:36:08.642 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [COMPLETE]
+2021-03-29 01:36:08.642 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [N]
+2021-03-29 01:36:08.642 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [BIGINT] - [null]
+2021-03-29 01:36:08.649  INFO 13812 --- [    Test worker] p6spy                                    : #1616949368649 | took 6ms | statement | connection 3| url jdbc:mysql://52.78.216.7:3306/book?serverTimezone=UTC&amp;characterEncoding=UTF-8
+/* insert com.teckstudy.book.domain.entity.BookOrder */ insert into book_order (member_sn, order_address, order_price, order_status, order_yn, pay_info_pay_sn) values (?, ?, ?, ?, ?, ?)
+/* insert com.teckstudy.book.domain.entity.BookOrder */ insert into book_order (member_sn, order_address, order_price, order_status, order_yn, pay_info_pay_sn) values (2, '서울시 광진구 무민전시회', 10000, 'COMPLETE', 'N', NULL);
+2021-03-29 01:36:08.883 DEBUG 13812 --- [    Test worker] org.hibernate.SQL                        : 
+    /* select
+        bookOrder,
+        member1 
+    from
+        BookOrder bookOrder   
+    inner join
+        Member member1 with member1.member_id = ?1 */ select
+            bookorder0_.order_sn as order_sn1_1_0_,
+            member1_.member_sn as member_s1_4_1_,
+            bookorder0_.member_sn as member_s2_1_0_,
+            bookorder0_.order_address as order_ad3_1_0_,
+            bookorder0_.order_price as order_pr4_1_0_,
+            bookorder0_.order_status as order_st5_1_0_,
+            bookorder0_.order_yn as order_yn6_1_0_,
+            bookorder0_.pay_info_pay_sn as pay_info7_1_0_,
+            member1_.created_by as created_2_4_1_,
+            member1_.created_date as created_3_4_1_,
+            member1_.last_modified_by as last_mod4_4_1_,
+            member1_.last_modified_date as last_mod5_4_1_,
+            member1_.address as address6_4_1_,
+            member1_.birthday as birthday7_4_1_,
+            member1_.member_id as member_i8_4_1_,
+            member1_.member_status as member_s9_4_1_,
+            member1_.name as name10_4_1_,
+            member1_.password as passwor11_4_1_,
+            member1_.phone_number as phone_n12_4_1_,
+            member1_.sex as sex13_4_1_,
+            member1_.sns_yn as sns_yn14_4_1_ 
+        from
+            book_order bookorder0_ 
+        inner join
+            member member1_ 
+                on (
+                    member1_.member_id=?
+                )
+2021-03-29 01:36:08.891 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [member1]
+2021-03-29 01:36:08.914  INFO 13812 --- [    Test worker] p6spy                                    : #1616949368914 | took 20ms | statement | connection 3| url jdbc:mysql://52.78.216.7:3306/book?serverTimezone=UTC&amp;characterEncoding=UTF-8
+/* select bookOrder, member1
+from BookOrder bookOrder
+  inner join Member member1 with member1.member_id = ?1 */ select bookorder0_.order_sn as order_sn1_1_0_, member1_.member_sn as member_s1_4_1_, bookorder0_.member_sn as member_s2_1_0_, bookorder0_.order_address as order_ad3_1_0_, bookorder0_.order_price as order_pr4_1_0_, bookorder0_.order_status as order_st5_1_0_, bookorder0_.order_yn as order_yn6_1_0_, bookorder0_.pay_info_pay_sn as pay_info7_1_0_, member1_.created_by as created_2_4_1_, member1_.created_date as created_3_4_1_, member1_.last_modified_by as last_mod4_4_1_, member1_.last_modified_date as last_mod5_4_1_, member1_.address as address6_4_1_, member1_.birthday as birthday7_4_1_, member1_.member_id as member_i8_4_1_, member1_.member_status as member_s9_4_1_, member1_.name as name10_4_1_, member1_.password as passwor11_4_1_, member1_.phone_number as phone_n12_4_1_, member1_.sex as sex13_4_1_, member1_.sns_yn as sns_yn14_4_1_ from book_order bookorder0_ inner join member member1_ on (member1_.member_id=?)
+/* select bookOrder, member1
+from BookOrder bookOrder
+  inner join Member member1 with member1.member_id = 'member1'1 */ select bookorder0_.order_sn as order_sn1_1_0_, member1_.member_sn as member_s1_4_1_, bookorder0_.member_sn as member_s2_1_0_, bookorder0_.order_address as order_ad3_1_0_, bookorder0_.order_price as order_pr4_1_0_, bookorder0_.order_status as order_st5_1_0_, bookorder0_.order_yn as order_yn6_1_0_, bookorder0_.pay_info_pay_sn as pay_info7_1_0_, member1_.created_by as created_2_4_1_, member1_.created_date as created_3_4_1_, member1_.last_modified_by as last_mod4_4_1_, member1_.last_modified_date as last_mod5_4_1_, member1_.address as address6_4_1_, member1_.birthday as birthday7_4_1_, member1_.member_id as member_i8_4_1_, member1_.member_status as member_s9_4_1_, member1_.name as name10_4_1_, member1_.password as passwor11_4_1_, member1_.phone_number as phone_n12_4_1_, member1_.sex as sex13_4_1_, member1_.sns_yn as sns_yn14_4_1_ from book_order bookorder0_ inner join member member1_ on (member1_.member_id=NULL);
+2021-03-29 01:36:08.938 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([order_sn1_1_0_] : [BIGINT]) - [1]
+2021-03-29 01:36:08.939 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([member_s1_4_1_] : [BIGINT]) - [1]
+2021-03-29 01:36:08.942 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([order_sn1_1_0_] : [BIGINT]) - [2]
+2021-03-29 01:36:08.942 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([member_s1_4_1_] : [BIGINT]) - [1]
+2021-03-29 01:36:08.942 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([order_sn1_1_0_] : [BIGINT]) - [3]
+2021-03-29 01:36:08.942 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([member_s1_4_1_] : [BIGINT]) - [1]
+2021-03-29 01:36:08.942 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([order_sn1_1_0_] : [BIGINT]) - [4]
+2021-03-29 01:36:08.942 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([member_s1_4_1_] : [BIGINT]) - [1]
+tuple [com.teckstudy.book.domain.entity.BookOrder@5a39707c, com.teckstudy.book.domain.entity.Member@2b19f1c]
+tuple [com.teckstudy.book.domain.entity.BookOrder@56cec15e, com.teckstudy.book.domain.entity.Member@2b19f1c]
+tuple [com.teckstudy.book.domain.entity.BookOrder@7edca710, com.teckstudy.book.domain.entity.Member@2b19f1c]
+tuple [com.teckstudy.book.domain.entity.BookOrder@23a89a8, com.teckstudy.book.domain.entity.Member@2b19f1c]
+2021-03-29 01:36:08.980  INFO 13812 --- [    Test worker] p6spy                                    : #1616949368980 | took 9ms | commit | connection 3| url jdbc:mysql://52.78.216.7:3306/book?serverTimezone=UTC&amp;characterEncoding=UTF-8
+
+;
+2021-03-29 01:36:08.989  INFO 13812 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Committed transaction for test: [DefaultTestContext@66bceac8 testClass = BookOrderRepositoryTest, testInstance = com.teckstudy.book.repository.BookOrderRepositoryTest@ce80e72, testMethod = orderTest@BookOrderRepositoryTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@616b5e22 testClass = BookOrderRepositoryTest, locations = '{}', classes = '{class com.teckstudy.book.BookApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@1cb22c1, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@9866877, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@1acefd7b, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@1556ebc9, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@7557e033], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -&gt; true]]
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 6.8.2</a> at 2021. 3. 29. 오전 1:36:09</p>
+</div>
+</div>
+</body>
+</html>
