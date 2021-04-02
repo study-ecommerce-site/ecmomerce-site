@@ -73,6 +73,9 @@ class MemberRepositoryTest {
         // 3. JPQL 쿼리실행 - 플러시 자동 호출
     }
 
+    /**
+     *  회원가입 테스트
+     */
     @Test
     public void memberTest() {
         // 엔티티가 없을때는 반드시 빌드를 해줘야합니다. (Gradle -> querydsl < Tasks < other < compileQuerydsl

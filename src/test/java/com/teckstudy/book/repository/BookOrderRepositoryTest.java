@@ -6,8 +6,6 @@ import com.teckstudy.book.domain.entity.*;
 import com.teckstudy.book.domain.entity.enums.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
@@ -15,14 +13,16 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.Random;
 
 import static com.teckstudy.book.domain.entity.QMember.member;
+import static com.teckstudy.book.domain.entity.QProduct.product;
 import static com.teckstudy.book.domain.entity.QBookOrder.bookOrder;
+import static com.teckstudy.book.domain.entity.QPayInfo.payInfo;
+import static com.teckstudy.book.domain.entity.QReview.review;
+import static com.teckstudy.book.domain.entity.QRefund.refund;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -30,7 +30,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @Transactional
 @Rollback(value = false)
 class BookOrderRepositoryTest {
-    @Autowired // 또는 자바 표준 스택 @PersistenceContext 최신버전부터 @Autowired 지원 됨
+    @Autowired
     EntityManager em;
 
     // queryDsl 선언
@@ -42,7 +42,7 @@ class BookOrderRepositoryTest {
     @Autowired
     ProductRepository productRepository;
 
-    @Autowired // Autowired 대신사용 @InjectMocks에 주입
+    @Autowired
     BookOrderRepository bookOrderRepository;
 
     @Autowired
@@ -51,6 +51,15 @@ class BookOrderRepositoryTest {
     @Autowired
     BookOrderProductRepository bookOrderProductRepository;
 
+    @Autowired
+    PayInfoRepository payInfoRepository;
+
+    @Autowired
+    ReviewRepository reviewRepository;
+
+    @Autowired
+    RefundRepository refundRepository;
+
     private Random random = new Random();
 
     @BeforeEach
@@ -58,7 +67,7 @@ class BookOrderRepositoryTest {
 
         queryFactory = new JPAQueryFactory(em);
         //given
-        Member member1 = Member.builder()
+        Member members = Member.builder()
                 .member_id("member1")
                 .password("1234")
                 .name("홍길동")
@@ -70,22 +79,22 @@ class BookOrderRepositoryTest {
                 .member_status(MemberStatus.NORMAL)
                 .build();
 
-        memberRepository.save(member1);
+        memberRepository.save(members);
 
-        Product product1 = Product.builder()
+        Product products = Product.builder()
                 .product_name("클린 코드 : 에자일의 소프트웨어")
                 .product_option(ProductType.RADIO)
                 .price(50000)
                 .stock_cnt(30)
                 .build();
 
-        productRepository.save(product1);
+        productRepository.save(products);
 
         String[] productOptionName = {"DB 모음집 시리즈", "파우치", "전우치"};
 
         for(int i=0; i<productOptionName.length; i++) {
             ProductOption productOption= ProductOption.builder()
-                    .product(product1)
+                    .product(products)
                     .product_option_name(productOptionName[i])
                     .plus_price(Integer.valueOf(random.nextInt(99999)+1))
                     .stock_cnt(Integer.valueOf(random.nextInt(99)+1))
@@ -94,59 +103,131 @@ class BookOrderRepositoryTest {
             productOptionRepository.save(productOption);
         }
 
-        BookOrder bookOrder1 = BookOrder.builder()
-                    .member(member1)
+        BookOrder bookOrders = BookOrder.builder()
+                    .member(members)
                     .order_yn(YesNoStatus.Y)
                     .order_price(11000)
                     .order_address("서울시 강남구 신사동 사자")
                     .order_status(OrderStatus.WAIT)
                     .build();
 
-        bookOrderRepository.save(bookOrder1);
+        bookOrderRepository.save(bookOrders);
 
-        List<String> orderList1 = new ArrayList<>();
-        orderList1.add("1");
-        orderList1.add("2");
-        orderList1.add("3");
+        List<String> orderLists = new ArrayList<>();
+        orderLists.add("1");
+        orderLists.add("2");
+        orderLists.add("3");
         BookOrderProduct bookOrderProductOne = BookOrderProduct.builder()
-                .bookOrder(bookOrder1)  // order_sn(bookOrder1.getOrder_sn())
-                .product(product1)      // product_sn(product1.getProduct_sn())
+                .bookOrder(bookOrders)
+                .product(products)
                 .product_cnt(10)
                 .product_option_sn("1, 2, 3")
                 .build();
 
         bookOrderProductRepository.save(bookOrderProductOne);
+
+        PayInfo payInfo = PayInfo.builder()
+                .bookOrder(bookOrders)
+                .total_price(bookOrders.getOrder_price())
+                .build();
+
+        payInfoRepository.save(payInfo);
+
+        Review reviews = Review.builder()
+                .member(members)
+                .product(products)
+                .review_sub("이책은 띵작입니다.")
+                .review_content("내돈산 최고의 책이라고 감히 자부합니다.")
+                .gpa(5)
+                .build();
+
+        reviewRepository.save(reviews);
+
+        Refund refunds = Refund.builder()
+                .bookOrder(bookOrders)
+                .bank_name("국민은행")
+                .acc_number("437601-410-3333")
+                .build();
+
+        refundRepository.save(refunds);
     }
 
-//    @Test
-//    public void orderPayInfo() {
-//
-//        Optional<BookOrder> bookOrderOne = bookOrderRepository.findById(1L);
-//
-//        System.out.println(bookOrderOne);
-//
-////        PayInfo payInfo = PayInfo.builder()
-////                .bookOrder(bookOrder.order_sn)
-////                .build();
-//    }
+    /**
+     * 결제 테스트
+     */
+    @Test
+    public void orderPayInfo() {
 
-//    @Test
-//    public void orderProductTest() {
-//
-//    }
+        queryFactory
+                .select(payInfo.pay_sn, bookOrder.order_sn, payInfo.total_price)
+                .from(payInfo)
+                .fetch();
 
+        List<PayInfo> payinfos = payInfoRepository.findAll();
+
+        for (PayInfo pay : payinfos) {
+            assertThat(pay.getBookOrder().getOrder_sn()).isEqualTo(1L);
+            assertThat(pay.getTotal_price()).isEqualTo(11000);
+        }
+    }
+
+    /**
+     * 상품주문 테스트
+     */
     @Test
     public void orderTest() {
-        // 내부조인(inner join)이면 join과 where을 사용하고 아닐시에는 on 절 사용
-        // .where(member.member_id.eq("member1"))
         List<Tuple> result = queryFactory
                 .select(bookOrder, member)
                 .from(bookOrder)
-                .innerJoin(member).on(member.member_id.eq("member1"))
+                .innerJoin(member).on(member.member_id.eq(bookOrder.member.member_id))
                 .fetch();
 
         for (Tuple tuple : result) {
             System.out.println("tuple " + tuple);
+        }
+    }
+
+    /**
+     * 리뷰 테스트
+     */
+    @Test
+    public void reviewTest() {
+
+        queryFactory
+                .select(member.name,
+                        product.product_name,
+                        review.review_sub,
+                        review.review_content,
+                        review.gpa)
+                .from(review)
+                .innerJoin(product).on(product.product_sn.eq(review.product.product_sn))
+                .innerJoin(member).on(review.member.member_sn.eq(member.member_sn))
+                .fetch();
+
+        List<Review> reviews = reviewRepository.findAll();
+
+        for (Review rev : reviews) {
+            assertThat(rev.getReview_sn()).isEqualTo(1L);
+            assertThat(rev.getGpa()).isEqualTo(5);
+        }
+    }
+
+    /**
+     * 환불관리 테스트
+     */
+    @Test
+    public void refundTest() {
+
+        queryFactory
+                .select(refund.refund_sn, refund.bookOrder.order_sn, refund.bank_name, refund.acc_number)
+                .from(refund)
+                .fetch();
+
+        List<Refund> refunds = refundRepository.findAll();
+
+        for (Refund res : refunds) {
+            assertThat(res.getBookOrder().getOrder_sn()).isEqualTo(1L);
+            assertThat(res.getBank_name()).isEqualTo("국민은행");
         }
     }
 }

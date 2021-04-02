@@ -1,12 +1,13 @@
 package com.teckstudy.book.repository;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import com.teckstudy.book.domain.entity.AnswerList;
 import com.teckstudy.book.domain.entity.Board;
-import com.teckstudy.book.domain.entity.BookOrder;
 import com.teckstudy.book.domain.entity.Member;
 import com.teckstudy.book.domain.entity.enums.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
@@ -18,6 +19,7 @@ import java.util.List;
 
 import static com.teckstudy.book.domain.entity.QMember.member;
 import static com.teckstudy.book.domain.entity.QBoard.board;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -33,8 +35,14 @@ class BoardRepositoryTest {
     @Autowired
     MemberRepository memberRepository;
 
+    // @Autowired
     @Autowired
     BoardRepository boardRepository;
+
+    @Autowired
+    AnswerListRepository answerListRepository;
+
+    private Mock mvc;
 
     @BeforeEach
     public void testEntity() {
@@ -43,7 +51,7 @@ class BoardRepositoryTest {
         Member member1 = Member.builder()
                 .member_id("member1")
                 .password("1234")
-                .name("홍길동")
+                .name("펩시맨")
                 .sex(Gender.MALE)
                 .birthday("1990-09-12")
                 .phone_number("010-2027-1163")
@@ -53,12 +61,9 @@ class BoardRepositoryTest {
                 .build();
         memberRepository.save(member1);
 
-//        Board board1 = new Board(
-//                member1.getName(), Category.NOTICE, "테스트합니다", "등록합니다", YesNoStatus.N, "C드라이브");
-
         Board board1 = Board.builder()
                 .category(Category.NOTICE)
-                .name("이비자")
+                .name(member1.getName())
                 .subject("아이스 아메리카노")
                 .content("냠냠 맛있다")
                 .top_show_yn(YesNoStatus.Y)
@@ -66,16 +71,38 @@ class BoardRepositoryTest {
                 .build();
 
         boardRepository.save(board1);
+
+        AnswerList answerList = AnswerList.builder()
+                .board(board1)
+                .content("관리자가 댓글 답니다.")
+                .build();
+
+        answerListRepository.save(answerList);
     }
 
+    /**
+     * 게시판 목록 조회
+     */
     @Test
     public void boardTest() {
 
         List<Board> all = boardRepository.findAll();
 
         for (Board board1 : all) {
-            System.out.println(board1);
+            System.out.println(board1.getName());
         }
+    }
 
+    /**
+     * 답글 테스트
+     */
+    @Test
+    public void answerTest() {
+
+        List<AnswerList> answerLists = answerListRepository.findAll();
+
+        for (AnswerList ans : answerLists) {
+            assertThat(ans.getAnswer_sn()).isEqualTo(1L);
+        }
     }
 }
