@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.teckstudy.book.repository.MemberRepositoryTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-03-28T16:36:09" hostname="gitaeui-MacBookAir.local" time="0.142">
+  <properties/>
+  <testcase name="memberTest()" classname="com.teckstudy.book.repository.MemberRepositoryTest" time="0.142"/>
+  <system-out><![CDATA[2021-03-29 01:36:09.009  INFO 13812 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.teckstudy.book.repository.MemberRepositoryTest], using SpringBootContextLoader
+2021-03-29 01:36:09.016  INFO 13812 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.teckstudy.book.repository.MemberRepositoryTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2021-03-29 01:36:09.016  INFO 13812 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.teckstudy.book.repository.MemberRepositoryTest]: MemberRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2021-03-29 01:36:09.023  INFO 13812 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.teckstudy.book.BookApplication for test class com.teckstudy.book.repository.MemberRepositoryTest
+2021-03-29 01:36:09.030  INFO 13812 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2021-03-29 01:36:09.031  INFO 13812 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@32eff802, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@e965bc8, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@158fbf, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@7d21df41, org.springframework.test.context.support.DirtiesContextTestExecutionListener@3043070f, org.springframework.test.context.transaction.TransactionalTestExecutionListener@c3742d4, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@20f34c9a, org.springframework.test.context.event.EventPublishingTestExecutionListener@53db4412, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@7b085a19, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@4d1f964e, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@773294eb, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@7ec0a5cb, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@4721f098, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@763da3d4]
+2021-03-29 01:36:09.067  INFO 13812 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Began transaction (1) for test context [DefaultTestContext@26b36dc8 testClass = MemberRepositoryTest, testInstance = com.teckstudy.book.repository.MemberRepositoryTest@3d0b49c9, testMethod = memberTest@MemberRepositoryTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@772b6008 testClass = MemberRepositoryTest, locations = '{}', classes = '{class com.teckstudy.book.BookApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@1cb22c1, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@9866877, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@1acefd7b, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@1556ebc9, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@7557e033], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -> true]]; transaction manager [org.springframework.orm.jpa.JpaTransactionManager@455380a9]; rollback [false]
+2021-03-29 01:36:09.071 DEBUG 13812 --- [    Test worker] org.hibernate.SQL                        : 
+    /* insert com.teckstudy.book.domain.entity.Member
+        */ insert 
+        into
+            member
+            (created_by, created_date, last_modified_by, last_modified_date, address, birthday, member_id, member_status, name, password, phone_number, sex, sns_yn) 
+        values
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2021-03-29 01:36:09.073 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [8fc3348a-0d48-4b9d-a65e-73b5a194480f]
+2021-03-29 01:36:09.074 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [DATE] - [2021-03-29]
+2021-03-29 01:36:09.074 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [8fc3348a-0d48-4b9d-a65e-73b5a194480f]
+2021-03-29 01:36:09.074 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [DATE] - [2021-03-29]
+2021-03-29 01:36:09.074 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [서울특별시 봉천동]
+2021-03-29 01:36:09.075 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [VARCHAR] - [1990-09-12]
+2021-03-29 01:36:09.075 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [VARCHAR] - [member1]
+2021-03-29 01:36:09.075 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [8] as [VARCHAR] - [NORMAL]
+2021-03-29 01:36:09.075 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [9] as [VARCHAR] - [홍길동]
+2021-03-29 01:36:09.075 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [10] as [VARCHAR] - [1234]
+2021-03-29 01:36:09.076 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [11] as [VARCHAR] - [010-2027-1163]
+2021-03-29 01:36:09.076 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [12] as [VARCHAR] - [MALE]
+2021-03-29 01:36:09.076 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [13] as [VARCHAR] - [Y]
+2021-03-29 01:36:09.085  INFO 13812 --- [    Test worker] p6spy                                    : #1616949369085 | took 8ms | statement | connection 4| url jdbc:mysql://52.78.216.7:3306/book?serverTimezone=UTC&characterEncoding=UTF-8
+/* insert com.teckstudy.book.domain.entity.Member */ insert into member (created_by, created_date, last_modified_by, last_modified_date, address, birthday, member_id, member_status, name, password, phone_number, sex, sns_yn) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+/* insert com.teckstudy.book.domain.entity.Member */ insert into member (created_by, created_date, last_modified_by, last_modified_date, address, birthday, member_id, member_status, name, password, phone_number, sex, sns_yn) values ('8fc3348a-0d48-4b9d-a65e-73b5a194480f', '2021-03-29T00:00:00.000+0900', '8fc3348a-0d48-4b9d-a65e-73b5a194480f', '2021-03-29T00:00:00.000+0900', '서울특별시 봉천동', '1990-09-12', 'member1', 'NORMAL', '홍길동', '1234', '010-2027-1163', 'MALE', 'Y');
+2021-03-29 01:36:09.121 DEBUG 13812 --- [    Test worker] org.hibernate.SQL                        : 
+    /* insert com.teckstudy.book.domain.entity.SnsInfo
+        */ insert 
+        into
+            sns_info
+            (created_by, created_date, last_modified_by, last_modified_date, sns_code, sns_type, member_sn) 
+        values
+            (?, ?, ?, ?, ?, ?, ?)
+2021-03-29 01:36:09.121 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [36849154-fde6-4752-aef3-7d4fbc8392e5]
+2021-03-29 01:36:09.121 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [DATE] - [2021-03-29]
+2021-03-29 01:36:09.122 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [36849154-fde6-4752-aef3-7d4fbc8392e5]
+2021-03-29 01:36:09.122 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [DATE] - [2021-03-29]
+2021-03-29 01:36:09.122 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [123456789]
+2021-03-29 01:36:09.122 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [VARCHAR] - [K]
+2021-03-29 01:36:09.122 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [BIGINT] - [3]
+2021-03-29 01:36:09.130  INFO 13812 --- [    Test worker] p6spy                                    : #1616949369130 | took 7ms | statement | connection 4| url jdbc:mysql://52.78.216.7:3306/book?serverTimezone=UTC&characterEncoding=UTF-8
+/* insert com.teckstudy.book.domain.entity.SnsInfo */ insert into sns_info (created_by, created_date, last_modified_by, last_modified_date, sns_code, sns_type, member_sn) values (?, ?, ?, ?, ?, ?, ?)
+/* insert com.teckstudy.book.domain.entity.SnsInfo */ insert into sns_info (created_by, created_date, last_modified_by, last_modified_date, sns_code, sns_type, member_sn) values ('36849154-fde6-4752-aef3-7d4fbc8392e5', '2021-03-29T00:00:00.000+0900', '36849154-fde6-4752-aef3-7d4fbc8392e5', '2021-03-29T00:00:00.000+0900', '123456789', 'K', 3);
+2021-03-29 01:36:09.131 DEBUG 13812 --- [    Test worker] org.hibernate.SQL                        : 
+    /* insert com.teckstudy.book.domain.entity.Vertity
+        */ insert 
+        into
+            vertity
+            (auth_code, auth_date, auth_yn, member_auth_type, member_sn) 
+        values
+            (?, ?, ?, ?, ?)
+2021-03-29 01:36:09.132 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [4684]
+2021-03-29 01:36:09.132 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2021-03-29T01:36:09.107993]
+2021-03-29 01:36:09.134 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [Y]
+2021-03-29 01:36:09.134 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [PHONE]
+2021-03-29 01:36:09.134 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [BIGINT] - [3]
+2021-03-29 01:36:09.143  INFO 13812 --- [    Test worker] p6spy                                    : #1616949369143 | took 6ms | statement | connection 4| url jdbc:mysql://52.78.216.7:3306/book?serverTimezone=UTC&characterEncoding=UTF-8
+/* insert com.teckstudy.book.domain.entity.Vertity */ insert into vertity (auth_code, auth_date, auth_yn, member_auth_type, member_sn) values (?, ?, ?, ?, ?)
+/* insert com.teckstudy.book.domain.entity.Vertity */ insert into vertity (auth_code, auth_date, auth_yn, member_auth_type, member_sn) values ('4684', '2021-03-29T01:36:09.107+0900', 'Y', 'PHONE', 3);
+2021-03-29 01:36:09.156 DEBUG 13812 --- [    Test worker] org.hibernate.SQL                        : 
+    /* select
+        member1 
+    from
+        Member member1   
+    inner join
+        member1.snsInfo as snsInfo   
+    inner join
+        member1.vertity as vertity 
+    where
+        member1.member_id = ?1 */ select
+            member0_.member_sn as member_s1_4_,
+            member0_.created_by as created_2_4_,
+            member0_.created_date as created_3_4_,
+            member0_.last_modified_by as last_mod4_4_,
+            member0_.last_modified_date as last_mod5_4_,
+            member0_.address as address6_4_,
+            member0_.birthday as birthday7_4_,
+            member0_.member_id as member_i8_4_,
+            member0_.member_status as member_s9_4_,
+            member0_.name as name10_4_,
+            member0_.password as passwor11_4_,
+            member0_.phone_number as phone_n12_4_,
+            member0_.sex as sex13_4_,
+            member0_.sns_yn as sns_yn14_4_ 
+        from
+            member member0_ 
+        inner join
+            sns_info snsinfo1_ 
+                on member0_.member_sn=snsinfo1_.member_sn 
+        inner join
+            vertity vertity2_ 
+                on member0_.member_sn=vertity2_.auth_serial_sn 
+        where
+            member0_.member_id=?
+2021-03-29 01:36:09.156 TRACE 13812 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [member1]
+2021-03-29 01:36:09.171  INFO 13812 --- [    Test worker] p6spy                                    : #1616949369170 | took 13ms | statement | connection 4| url jdbc:mysql://52.78.216.7:3306/book?serverTimezone=UTC&characterEncoding=UTF-8
+/* select member1
+from Member member1
+  inner join member1.snsInfo as snsInfo
+  inner join member1.vertity as vertity
+where member1.member_id = ?1 */ select member0_.member_sn as member_s1_4_, member0_.created_by as created_2_4_, member0_.created_date as created_3_4_, member0_.last_modified_by as last_mod4_4_, member0_.last_modified_date as last_mod5_4_, member0_.address as address6_4_, member0_.birthday as birthday7_4_, member0_.member_id as member_i8_4_, member0_.member_status as member_s9_4_, member0_.name as name10_4_, member0_.password as passwor11_4_, member0_.phone_number as phone_n12_4_, member0_.sex as sex13_4_, member0_.sns_yn as sns_yn14_4_ from member member0_ inner join sns_info snsinfo1_ on member0_.member_sn=snsinfo1_.member_sn inner join vertity vertity2_ on member0_.member_sn=vertity2_.auth_serial_sn where member0_.member_id=?
+/* select member1
+from Member member1
+  inner join member1.snsInfo as snsInfo
+  inner join member1.vertity as vertity
+where member1.member_id = 'member1'1 */ select member0_.member_sn as member_s1_4_, member0_.created_by as created_2_4_, member0_.created_date as created_3_4_, member0_.last_modified_by as last_mod4_4_, member0_.last_modified_date as last_mod5_4_, member0_.address as address6_4_, member0_.birthday as birthday7_4_, member0_.member_id as member_i8_4_, member0_.member_status as member_s9_4_, member0_.name as name10_4_, member0_.password as passwor11_4_, member0_.phone_number as phone_n12_4_, member0_.sex as sex13_4_, member0_.sns_yn as sns_yn14_4_ from member member0_ inner join sns_info snsinfo1_ on member0_.member_sn=snsinfo1_.member_sn inner join vertity vertity2_ on member0_.member_sn=vertity2_.auth_serial_sn where member0_.member_id=NULL;
+2021-03-29 01:36:09.186  INFO 13812 --- [    Test worker] p6spy                                    : #1616949369186 | took 12ms | commit | connection 4| url jdbc:mysql://52.78.216.7:3306/book?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2021-03-29 01:36:09.195  INFO 13812 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Committed transaction for test: [DefaultTestContext@26b36dc8 testClass = MemberRepositoryTest, testInstance = com.teckstudy.book.repository.MemberRepositoryTest@3d0b49c9, testMethod = memberTest@MemberRepositoryTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@772b6008 testClass = MemberRepositoryTest, locations = '{}', classes = '{class com.teckstudy.book.BookApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@1cb22c1, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@9866877, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@1acefd7b, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@1556ebc9, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@7557e033], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -> true]]
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

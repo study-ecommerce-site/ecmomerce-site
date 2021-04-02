@@ -1,11 +1,11 @@
 server:
-  address: localhost
+  address: 0.0.0.0
   port: 8080
 spring:
   profiles:
     active: default
   datasource:
-    url: jdbc:mysql://localhost:3306/book?serverTimezone=UTC&characterEncoding=UTF-8
+    url: jdbc:mysql://52.78.216.7:3306/book?serverTimezone=UTC&characterEncoding=UTF-8
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
