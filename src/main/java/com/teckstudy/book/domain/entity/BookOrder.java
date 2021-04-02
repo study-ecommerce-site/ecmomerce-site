@@ -42,6 +42,10 @@ public class BookOrder {
     @JoinColumn(name = "order_sn")
     private PayInfo payInfo;
 
+    @OneToOne(fetch = LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "order_sn")
+    private Refund refund;
+
     @OneToMany(mappedBy = "bookOrder")
     private List<BookOrderProduct> bookOrderProduct = new ArrayList<>();
 

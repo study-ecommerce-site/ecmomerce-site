@@ -68,4 +68,7 @@ public class Member extends BaseEntity {
     @OneToMany(mappedBy = "member")
     private List<Board> boards = new ArrayList<>();
 
+    @OneToOne(fetch = LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "member_sn")
+    private Review review;
 }

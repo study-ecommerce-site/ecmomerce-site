@@ -6,6 +6,9 @@ import lombok.*;
 
 import javax.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static javax.persistence.FetchType.LAZY;
 
 @Entity
@@ -34,5 +37,9 @@ public class Board extends BaseEntity {
     private YesNoStatus top_show_yn;
 
     private String file_path;
+
+    @OneToOne(fetch = LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "board_sn")
+    private AnswerList answerList;
 
 }

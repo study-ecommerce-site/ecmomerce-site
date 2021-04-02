@@ -4,21 +4,27 @@ import lombok.*;
 
 import javax.persistence.*;
 
+import static javax.persistence.FetchType.LAZY;
+
 @Entity
 @Getter
-@Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class PayInfo {
+public class Refund {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long pay_sn;
+    private int refund_sn;
 
-    @OneToOne(mappedBy = "payInfo",fetch = FetchType.LAZY)
+    @OneToOne(fetch = LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "order_sn")
     private BookOrder bookOrder;
 
-    private Integer total_price;
+    @Column(length = 20, nullable = false)
+    private String bank_name;
+
+    @Column(length = 30, nullable = false)
+    private String acc_number;
 
 }
