@@ -5,6 +5,7 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.teckstudy.book.domain.entity.Product;
 import com.teckstudy.book.domain.entity.ProductOption;
 import com.teckstudy.book.domain.entity.enums.*;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -42,8 +43,8 @@ class ProductRepositoryTest {
     /**
      * 상품등록 테스트
      */
-
     @Test
+    @DisplayName("상품등록 테스트")
     public void testProduct() {
         queryFactory = new JPAQueryFactory(em);
         //given
@@ -72,6 +73,7 @@ class ProductRepositoryTest {
      * 상품등록 및 상품 옵션 테스트
      */
     @Test
+    @DisplayName("상품등록 및 상품 옵션 테스트")
     public void testProductOption() {
         queryFactory = new JPAQueryFactory(em);
         //given

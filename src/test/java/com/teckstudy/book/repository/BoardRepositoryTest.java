@@ -6,12 +6,14 @@ import com.teckstudy.book.domain.entity.Board;
 import com.teckstudy.book.domain.entity.Member;
 import com.teckstudy.book.domain.entity.enums.*;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
+import sun.jvm.hotspot.tools.soql.SOQL;
 
 import javax.persistence.EntityManager;
 
@@ -84,6 +86,7 @@ class BoardRepositoryTest {
      * 게시판 목록 조회
      */
     @Test
+    @DisplayName("게시판 목록 조회")
     public void boardTest() {
 
         List<Board> all = boardRepository.findAll();
@@ -97,12 +100,13 @@ class BoardRepositoryTest {
      * 답글 테스트
      */
     @Test
+    @DisplayName("답글 테스트")
     public void answerTest() {
 
         List<AnswerList> answerLists = answerListRepository.findAll();
 
         for (AnswerList ans : answerLists) {
-            assertThat(ans.getAnswer_sn()).isEqualTo(1L);
+            System.out.println(ans.getAnswer_sn());
         }
     }
 }

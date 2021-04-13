@@ -5,6 +5,7 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.teckstudy.book.domain.entity.*;
 import com.teckstudy.book.domain.entity.enums.*;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -156,6 +157,7 @@ class BookOrderRepositoryTest {
      * 결제 테스트
      */
     @Test
+    @DisplayName("결제 테스트")
     public void orderPayInfo() {
 
         queryFactory
@@ -175,6 +177,7 @@ class BookOrderRepositoryTest {
      * 상품주문 테스트
      */
     @Test
+    @DisplayName("상품주문 테스트")
     public void orderTest() {
         List<Tuple> result = queryFactory
                 .select(bookOrder, member)
@@ -191,6 +194,7 @@ class BookOrderRepositoryTest {
      * 리뷰 테스트
      */
     @Test
+    @DisplayName("리뷰 테스트")
     public void reviewTest() {
 
         queryFactory
@@ -216,6 +220,7 @@ class BookOrderRepositoryTest {
      * 환불관리 테스트
      */
     @Test
+    @DisplayName("환불관리 테스트")
     public void refundTest() {
 
         queryFactory
