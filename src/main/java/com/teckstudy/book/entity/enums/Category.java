@@ -1,4 +1,4 @@
-package com.teckstudy.book.domain.entity.enums;
+package com.teckstudy.book.entity.enums;
 
 public enum Category {
 

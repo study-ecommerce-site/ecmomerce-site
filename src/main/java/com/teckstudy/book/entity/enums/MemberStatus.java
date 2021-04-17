@@ -1,9 +1,6 @@
-package com.teckstudy.book.domain.entity.enums;
+package com.teckstudy.book.entity.enums;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-
-import java.util.Arrays;
 
 @Getter
 public enum MemberStatus {
