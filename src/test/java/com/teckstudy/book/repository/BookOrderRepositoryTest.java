@@ -2,7 +2,6 @@ package com.teckstudy.book.repository;
 
 import com.querydsl.core.Tuple;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import com.teckstudy.book.domain.entity.BookOrder;
 import com.teckstudy.book.domain.entity.Member;
 import com.teckstudy.book.domain.entity.enums.*;
 import org.junit.jupiter.api.BeforeEach;
@@ -19,7 +18,6 @@ import java.util.List;
 import static com.teckstudy.book.domain.entity.QMember.member;
 import static com.teckstudy.book.domain.entity.QBookOrder.bookOrder;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Transactional

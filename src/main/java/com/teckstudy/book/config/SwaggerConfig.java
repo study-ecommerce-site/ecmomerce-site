@@ -25,4 +25,6 @@ public class SwaggerConfig {
                 .apiInfo(new ApiInfoBuilder().title(TITLE).termsOfServiceUrl(TERMS_OF_SERVICE_URL).build())
                 .pathMapping("/");
     }
+
+
 }
