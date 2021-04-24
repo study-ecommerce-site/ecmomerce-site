@@ -93,7 +93,6 @@ class MemberRepositoryTest {
                 .fetch();
 
         for (Member member1 : findMember) {
-            System.out.println("member1 ==== " + member1);
             assertThat(member1.getMember_id()).isEqualTo("member1");
         }
 

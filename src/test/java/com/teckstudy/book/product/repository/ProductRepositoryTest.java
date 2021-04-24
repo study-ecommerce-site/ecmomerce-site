@@ -21,6 +21,8 @@ import java.util.Random;
 import static com.teckstudy.book.entity.QProduct.product;
 import static com.teckstudy.book.entity.QProductOption.productOption;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 @SpringBootTest
 @Transactional
 @Rollback(value = false)
@@ -62,9 +64,9 @@ class ProductRepositoryTest {
         }
 
         List<Product> products = productRepository.findAll();
-        for (Product product : products) {
-            System.out.println(product.getProduct_name());
-            System.out.println(product.getProduct_option());
+
+        for (int i = 0; i < products.size(); i++) {
+            assertThat(products.get(i).getProduct_name()).isEqualTo(bookList[i]);
         }
     }
 
@@ -109,8 +111,6 @@ class ProductRepositoryTest {
                 .leftJoin(product).on(product.product_sn.eq(productOption.product.product_sn))
                 .fetch();
 
-        for (Tuple results : result) {
-            System.out.println("product = " + results);
-        }
+        assertThat(result.size()).isEqualTo(3);
     }
 }
