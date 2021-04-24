@@ -1,15 +1,20 @@
 server:
-  address: localhost
-  port: 8080
+  address: 0.0.0.0
+  port: 8081
 spring:
   profiles:
-    active: test
+    active: default
   datasource:
+#    url: jdbc:mysql://freebsr-springboot-webservice.c1b7msloybkt.ap-northeast-2.rds.amazonaws.com:3306/book?serverTimezone=UTC&characterEncoding=UTF-8
+#    username: prodo
+#    password: fkqkWk1!
     url: jdbc:mysql://localhost:3306/book?serverTimezone=UTC&characterEncoding=UTF-8
     username: root
     password: root
-    driver-class-name: com.mysql.cj.jdbc.Driver
-
+#    url: jdbc:mysql://13.209.22.8:3306/book?serverTimezone=UTC&characterEncoding=UTF-8
+#    username: root
+#    password: root
+#    driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     database: mysql
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect

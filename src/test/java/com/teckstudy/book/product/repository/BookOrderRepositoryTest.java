@@ -2,8 +2,8 @@ package com.teckstudy.book.product.repository;
 
 import com.querydsl.core.Tuple;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import com.teckstudy.book.product.domain.entity.*;
-import com.teckstudy.book.product.domain.entity.enums.*;
+import com.teckstudy.book.entity.*;
+import com.teckstudy.book.entity.enums.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,12 +18,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import static com.teckstudy.book.product.domain.entity.QPayInfo.payInfo;
-import static com.teckstudy.book.product.domain.entity.QBookOrder.bookOrder;
-import static com.teckstudy.book.product.domain.entity.QMember.member;
-import static com.teckstudy.book.product.domain.entity.QProduct.product;
-import static com.teckstudy.book.product.domain.entity.QRefund.refund;
-import static com.teckstudy.book.product.domain.entity.QReview.review;
+import static com.teckstudy.book.entity.QPayInfo.payInfo;
+import static com.teckstudy.book.entity.QBookOrder.bookOrder;
+import static com.teckstudy.book.entity.QMember.member;
+import static com.teckstudy.book.entity.QProduct.product;
+import static com.teckstudy.book.entity.QRefund.refund;
+import static com.teckstudy.book.entity.QReview.review;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest

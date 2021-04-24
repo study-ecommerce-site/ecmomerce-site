@@ -2,9 +2,9 @@ package com.teckstudy.book.product.repository;
 
 import com.querydsl.core.Tuple;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import com.teckstudy.book.product.domain.entity.Product;
-import com.teckstudy.book.product.domain.entity.ProductOption;
-import com.teckstudy.book.product.domain.entity.enums.*;
+import com.teckstudy.book.entity.Product;
+import com.teckstudy.book.entity.ProductOption;
+import com.teckstudy.book.entity.enums.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +18,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 
-import static com.teckstudy.book.product.domain.entity.QProduct.product;
-import static com.teckstudy.book.product.domain.entity.QProductOption.productOption;
+import static com.teckstudy.book.entity.QProduct.product;
+import static com.teckstudy.book.entity.QProductOption.productOption;
 
 @SpringBootTest
 @Transactional

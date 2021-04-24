@@ -1,9 +1,11 @@
 package com.teckstudy.book.product.controller;
 
-import com.teckstudy.book.product.domain.dto.ProductResponseDto;
+import com.teckstudy.book.product.domain.dto.ProductsResponseDto;
 import com.teckstudy.book.product.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * @RequiredArgsConstructor
@@ -16,13 +18,15 @@ public class ProductController {
 
     private final ProductService postsService;
 
-    @GetMapping("/api/product/{id}")
-    public ProductResponseDto findById (@PathVariable Long id) {
-        return postsService.findById(id);
-    }
-
 //    @GetMapping("/api/product/{id}")
-//    public ProductResponseDto findAll () {
-//        return (ProductResponseDto) postsService.findAllDesc();
+//    public ProductsResponseDto findById (@PathVariable Long id) {
+//        return postsService.findById(id);
 //    }
+
+    @GetMapping("/api/products/{id}")
+    public List<ProductsResponseDto> findAll (@PathVariable Long id) throws Exception {
+        List<ProductsResponseDto> responseDtoList = postsService.findAllDesc(id);
+
+        return responseDtoList;
+    }
 }

@@ -1,10 +1,10 @@
 package com.teckstudy.book.product.repository;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import com.teckstudy.book.product.domain.entity.AnswerList;
-import com.teckstudy.book.product.domain.entity.Board;
-import com.teckstudy.book.product.domain.entity.Member;
-import com.teckstudy.book.product.domain.entity.enums.*;
+import com.teckstudy.book.entity.AnswerList;
+import com.teckstudy.book.entity.Board;
+import com.teckstudy.book.entity.Member;
+import com.teckstudy.book.entity.enums.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
