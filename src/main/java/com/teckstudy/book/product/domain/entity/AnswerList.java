@@ -1,5 +1,6 @@
 package com.teckstudy.book.product.domain.entity;
 
+import com.teckstudy.book.product.domain.entity.enums.AnswerStatus;
 import lombok.*;
 
 import javax.persistence.*;
@@ -18,10 +19,10 @@ public class AnswerList extends BaseEntity {
     private Long answer_sn;
 
     @OneToOne(mappedBy = "answerList", fetch = LAZY)
-    @JoinColumn(name = "board_sn")
     private Board board;
 
     @Column(columnDefinition = "TEXT", nullable = false)
     private String content;
 
+    private AnswerStatus answer_show_yn;
 }
