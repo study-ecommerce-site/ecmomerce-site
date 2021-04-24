@@ -3,6 +3,8 @@ package com.teckstudy.book.product.domain.entity;
 import com.teckstudy.book.product.domain.entity.enums.Category;
 import com.teckstudy.book.product.domain.entity.enums.YesNoStatus;
 import lombok.*;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.LastModifiedBy;
 
 import javax.persistence.*;
 
@@ -34,6 +36,8 @@ public class Board extends BaseEntity {
     private YesNoStatus top_show_yn;
 
     private String file_path;
+
+    private YesNoStatus board_show_yn;
 
     @OneToOne(fetch = LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "board_sn")
