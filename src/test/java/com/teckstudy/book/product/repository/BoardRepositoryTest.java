@@ -27,13 +27,11 @@ class BoardRepositoryTest {
     @Autowired // 또는 자바 표준 스택 @PersistenceContext 최신버전부터 @Autowired 지원 됨
     EntityManager em;
 
-    // queryDsl 선언
     JPAQueryFactory queryFactory;
 
     @Autowired
     MemberRepository memberRepository;
 
-    // @Autowired
     @Autowired
     BoardRepository boardRepository;
 
@@ -60,7 +58,7 @@ class BoardRepositoryTest {
         memberRepository.save(member1);
 
         Board board1 = Board.builder()
-                .category(Category.NOTICE)
+                .category(Category.EVENT)
                 .name(member1.getName())
                 .subject("아이스 아메리카노")
                 .content("냠냠 맛있다")
@@ -82,13 +80,18 @@ class BoardRepositoryTest {
      * 게시판 목록 조회
      */
     @Test
-    @DisplayName("게시판 목록 조회")
-    public void boardTest() {
+    @DisplayName("게시판 관리 목록을 조회합니다.")
+    public void boardListTest() {
 
         List<Board> all = boardRepository.findAll();
 
-        for (Board board1 : all) {
-            System.out.println(board1.getName());
+        for (Board boardValue : all) {
+            assertThat(boardValue.getName()).isEqualTo("펩시맨");
+            assertThat(boardValue.getBoard_sn()).isEqualTo(1);
+            assertThat(boardValue.getCategory()).isEqualTo(Category.EVENT);
+            assertThat(boardValue.getSubject()).isEqualTo("아이스 아메리카노");
+            assertThat(boardValue.getContent()).isEqualTo("냠냠 맛있다");
+            assertThat(boardValue.getTop_show_yn()).isEqualTo(YesNoStatus.Y);
         }
     }
 
@@ -101,8 +104,9 @@ class BoardRepositoryTest {
 
         List<AnswerList> answerLists = answerListRepository.findAll();
 
-        for (AnswerList ans : answerLists) {
-            System.out.println(ans.getAnswer_sn());
+        for (AnswerList answer : answerLists) {
+            assertThat(answer.getContent()).isEqualTo("관리자가 댓글 답니다.");
+            assertThat(answer.getBoard().getBoard_sn()).isEqualTo(1);
         }
     }
 }
