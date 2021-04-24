@@ -8,8 +8,8 @@ public enum Category {
     QUESTIONS("1:1문의", "40"),
     ETC("기타", "50");
 
-    private String legacyName;
-    private String legacyCode;
+    private final String legacyName;
+    private final String legacyCode;
 
     Category(String legacyName, String legacyCode) {
         this.legacyName = legacyName;
