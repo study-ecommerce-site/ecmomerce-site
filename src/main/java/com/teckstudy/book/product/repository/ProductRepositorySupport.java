@@ -25,7 +25,7 @@ public class ProductRepositorySupport {
     public List<ProductsResponseDto> findAllDesc(Long id) throws Exception  {
         return queryFactory
                 .select(new QProductsResponseDto(
-                         productOption.product_option_sn.as("product_option_sn")
+                          productOption.product_option_sn.as("product_option_sn")
                         , product.product_sn.as("product_sn")
                         , productOption.plus_price.as("plus_price")
                         , productOption.product_option_name.as("product_option_name")
