@@ -8,7 +8,6 @@ import com.teckstudy.book.order.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import javax.jdo.annotations.Order;
 import java.util.List;
 
 
@@ -38,4 +37,8 @@ public class OrderController {
     }
 
     // 3. Order
+    @PostMapping("/api/order")
+    public List<OrderResultResponseDto> order(@RequestBody List<BookOrder> orderInfoList){
+        return orderService.order(orderInfoList);
+    }
 }
