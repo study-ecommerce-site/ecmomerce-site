@@ -1,13 +1,14 @@
 package com.teckstudy.book.order.controller;
 
 import com.teckstudy.book.entity.BookOrder;
+import com.teckstudy.book.order.domain.dto.OrderBookResponseDto;
+import com.teckstudy.book.order.domain.dto.OrderResultResponseDto;
 import com.teckstudy.book.order.repository.OrderRepository;
 import com.teckstudy.book.order.service.OrderService;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.jdo.annotations.Order;
 import java.util.List;
 
 
@@ -30,4 +31,11 @@ public class OrderController {
         return orderRepository.findAll();
     }
 
+    // 2. Find Order List By Id
+    @GetMapping("/api/order/{memberSn}")
+    public List<OrderBookResponseDto> findOrderListById(@PathVariable("id") Long memberSn){
+        return orderService.findOrderListById(memberSn);
+    }
+
+    // 3. Order
 }
