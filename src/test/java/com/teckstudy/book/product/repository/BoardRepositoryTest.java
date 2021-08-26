@@ -4,36 +4,30 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.teckstudy.book.entity.AnswerList;
 import com.teckstudy.book.entity.Board;
 import com.teckstudy.book.entity.Member;
-import com.teckstudy.book.entity.enums.*;
+import com.teckstudy.book.entity.enums.Category;
+import com.teckstudy.book.entity.enums.Gender;
+import com.teckstudy.book.entity.enums.MemberStatus;
+import com.teckstudy.book.entity.enums.YesNoStatus;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Rollback;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
-
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 @SpringBootTest
-@Transactional
-@Rollback(value = false)
 class BoardRepositoryTest {
     @Autowired // 또는 자바 표준 스택 @PersistenceContext 최신버전부터 @Autowired 지원 됨
     EntityManager em;
 
-    // queryDsl 선언
     JPAQueryFactory queryFactory;
 
     @Autowired
     MemberRepository memberRepository;
 
-    // @Autowired
     @Autowired
     BoardRepository boardRepository;
 

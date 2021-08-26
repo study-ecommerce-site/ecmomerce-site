@@ -9,26 +9,21 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Rollback;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import static com.teckstudy.book.entity.QPayInfo.payInfo;
 import static com.teckstudy.book.entity.QBookOrder.bookOrder;
 import static com.teckstudy.book.entity.QMember.member;
+import static com.teckstudy.book.entity.QPayInfo.payInfo;
 import static com.teckstudy.book.entity.QProduct.product;
 import static com.teckstudy.book.entity.QRefund.refund;
 import static com.teckstudy.book.entity.QReview.review;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
-@Transactional
-@Rollback(value = false)
 class BookOrderRepositoryTest {
     @Autowired
     EntityManager em;
@@ -230,7 +225,6 @@ class BookOrderRepositoryTest {
         List<Refund> refunds = refundRepository.findAll();
 
         for (Refund res : refunds) {
-//            assertThat(res.getBookOrder().getOrder_sn()).isEqualTo(1);
             assertThat(res.getBank_name()).isEqualTo("국민은행");
         }
     }
