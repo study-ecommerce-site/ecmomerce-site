@@ -2,6 +2,7 @@ package com.teckstudy.book.entity;
 
 import com.sun.istack.NotNull;
 import com.teckstudy.book.entity.enums.ProductType;
+import com.teckstudy.book.product.domain.dto.ProductsRequestDto;
 import lombok.*;
 
 import javax.persistence.*;
@@ -49,5 +50,13 @@ public class Product {
         this.product_option = product_option;
         this.price = price;
         this.stock_cnt = stock_cnt;
+    }
+
+    public Product update(ProductsRequestDto productsRequestDto) {
+        this.product_name = productsRequestDto.getProduct_name();
+        this.price = productsRequestDto.getPrice();
+        this.product_option = productsRequestDto.getProduct_option();
+        this.stock_cnt = productsRequestDto.getStock_cnt();
+        return this;
     }
 }

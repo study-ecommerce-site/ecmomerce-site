@@ -12,12 +12,12 @@ import static com.teckstudy.book.entity.QProduct.product;
 import static com.teckstudy.book.entity.QProductOption.productOption;
 
 @Repository
-public class ProductRepositorySupport {
+public class ProductRepositoryImpl implements ProductRepositoryCustom {
 
     private final EntityManager em;
     private final JPAQueryFactory queryFactory;
 
-    public ProductRepositorySupport(EntityManager em) {
+    public ProductRepositoryImpl(EntityManager em) {
         this.em = em;
         this.queryFactory = new JPAQueryFactory(em);
     }

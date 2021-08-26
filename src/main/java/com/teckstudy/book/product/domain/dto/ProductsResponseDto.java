@@ -1,19 +1,17 @@
 package com.teckstudy.book.product.domain.dto;
 
 import com.querydsl.core.annotations.QueryProjection;
-import com.teckstudy.book.entity.BookOrderProduct;
 import com.teckstudy.book.entity.Product;
-import com.teckstudy.book.entity.ProductOption;
-import com.teckstudy.book.entity.Review;
 import com.teckstudy.book.entity.enums.ProductType;
-import lombok.*;
-
-import java.util.ArrayList;
-import java.util.List;
+import lombok.Builder;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
 @Builder
+@Getter
 public class ProductsResponseDto {
 
     private Long product_option_sn;;
@@ -36,5 +34,13 @@ public class ProductsResponseDto {
         this.product_name = product_name;
         this.product_option = product_option;
         this.stock_cnt = stock_cnt;
+    }
+
+    public ProductsResponseDto(Product entity) {
+        this.product_sn = entity.getProduct_sn();
+        this.product_name = entity.getProduct_name();
+        this.product_option = entity.getProduct_option();
+        this.price = entity.getPrice();
+        this.stock_cnt = entity.getStock_cnt();
     }
 }
