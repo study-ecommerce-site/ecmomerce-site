@@ -1,9 +1,11 @@
 package com.teckstudy.book.repository;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import com.teckstudy.book.domain.entity.*;
-import com.teckstudy.book.domain.entity.enums.*;
+import com.teckstudy.book.entity.*;
+import com.teckstudy.book.entity.enums.*;
+import com.teckstudy.book.product.repository.MemberRepository;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,9 +16,10 @@ import javax.persistence.EntityManager;
 
 import java.util.List;
 
-import static com.teckstudy.book.domain.entity.QMember.member;
-import static com.teckstudy.book.domain.entity.QSnsInfo.snsInfo;
-import static com.teckstudy.book.domain.entity.QVertity.vertity;
+import static com.teckstudy.book.entity.QMember.member;
+import static com.teckstudy.book.entity.QSnsInfo.snsInfo;
+import static com.teckstudy.book.entity.QVertity.vertity;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
@@ -36,14 +39,35 @@ class MemberRepositoryTest {
     public void testEntity() {
         queryFactory = new JPAQueryFactory(em);
         //given
-        Member member1 = new Member("member1", "1234", "홍길동", Gender.MALE,
-                "1990-09-12", "010-2027-1163", "서울특별시 봉천동",  YesNoStatus.Y,  MemberStatus.NORMAL);
+
+        Member member1 = Member.builder()
+                    .member_id("member1")
+                    .password("1234")
+                    .name("홍길동")
+                    .sex(Gender.MALE)
+                    .birthday("1990-09-12")
+                    .phone_number("010-2027-1163")
+                    .address("서울특별시 봉천동")
+                    .sns_yn(YesNoStatus.Y)
+                    .member_status(MemberStatus.NORMAL)
+                    .build();
+
         memberRepository.save(member1);
 
-        SnsInfo snsInfo1 = new SnsInfo(member1.getMember_sn(), "123456789", SnsType.K);
+        SnsInfo snsInfo1 = SnsInfo.builder()
+                    .member_sn(member1.getMember_sn())
+                    .sns_code("1234-9988")
+                    .sns_type(SnsType.F)
+                    .build();
         em.persist(snsInfo1);
 
-        Vertity vertity = new Vertity(member1.getMember_sn(), "4684", YesNoStatus.Y, AuthType.PHONE);
+        Vertity vertity = Vertity.builder()
+                    .member_sn(member1.getMember_sn())
+                    .auth_code("HOT-1163")
+                    .auth_yn(YesNoStatus.Y)
+                    .member_auth_type(AuthType.PHONE)
+                    .build();
+
         em.persist(vertity);
 
         // 영속 컨텍스트를 플러시 하는방법
@@ -52,7 +76,11 @@ class MemberRepositoryTest {
         // 3. JPQL 쿼리실행 - 플러시 자동 호출
     }
 
+    /**
+     *  회원가입 테스트
+     */
     @Test
+    @DisplayName("회원가입 테스트")
     public void memberTest() {
         // 엔티티가 없을때는 반드시 빌드를 해줘야합니다. (Gradle -> querydsl < Tasks < other < compileQuerydsl
         // QMember m = new QMember("m"); // 방법 1
@@ -66,7 +94,6 @@ class MemberRepositoryTest {
                 .fetch();
 
         for (Member member1 : findMember) {
-            System.out.println("member1 ==== " + member1);
             assertThat(member1.getMember_id()).isEqualTo("member1");
         }
 
