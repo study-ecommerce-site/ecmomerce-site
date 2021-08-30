@@ -13,9 +13,9 @@ import static javax.persistence.FetchType.LAZY;
 
 @Entity
 @Getter @Setter
-@Builder
 @AllArgsConstructor
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Builder
+@NoArgsConstructor
 public class BookOrder {
 
     @Id
@@ -46,6 +46,7 @@ public class BookOrder {
     @JoinColumn(name = "order_sn")
     private Refund refund;
 
+    @Builder.Default
     @OneToMany(mappedBy = "bookOrder")
     private List<BookOrderProduct> bookOrderProduct = new ArrayList<>();
 
