@@ -16,7 +16,7 @@ import static javax.persistence.FetchType.LAZY;
 @Getter @Setter
 @Builder
 @AllArgsConstructor
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 public class Member extends BaseEntity {
 
     @Id
@@ -58,12 +58,15 @@ public class Member extends BaseEntity {
     @JoinColumn(name = "member_sn")
     private Vertity vertity;
 
+    @Builder.Default
     @OneToMany(mappedBy = "member")
     private List<BookOrder> bookOrders = new ArrayList<>();
 
+    @Builder.Default
     @OneToMany(mappedBy = "member")
     private List<Favorite> favorite = new ArrayList<>();
 
+    @Builder.Default
     @OneToMany(mappedBy = "member")
     private List<Board> boards = new ArrayList<>();
 

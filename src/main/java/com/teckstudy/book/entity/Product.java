@@ -13,9 +13,9 @@ import static javax.persistence.FetchType.LAZY;
 
 @Entity
 @Getter @Setter
-@Builder
 @AllArgsConstructor
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Builder
+@NoArgsConstructor
 public class Product {
 
     @Id
@@ -36,9 +36,11 @@ public class Product {
     private Integer stock_cnt;
 
     @OneToMany(mappedBy = "product")
+    @Builder.Default
     private List<BookOrderProduct> bookOrderProduct = new ArrayList<>();
 
     @OneToMany(mappedBy = "product")
+    @Builder.Default
     private List<ProductOption> productOptions = new ArrayList<>();
 
     @OneToOne(fetch = LAZY, cascade = CascadeType.ALL)
