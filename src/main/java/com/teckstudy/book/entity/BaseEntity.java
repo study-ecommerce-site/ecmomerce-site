@@ -1,4 +1,4 @@
-package com.teckstudy.book.domain.entity;
+package com.teckstudy.book.entity;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -12,7 +12,6 @@ import javax.persistence.Column;
 import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @EntityListeners(AuditingEntityListener.class)
 @MappedSuperclass // 매핑정보 속성만 받는 슈퍼클래스 자주씀
