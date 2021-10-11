@@ -1,11 +1,13 @@
 package com.teckstudy.book.exhibition;
 
-import com.teckstudy.book.lib.common.message.api.ExhibitionCode;
+import com.teckstudy.book.lib.common.BoValidation;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.regex.Pattern;
+import java.util.ArrayList;
+import java.util.List;
 
+import static com.teckstudy.book.lib.common.BoValidation.getType;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
@@ -22,7 +24,8 @@ public class ExhibitionTest {
 
         //then
         assertThat(keyWordChk).isFalse();
-//                .withFailMessage(ExhibitionCode.ENTER_TWENTY_KOREAN_CHARACTERS_THE_MENU.getMsg());
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> new BoValidation(keyWord));
     }
 
     @Test
@@ -30,29 +33,27 @@ public class ExhibitionTest {
     public void twentyKorCharMenuTest() {
         //given
         String keyWord = "한글데이터 검증단어 글자수 초과합니다.";
-        int keyWordSize = keyWord.length();
         //when
-        validation(keyWordSize);
 
         //then
-//        assertThatExceptionOfType(IllegalArgumentException.class)
-//                .isThrownBy(() -> keyWordSize > 20)
-//                .withMessageMatching(ExhibitionCode.ENTER_TWENTY_KOREAN_CHARACTERS_THE_MENU.getMsg());
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> new BoValidation(keyWord));
     }
 
-    /**
-     * 문자의 영문,숫자,한글 여부를 리턴한다
-     *
-     * @param word
-     * @return
-     */
-    private static boolean getType(String word) {
-        return Pattern.matches("^[가-힣\\s]*$", word);
-    }
-
-    private void validation(int number) {
-        if (number < 1 || number > 20) {
-            throw new IllegalArgumentException(ExhibitionCode.ENTER_TWENTY_KOREAN_CHARACTERS_THE_MENU.getMsg());
+    @Test
+    @DisplayName("카테고리가 10개를 넘어으면 Exception을 발생시킨다.")
+    public void categoryMaxTest() {
+        //given
+        List<String> categories = new ArrayList<>();
+        String category = "카테고리명";
+        for (int i = 1; i <= 11; i++) {
+            categories.add(category + i);
         }
+
+        System.out.println(categories);
+
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> new BoValidation().categoryValidation(categories));
+
     }
 }
