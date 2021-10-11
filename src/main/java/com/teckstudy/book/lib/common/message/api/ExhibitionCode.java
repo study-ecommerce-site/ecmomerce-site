@@ -15,10 +15,10 @@ package com.teckstudy.book.lib.common.message.api;
 public enum ExhibitionCode {
 
     /** 유효하지 않는 PARAMETER 값   */
-    ENTER_TWENTY_KOREAN_CHARACTERS_THE_MENU("BO_PD_AL_001", "메뉴명은 한글 기준 20자까지 입력가능합니다."),
-    TEN_CATEGORIES_CAN_BE_REGISTERED("BO_PD_AL_002", "카테고리는 한번에 최대 10개까지 등록이 가능합니다."),
-    PLEASE_LEAST_ONE_CATEGORY_NAME("BO_PD_AL_003", "최소 1개이상의 카테고리명을 입력해주세요."),
-    EXHIBITION_CORNER_CANNOT_TWENTY_CHARACTERS ("BO_PD_AL_004", "전시코너명은 20자를 초과할 수 없습니다."),
+    TWENTY_KOREAN_MENU("BO_PD_AL_001", "메뉴명은 최대 20자까지 입력가능합니다."),
+    MAXIMUM_TEN_CATEGORY_NAME("BO_PD_AL_002", "카테고리는 한번에 최대 10개까지 등록이 가능합니다."),
+    LEAST_ONE_CATEGORY_NAME("BO_PD_AL_003", "최소 1개이상의 카테고리명을 입력해주세요."),
+    EXHIBITION_CORNER_CANNOT_TWENTY("BO_PD_AL_004", "전시코너명은 20자를 초과할 수 없습니다."),
     DATA_ALREADY_EXISTS("BO_PD_AL_005", "이미 등록된 유형은 재등록할 수 없습니다."),
     PLEASE_SELECT_TWO_OR_MORE_TYPES("BO_PD_AL_006", "2개 이상 유형을 선택해주세요."),
     NO_TYPE_SELECTED_SELECT_TRY_AGAIN("BO_PD_AL_007", "선택한 유형이 없습니다. 선택 후 재시도해주세요."),

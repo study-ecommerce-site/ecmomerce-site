@@ -9,8 +9,8 @@ public class BoValidation {
 
     private static final int WORD_MIN = 1;
     private static final int WORD_MAX = 20;
+    private static final int CATEGORY_MIN = 1;
     private static final int CATEGORY_MAX = 10;
-//    private final String boValidation;
 
     public BoValidation() {
 
@@ -18,7 +18,6 @@ public class BoValidation {
 
     public BoValidation(String word) {
         validation(word);
-//        boValidation = word;
     }
 
     /**
@@ -40,15 +39,14 @@ public class BoValidation {
 
         // 글자수가 1자이상 20자를 초과하는지 검사한다.
         if (wordSize < WORD_MIN || wordSize > WORD_MAX) {
-            throw new IllegalArgumentException(ExhibitionCode.ENTER_TWENTY_KOREAN_CHARACTERS_THE_MENU.getMsg());
+            throw new IllegalArgumentException(ExhibitionCode.TWENTY_KOREAN_MENU.getMsg());
         }
 
-        // 문자의 한글,띄어쓰기 여부를 체크한다.
-        boolean matchesWord = Pattern.matches("^[가-힣\\s]*$", word);
-
-        if(matchesWord == false) {
-            throw new IllegalArgumentException(ExhibitionCode.ENTER_TWENTY_KOREAN_CHARACTERS_THE_MENU.getMsg());
-        }
+        // 문자의 한글,띄어쓰기 여부를 체크한다. 사용안함
+//        boolean matchesWord = Pattern.matches("^[가-힣\\s]*$", word);
+//        if(matchesWord == false) {
+//            throw new IllegalArgumentException(ExhibitionCode.TWENTY_KOREAN_MENU.getMsg());
+//        }
     }
 
     /**
@@ -56,8 +54,13 @@ public class BoValidation {
      * @param categories
      */
     public void categoryValidation(List<String> categories) {
+
+        if (categories.size() < CATEGORY_MIN) {
+            throw new IllegalArgumentException(ExhibitionCode.LEAST_ONE_CATEGORY_NAME.getMsg());
+        }
+
         if (categories.size() > CATEGORY_MAX) {
-            throw new IllegalArgumentException(ExhibitionCode.TEN_CATEGORIES_CAN_BE_REGISTERED.getMsg());
+            throw new IllegalArgumentException(ExhibitionCode.MAXIMUM_TEN_CATEGORY_NAME.getMsg());
         }
     }
 }
