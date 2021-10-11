@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 public class ExhibitionTest {
 
     @Test
-    @DisplayName("메뉴명이 한글이 아니면 false를 발생한다.")
+    @DisplayName("메뉴명이 한글이 아니면 Exception을 발생한다.")
     public void korCharMenuTest() {
         //given
         String keyWord = "한글단어인지g검증";
@@ -41,19 +41,34 @@ public class ExhibitionTest {
     }
 
     @Test
+    @DisplayName("최소 1개의 카테고리가 없으면 Exception을 발생시킨다.")
+    public void categoryMinTest() {
+        //given
+        List<String> categories = new ArrayList<>();
+
+        //when
+
+        //then
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> new BoValidation().categoryValidation(categories));
+    }
+
+    @Test
     @DisplayName("카테고리가 10개를 넘어으면 Exception을 발생시킨다.")
     public void categoryMaxTest() {
         //given
         List<String> categories = new ArrayList<>();
         String category = "카테고리명";
+
+        //when
         for (int i = 1; i <= 11; i++) {
             categories.add(category + i);
         }
 
-        System.out.println(categories);
-
+        //then
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> new BoValidation().categoryValidation(categories));
-
     }
+
+
 }
