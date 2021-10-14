@@ -5,6 +5,8 @@ import com.teckstudy.book.entity.enums.YesNoStatus;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter @Setter
@@ -23,7 +25,11 @@ public class Exhibition extends BaseEntity{
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "EXHIBITION_SEQ_GENERATOR")
     private Long exhibition_sn;
 
+    // 컨텐츠유형 코드
+    private String content_sn;
+
     // 전시코너 사용여부
+    @Enumerated(EnumType.STRING)
     private YesNoStatus use_yn;
 
     // 전시코너명
@@ -34,6 +40,7 @@ public class Exhibition extends BaseEntity{
     private ExhibitionType exhibitionType;
 
     // 전시기간 설정
+    @Enumerated(EnumType.STRING)
     private YesNoStatus date_yn;
 
     // 전시코너 이미지
@@ -46,4 +53,7 @@ public class Exhibition extends BaseEntity{
     private String url;
 
     // 컨텐츠 유형
+    @OneToMany(mappedBy = "exhibition")
+    @Builder.Default
+    private List<ContentsType> contentsType = new ArrayList<>();
 }
