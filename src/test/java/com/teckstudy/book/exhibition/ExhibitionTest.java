@@ -2,6 +2,7 @@ package com.teckstudy.book.exhibition;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.teckstudy.book.entity.Exhibition;
+import com.teckstudy.book.entity.enums.ExhibitionType;
 import com.teckstudy.book.entity.enums.YesNoStatus;
 import com.teckstudy.book.lib.common.BoValidation;
 import com.teckstudy.book.product.repository.ExhibitionRepository;
@@ -97,9 +98,10 @@ public class ExhibitionTest {
         for (int i = 0; i < 10; i++) {
             Exhibition exData = Exhibition.builder()
                     .name("전시관리: " + i)
-                    .use_yn(random.nextInt(2) % 2 == 0 ? YesNoStatus.TRUE : YesNoStatus.FALSE)
-                    .date_yn(random.nextInt(2) % 2 == 0 ? YesNoStatus.TRUE : YesNoStatus.FALSE)
+                    .use_yn(random.nextInt(2) % 2 == 0 ? YesNoStatus.Y : YesNoStatus.N)
+                    .date_yn(random.nextInt(2) % 2 == 0 ? YesNoStatus.Y : YesNoStatus.N)
                     .image("테스트이미지.jpg" + i)
+                    .exhibitionType(random.nextInt(2) % 2 == 0 ? ExhibitionType.IMAGE : ExhibitionType.TEXT)
                     .description("자유롭게 설명합니다 " + i)
                     .url("www.naver.com")
                     .build();
