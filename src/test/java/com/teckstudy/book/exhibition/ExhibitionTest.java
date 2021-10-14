@@ -1,7 +1,10 @@
 package com.teckstudy.book.exhibition;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import com.teckstudy.book.entity.ContentsType;
 import com.teckstudy.book.entity.Exhibition;
+import com.teckstudy.book.entity.Product;
+import com.teckstudy.book.entity.enums.ContentEnum;
 import com.teckstudy.book.entity.enums.ExhibitionType;
 import com.teckstudy.book.entity.enums.YesNoStatus;
 import com.teckstudy.book.lib.common.BoValidation;
@@ -13,9 +16,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
@@ -95,6 +96,13 @@ public class ExhibitionTest {
     @DisplayName("전시관리 등록 테스트")
     public void exhibitionReqTest() {
         //given
+        Map<ContentEnum, Integer> contentMap = new HashMap<>();
+
+        contentMap.put(ContentEnum.PRODUCT, 8);
+        contentMap.put(ContentEnum.TEXT, 9);
+        contentMap.put(ContentEnum.IMAGE, 10);
+        contentMap.put(ContentEnum.VIDEO, 5);
+
         for (int i = 0; i < 10; i++) {
             Exhibition exData = Exhibition.builder()
                     .name("전시관리: " + i)
@@ -107,6 +115,17 @@ public class ExhibitionTest {
                     .build();
             exhibitionRepository.save(exData);
         }
+
+        Optional<Exhibition> exhibitionSn = exhibitionRepository.findById(10000001L);
+
+        ContentsType data = ContentsType.builder()
+                .exhibition(exhibitionSn.get())
+                .contentEnum(ContentEnum.TEXT)
+                .contentCnt(10)
+                .build();
+
+        System.out.println("=========");
+        System.out.println(data);
 
         //when
         List<Exhibition> all = exhibitionRepository.findAll();
