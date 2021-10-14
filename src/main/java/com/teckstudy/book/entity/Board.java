@@ -31,6 +31,7 @@ public class Board extends BaseEntity {
 
     private String content;
 
+    @Enumerated(EnumType.STRING)
     private YesNoStatus top_show_yn;
 
     private String file_path;
