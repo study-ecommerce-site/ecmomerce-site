@@ -11,6 +11,7 @@ public class BoValidation {
     private static final int WORD_MAX = 20;
     private static final int CATEGORY_MIN = 1;
     private static final int CATEGORY_MAX = 10;
+    private static final int MAX_SIZE = 10485760;
 
     public BoValidation() {
 
@@ -61,6 +62,16 @@ public class BoValidation {
 
         if (categories.size() > CATEGORY_MAX) {
             throw new IllegalArgumentException(ExhibitionCode.MAXIMUM_TEN_CATEGORY_NAME.getMsg());
+        }
+    }
+
+    /**
+     * 파일 사이즈 체크
+     * @param megabyte
+     */
+    public void multiFileUpload(long megabyte) {
+        if (megabyte > MAX_SIZE) {
+            throw new IllegalArgumentException(ExhibitionCode.IMAGE_SIZE_ERROR.getMsg());
         }
     }
 }
