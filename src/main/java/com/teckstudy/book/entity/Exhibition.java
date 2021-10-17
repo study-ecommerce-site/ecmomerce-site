@@ -25,9 +25,6 @@ public class Exhibition extends BaseEntity{
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "EXHIBITION_SEQ_GENERATOR")
     private Long exhibition_sn;
 
-    // 컨텐츠유형 코드
-    private String content_sn;
-
     // 전시코너 사용여부
     @Enumerated(EnumType.STRING)
     private YesNoStatus use_yn;
@@ -56,4 +53,8 @@ public class Exhibition extends BaseEntity{
     @OneToMany(mappedBy = "exhibition")
     @Builder.Default
     private List<ContentsType> contentsType = new ArrayList<>();
+
+    public Exhibition(String image) {
+        this.image = image;
+    }
 }
