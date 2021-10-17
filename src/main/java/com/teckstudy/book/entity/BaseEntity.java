@@ -8,9 +8,7 @@ import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.persistence.Column;
-import javax.persistence.EntityListeners;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @EntityListeners(AuditingEntityListener.class)
@@ -20,16 +18,19 @@ import java.time.LocalDate;
 public class BaseEntity {
 
     @CreatedDate
-    @Column(updatable = false) // 등록 안되게
-    private LocalDate createdDate;
+    @Column(name = "regdate", updatable = false) // 등록 안되게
+    private LocalDate regDate;
     @LastModifiedDate
-    private LocalDate lastModifiedDate;
+    @Column(name = "moddate")
+    private LocalDate modDate;
 
     @CreatedBy
-    private String createdBy;
+    @Column(name = "regdatedby")
+    private String regDateBy;
 
     @LastModifiedBy
-    private String lastModifiedBy;
+    @Column(name = "moddatedby")
+    private String modDatedBy;
 
 
 }
