@@ -27,6 +27,7 @@ import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT) // 실제 내장 톰캣을 사용
 @Transactional
@@ -136,7 +137,7 @@ public class ExhibitionTest {
     }
 
     @Test
-    @DisplayName("파일 업로드 테스트")
+    @DisplayName("파일 업로드시 10MB를 초과하면 Exception을 발생시킨다.")
     public void fileUploadTest() throws IOException {
 
 
@@ -145,27 +146,14 @@ public class ExhibitionTest {
         long bytes = Files.size(path);
         long kilobyte = bytes / 1024;
         long megabyte = kilobyte / 1024;
-        System.out.println(bytes + " byte"); // 3980059 byte
-        System.out.println(kilobyte + " kb"); // 3886 kb
-        System.out.println(megabyte + " mb"); // 3 mb
+        System.out.println(bytes + " byte"); // 12441654 byte
+        System.out.println(kilobyte + " kb"); // 12150 kb
+        System.out.println(megabyte + " mb"); // 11 mb
 
+        //then
+        assertTrue(megabyte > 10);
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> new BoValidation().multiFileUpload(bytes));
     }
-
-//    @Test
-//    @DisplayName("샘플 테스트")
-//    public void testUploadFile() throws Exception {
-//
-//        Path path = Paths.get("C:/Programer/imageTest/bigImage.bmp");
-//        long bytes = Files.size(path);
-//        long kilobyte = bytes / 1024;
-//        long megabyte = kilobyte / 1024;
-//
-//        MockMultipartFile mockMultipartFile = new MockMultipartFile("file", String.valueOf(path), "multipart/form-data", is);
-//        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.multipart("/upload").file(mockMultipartFile).contentType(MediaType.MULTIPART_FORM_DATA))
-//                .andExpect(MockMvcResultMatchers.status().is(200)).andReturn();
-//        assertEquals(200, result.getResponse().getStatus());
-//        assertNotNull(result.getResponse().getContentAsString());
-//        assertEquals(path, result.getResponse().getContentAsString());
-//    }
 
 }
