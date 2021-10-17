@@ -29,6 +29,7 @@ public enum ExhibitionCode {
     PLEASE_REGISTER_YOUR_CONTENT_TYPE("BO_PD_AL_012", "컨텐츠 유형을 등록해주세요."),
     ENTER_MAXIMUM_NUMBER_EACH_CONTENT("BO_PD_AL_013", "컨텐츠별 최대개수를 입력해주세요."),
     POSSIBLE_ONLY_NUMBER_OF_N_TO_N_MATCHING("BO_PD_AL_014", "묶음 컨텐츠의 경우 N:N 매칭이 되는 개수로만 등록이 가능합니다."),
+    IMAGE_SIZE_ERROR("BO_PD_AL_015", "이미지 크기가 10MB를 초과할 수 없습니다."),
     CANCEL_WITHOUT_SAVING_ENTERED_CATEGORY_NAME("BO_PD_CF_001", "입력한 카테고리명을 저장하지 않고 취소하시겠습니까?"),
     REGISTER_EXHIBITION_COR("BO_PD_CF_002", "입력한 전시코너를 등록하시겠습니까?"),
     ENTERED_INFORMATION_IS_DELETED_CANCEL("BO_PD_CF_003", "취소 시 입력한 정보가 삭제됩니다. 취소하시겠습니까?")
