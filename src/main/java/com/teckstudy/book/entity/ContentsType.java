@@ -11,10 +11,15 @@ import javax.persistence.*;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class ContentsType {
+@SequenceGenerator(
+        name = "CONTENTS_SEQ_GENERATOR",
+        sequenceName = "CONTENTS_SEQ", // 매핑할 데이터베이스 시퀀스 이름
+        initialValue = 1,
+        allocationSize = 1)
+public class ContentsType extends BaseEntity{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "CONTENTS_SEQ_GENERATOR")
     private Long content_sn;
 
     @Enumerated(EnumType.STRING)
