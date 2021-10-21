@@ -1,25 +1,28 @@
 package com.teckstudy.book.exhibition;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import com.teckstudy.book.common.WebIntegrationTest;
 import com.teckstudy.book.entity.ContentsType;
 import com.teckstudy.book.entity.Exhibition;
 import com.teckstudy.book.entity.enums.ContentEnum;
 import com.teckstudy.book.entity.enums.ExhibitionType;
 import com.teckstudy.book.entity.enums.YesNoStatus;
 import com.teckstudy.book.lib.common.BoValidation;
+import com.teckstudy.book.lib.common.UploadResult;
 import com.teckstudy.book.product.repository.ContentsTypeRepository;
 import com.teckstudy.book.product.repository.ExhibitionRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.web.server.LocalServerPort;
-import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.ResponseEntity;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 import java.io.IOException;
-import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -27,18 +30,12 @@ import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT) // 실제 내장 톰캣을 사용
 @Transactional
-public class ExhibitionTest {
+public class ExhibitionTest extends WebIntegrationTest {
 
-    @LocalServerPort
-    private int port;
-
-    private InputStream is;
-
-    private MockMvc mockMvc;
 
     @Autowired // 또는 자바 표준 스택 @PersistenceContext 최신버전부터 @Autowired 지원 됨
     EntityManager em;
@@ -154,6 +151,19 @@ public class ExhibitionTest {
         assertTrue(megabyte > 10);
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> new BoValidation().multiFileUpload(bytes));
+    }
+
+    @Test
+    @DisplayName("서버에서 넘겨준 파일 업로드시 10MB를 초과하면 Exception을 발생시킨다.")
+    public void fileServerUploadTest() {
+
+        MultiValueMap form = new LinkedMultiValueMap();
+        form.add("file", new ClassPathResource("testimage.jpg"));
+        HttpEntity request = new HttpEntity(form, null);
+
+        ResponseEntity<UploadResult> response = client.postForEntity(url("/upload"), request, UploadResult.class);
+        assertEquals(200, response.getStatusCodeValue());
+        assertEquals("/files/testimage.jpg", response.getBody().getPath());
     }
 
 }
