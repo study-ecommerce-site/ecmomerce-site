@@ -32,11 +32,14 @@ dependencies {
 
 	//쿼리 파라미터 로그 남기기 - 성능테스트에는 비추 (로컬,개발용)
 	implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.5.8'
+	//문자열에 작업하는 관련기능 모아놓은 라이브러리
+	implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
 
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'mysql:mysql-connector-java'
 	runtimeOnly 'com.h2database:h2'
 	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'io.rest-assured:rest-assured:3.3.0'
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
