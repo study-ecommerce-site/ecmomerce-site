@@ -15,6 +15,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.LinkedMultiValueMap;
@@ -157,13 +158,36 @@ public class ExhibitionTest extends WebIntegrationTest {
     @DisplayName("서버에서 넘겨준 파일 업로드시 10MB를 초과하면 Exception을 발생시킨다.")
     public void fileServerUploadTest() {
 
-        MultiValueMap form = new LinkedMultiValueMap();
-        form.add("file", new ClassPathResource("testimage.jpg"));
-        HttpEntity request = new HttpEntity(form, null);
+        HttpEntity request = makeRequest(new ClassPathResource("testimage1.jpg"));
 
         ResponseEntity<UploadResult> response = client.postForEntity(url("/upload"), request, UploadResult.class);
         assertEquals(200, response.getStatusCodeValue());
-        assertEquals("/files/testimage.jpg", response.getBody().getPath());
+        assertEquals("/files/testimage1.jpg", response.getBody().getPath().get(0));
+    }
+
+    @Test
+    @DisplayName("2개 이상의 파일을 업로드 한다.")
+    public void fileServerUploadsTest() {
+        HttpEntity request = makeRequest(
+                new ClassPathResource("testimage1.jpg"),
+                new ClassPathResource("testimage2.jpg")
+        );
+
+        ResponseEntity<UploadResult> response = client.postForEntity(url("/uploads"), request, UploadResult.class);
+        assertEquals(200, response.getStatusCodeValue());
+        assertEquals("/files/testimage1.jpg", response.getBody().getPath().get(0));
+        assertEquals("/files/testimage2.jpg", response.getBody().getPath().get(1));
+    }
+
+    private HttpEntity makeRequest(Resource... resources) {
+        MultiValueMap form = new LinkedMultiValueMap();
+        if(resources.length == 1) {
+            form.add("file", resources[0]);
+        } else {
+            Arrays.stream(resources).forEach(res -> form.add("files", res));
+        }
+        HttpEntity request = new HttpEntity(form, null);
+        return request;
     }
 
 }
