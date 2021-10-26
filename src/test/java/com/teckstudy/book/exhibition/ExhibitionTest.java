@@ -109,8 +109,8 @@ public class ExhibitionTest extends WebIntegrationTest {
                 .name("이 달의 추천 도서")
                 .use_yn(random.nextInt(2) % 2 == 0 ? YesNoStatus.Y : YesNoStatus.N)
                 .date_yn(random.nextInt(2) % 2 == 0 ? YesNoStatus.Y : YesNoStatus.N)
-                .image("아들과아버지.jpg")
-                .exhibitionType(random.nextInt(2) % 2 == 0 ? ExhibitionType.IMAGE : ExhibitionType.TEXT)
+                .image(String.valueOf(Paths.get("C:/Programer/imageTest/bigImage.bmp")))
+                .exhibitionType(ExhibitionType.IMAGE)
                 .description("자유롭게 설명합니다")
                 .url("www.naver.com")
                 .build();
