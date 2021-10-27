@@ -9,8 +9,11 @@ import com.teckstudy.book.entity.enums.ExhibitionType;
 import com.teckstudy.book.entity.enums.YesNoStatus;
 import com.teckstudy.book.lib.common.BoValidation;
 import com.teckstudy.book.lib.common.UploadResult;
+import com.teckstudy.book.lib.common.util.service.FileService;
 import com.teckstudy.book.product.repository.ContentsTypeRepository;
 import com.teckstudy.book.product.repository.ExhibitionRepository;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +26,7 @@ import org.springframework.util.MultiValueMap;
 
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -37,6 +41,26 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @Transactional
 public class ExhibitionTest extends WebIntegrationTest {
 
+    @Autowired
+    private FileService fileService;
+
+    @BeforeEach
+    void before() throws IOException {
+        // 다이렉트 사용방법
+//        File rootDir = new File("src/test/resources/files");
+//        fileService.setRoot(rootDir.toPath());
+        // 랜덤하게 사용
+        Path rootDir = new File("src/test/resources/files").toPath();
+        Path root = rootDir.resolve("" + Math.abs(new Random().nextLong()));
+        Files.createDirectories(root);
+        fileService.setRoot(root);
+//        fileService.init();
+    }
+
+    @AfterEach
+    void after() {
+
+    }
 
     @Autowired // 또는 자바 표준 스택 @PersistenceContext 최신버전부터 @Autowired 지원 됨
     EntityManager em;
