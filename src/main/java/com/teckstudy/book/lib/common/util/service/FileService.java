@@ -27,7 +27,7 @@ public class FileService {
     }
 
     public void init() throws IOException {
-        if(Files.exists(root)) {
+        if(!Files.exists(root)) {
             Files.createDirectories(root);
         }
     }

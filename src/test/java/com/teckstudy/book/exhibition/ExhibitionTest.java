@@ -52,9 +52,8 @@ public class ExhibitionTest extends WebIntegrationTest {
         // 랜덤하게 사용
         Path rootDir = new File("src/test/resources/files").toPath();
         Path root = rootDir.resolve("" + Math.abs(new Random().nextLong()));
-        Files.createDirectories(root);
         fileService.setRoot(root);
-//        fileService.init();
+        fileService.init();
     }
 
     @AfterEach
