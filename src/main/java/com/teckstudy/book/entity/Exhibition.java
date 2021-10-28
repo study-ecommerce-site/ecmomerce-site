@@ -30,6 +30,7 @@ public class Exhibition extends BaseEntity{
     private YesNoStatus use_yn;
 
     // 전시코너명
+    @Column(length = 20)
     private String name;
 
     // 전시코너 노출유형
