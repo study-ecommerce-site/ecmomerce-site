@@ -1,16 +1,16 @@
-package com.teckstudy.book.lib.common;
+package com.teckstudy.book.lib.common.util;
 
 import com.teckstudy.book.lib.common.message.api.ExhibitionCode;
 
-import java.util.List;
 import java.util.regex.Pattern;
 
 public class BoValidation {
 
     private static final int WORD_MIN = 1;
     private static final int WORD_MAX = 20;
-    private static final int CATEGORY_MIN = 1;
-    private static final int CATEGORY_MAX = 10;
+    private static final int CONTENT_DUPLICATE = 1;
+    private static final int CONTENT_ZERO = 0;
+    private static final int CONTENT_MIN = 1;
     private static final int MAX_SIZE = 10485760;
 
     public BoValidation() {
@@ -19,6 +19,21 @@ public class BoValidation {
 
     public BoValidation(String word) {
         validation(word);
+    }
+
+    public void BoContentValidation(int bundleCnt, int count) {
+        if (count == CONTENT_ZERO) {
+            throw new IllegalArgumentException(ExhibitionCode.NO_SELECT_CONTENT_AGAIN.getMsg());
+        }
+
+        if (count == CONTENT_MIN) {
+            throw new IllegalArgumentException(ExhibitionCode.PLEASE_SELECT_TWO_CONTENT.getMsg());
+        }
+
+        if (bundleCnt > CONTENT_DUPLICATE) {
+            throw new IllegalArgumentException(ExhibitionCode.DUPLICATE_CONTENT.getMsg());
+        }
+
     }
 
     /**
@@ -40,7 +55,7 @@ public class BoValidation {
 
         // 글자수가 1자이상 20자를 초과하는지 검사한다.
         if (wordSize < WORD_MIN || wordSize > WORD_MAX) {
-            throw new IllegalArgumentException(ExhibitionCode.TWENTY_KOREAN_MENU.getMsg());
+            throw new IllegalArgumentException(ExhibitionCode.EXHIBITION_CORNER_CANNOT_TWENTY.getMsg());
         }
 
         // 문자의 한글,띄어쓰기 여부를 체크한다. 사용안함
@@ -48,21 +63,6 @@ public class BoValidation {
 //        if(matchesWord == false) {
 //            throw new IllegalArgumentException(ExhibitionCode.TWENTY_KOREAN_MENU.getMsg());
 //        }
-    }
-
-    /**
-     * 카테고리 개수가 10개를 초과하는지 검증
-     * @param categories
-     */
-    public void categoryValidation(List<String> categories) {
-
-        if (categories.size() < CATEGORY_MIN) {
-            throw new IllegalArgumentException(ExhibitionCode.LEAST_ONE_CATEGORY_NAME.getMsg());
-        }
-
-        if (categories.size() > CATEGORY_MAX) {
-            throw new IllegalArgumentException(ExhibitionCode.MAXIMUM_TEN_CATEGORY_NAME.getMsg());
-        }
     }
 
     /**
