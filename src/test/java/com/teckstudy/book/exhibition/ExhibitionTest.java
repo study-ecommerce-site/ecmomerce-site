@@ -7,26 +7,15 @@ import com.teckstudy.book.entity.Exhibition;
 import com.teckstudy.book.entity.enums.ContentEnum;
 import com.teckstudy.book.entity.enums.ExhibitionType;
 import com.teckstudy.book.entity.enums.YesNoStatus;
-import com.teckstudy.book.lib.common.BoValidation;
-import com.teckstudy.book.lib.common.UploadResult;
-import com.teckstudy.book.lib.common.util.service.FileService;
+import com.teckstudy.book.lib.common.util.BoValidation;
 import com.teckstudy.book.product.repository.ContentsTypeRepository;
 import com.teckstudy.book.product.repository.ExhibitionRepository;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.ResponseEntity;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -35,7 +24,7 @@ import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Transactional
@@ -56,45 +45,69 @@ public class ExhibitionTest extends WebIntegrationTest {
     private Random random = new Random();
 
     @Test
-    @DisplayName("메뉴명은 20자를 넘으면 Exception을 발생시킨다.")
-    public void twentyKorCharMenuTest() {
+    @DisplayName("전시코너명은 20자를 넘으면 Exception을 발생시킨다.")
+    public void twentyExhibitionTest() {
         //given
-        String keyWord = "데이터 검증단어 글자수 초과합니다. 20자 넘어감";
+        String keyWord = "이 달의 추천 도서 글자수 초과합니다. 20자 넘어감";
         //when
 
         //then
-        assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> new BoValidation(keyWord));
+        assertThrows(IllegalArgumentException.class, () -> new BoValidation(keyWord));
+//        assertThatExceptionOfType(IllegalArgumentException.class)
+//                .isThrownBy(() -> new BoValidation(keyWord));
     }
 
     @Test
-    @DisplayName("최소 1개의 카테고리가 없으면 Exception을 발생시킨다.")
-    public void categoryMinTest() {
+    @DisplayName("같은 유형을 등록하면 Exception을 발생시킨다.")
+    public void duplicateContentTest() {
         //given
-        List<String> categories = new ArrayList<>();
+        Map<ContentEnum, Integer> contentMap = new LinkedHashMap<>();
+        List<ContentEnum> contentEnums = Arrays.asList(ContentEnum.PRODUCT, ContentEnum.PRODUCT, ContentEnum.TEXT, ContentEnum.IMAGE, ContentEnum.VIDEO);
 
-        //when
-
-        //then
-        assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> new BoValidation().categoryValidation(categories));
-    }
-
-    @Test
-    @DisplayName("카테고리가 10개를 넘어으면 Exception을 발생시킨다.")
-    public void categoryMaxTest() {
-        //given
-        List<String> categories = new ArrayList<>();
-        String category = "카테고리명";
-
-        //when
-        for (int i = 1; i <= 11; i++) {
-            categories.add(category + i);
+        for (ContentEnum content : contentEnums) {
+            contentMap.put(content, contentMap.getOrDefault(content, 0) +1);
         }
 
-        //then
-        assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> new BoValidation().categoryValidation(categories));
+        for (ContentEnum key : contentMap.keySet()) {
+            if(contentMap.get(key).equals(2)) {
+                assertThrows(IllegalArgumentException.class,
+                        () -> new BoValidation().BoContentValidation(contentMap.get(key), contentMap.size()));
+                System.out.println("key : " + key + ", value : " + contentMap.get(key));
+                break;
+            }
+        }
+    }
+
+    @Test
+    @DisplayName("2개 이하 유형을 등록하면 Exception을 발생시킨다.")
+    public void oneContentTest() {
+        //given
+        Map<ContentEnum, Integer> contentMap = new LinkedHashMap<>();
+        List<ContentEnum> contentEnums = Arrays.asList(ContentEnum.PRODUCT);
+
+        for (ContentEnum content : contentEnums) {
+            contentMap.put(content, contentMap.getOrDefault(content, 0) +1);
+        }
+
+        for (ContentEnum key : contentMap.keySet()) {
+            assertThrows(IllegalArgumentException.class,
+                    () -> new BoValidation().BoContentValidation(contentMap.get(key), contentMap.size()));
+        }
+    }
+
+    @Test
+    @DisplayName("선택한 유형이 없으면 Exception을 발생시킨다.")
+    public void zeroContentTest() {
+        //given
+        Map<ContentEnum, Integer> contentMap = new LinkedHashMap<>();
+        List<ContentEnum> contentEnums = new ArrayList<>();
+
+        for (ContentEnum content : contentEnums) {
+            contentMap.put(content, contentMap.getOrDefault(content, 0) +1);
+        }
+
+        assertThrows(IllegalArgumentException.class,
+                () -> new BoValidation().BoContentValidation(0, contentMap.size()));
     }
 
     @Test
@@ -102,11 +115,11 @@ public class ExhibitionTest extends WebIntegrationTest {
     public void exhibitionReqTest() {
         //given
         Map<ContentEnum, Integer> contentMap = new LinkedHashMap<>();
+        List<ContentEnum> contentEnums = Arrays.asList(ContentEnum.PRODUCT, ContentEnum.TEXT, ContentEnum.IMAGE, ContentEnum.VIDEO);
 
-        contentMap.put(ContentEnum.PRODUCT, 8);
-        contentMap.put(ContentEnum.TEXT, 9);
-        contentMap.put(ContentEnum.IMAGE, 10);
-        contentMap.put(ContentEnum.VIDEO, 5);
+        for (ContentEnum content : contentEnums) {
+            contentMap.put(content, contentMap.getOrDefault(content, 0) +1);
+        }
 
         Exhibition exData = Exhibition.builder()
                 .name("이 달의 추천 도서")
