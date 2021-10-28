@@ -39,9 +39,21 @@ public class ExhibitionCategory extends BaseEntity{
     @Enumerated(EnumType.STRING)
     private ExhibitionType menuType;
 
+    // 메뉴노출 텍스트
+    private String menuText;
+
+    // 메뉴노출 이미지
+    private String menuImage;
+
     // 타이틀노출유형
     @Enumerated(EnumType.STRING)
     private ExhibitionType titleType;
+
+    // 타이틀노출 텍스트
+    private String TitleText;
+
+    // 타이틀노출 이미지
+    private String TitleImage;
 
     // 전시코너수
     private int count;
