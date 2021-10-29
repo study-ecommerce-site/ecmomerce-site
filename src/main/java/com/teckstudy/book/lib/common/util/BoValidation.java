@@ -1,11 +1,16 @@
 package com.teckstudy.book.lib.common.util;
 
+import com.teckstudy.book.entity.enums.ExhibitionType;
+import com.teckstudy.book.entity.enums.YesNoStatus;
 import com.teckstudy.book.lib.common.message.api.ExhibitionCode;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.regex.Pattern;
 
 public class BoValidation {
 
+    private static final int WORD_ZERO = 0;
     private static final int WORD_MIN = 1;
     private static final int WORD_MAX = 20;
     private static final int CONTENT_DUPLICATE = 1;
@@ -21,6 +26,11 @@ public class BoValidation {
         validation(word);
     }
 
+    /**
+     * 컨텐츠 벨리데이션
+     * @param bundleCnt
+     * @param count
+     */
     public void BoContentValidation(int bundleCnt, int count) {
         if (count == CONTENT_ZERO) {
             throw new IllegalArgumentException(ExhibitionCode.NO_SELECT_CONTENT_AGAIN.getMsg());
@@ -53,6 +63,10 @@ public class BoValidation {
     public void validation(String word) {
         int wordSize = word.length();
 
+        if(wordSize == WORD_ZERO) {
+            throw new IllegalArgumentException(ExhibitionCode.PLEASE_ENTER_NAME_EXHIBITION.getMsg());
+        }
+
         // 글자수가 1자이상 20자를 초과하는지 검사한다.
         if (wordSize < WORD_MIN || wordSize > WORD_MAX) {
             throw new IllegalArgumentException(ExhibitionCode.EXHIBITION_CORNER_CANNOT_TWENTY.getMsg());
@@ -63,6 +77,36 @@ public class BoValidation {
 //        if(matchesWord == false) {
 //            throw new IllegalArgumentException(ExhibitionCode.TWENTY_KOREAN_MENU.getMsg());
 //        }
+    }
+
+    /**
+     * 전시기간 벨리데이션
+     * @param dateYn
+     * @param start
+     * @param end
+     */
+    public void dateValidation(YesNoStatus dateYn, String start, String end) {
+        if(dateYn.equals(YesNoStatus.Y) && ("".equals(start) || "".equals(end))) {
+            throw new IllegalArgumentException(ExhibitionCode.DATE_AND_TIME.getMsg());
+        }
+
+        LocalDateTime startDate = LocalDateTime.parse(start, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+        LocalDateTime endDate = LocalDateTime.parse(end, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+
+        if (startDate.isAfter(endDate)) {
+            throw new IllegalArgumentException(ExhibitionCode.END_DATE_EXHIBITION_CANNOT_START_DATE.getMsg());
+        }
+    }
+
+    /**
+     * 이미지 벨리데이션
+     * @param type
+     * @param image
+     */
+    public void imageValidation(ExhibitionType type, String image) {
+        if(type.equals(ExhibitionType.IMAGE) && "".equals(image)) {
+            throw new IllegalArgumentException(ExhibitionCode.REGISTER_IMAGE_EXHIBITION.getMsg());
+        }
     }
 
     /**
