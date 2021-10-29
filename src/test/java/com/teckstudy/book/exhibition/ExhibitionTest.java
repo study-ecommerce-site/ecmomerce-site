@@ -20,6 +20,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.ParseException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -67,7 +70,9 @@ public class ExhibitionTest extends WebIntegrationTest {
         for (ContentEnum content : contentEnums) {
             contentMap.put(content, contentMap.getOrDefault(content, 0) +1);
         }
+        //when
 
+        //then
         for (ContentEnum key : contentMap.keySet()) {
             if(contentMap.get(key).equals(2)) {
                 assertThrows(IllegalArgumentException.class,
@@ -79,7 +84,7 @@ public class ExhibitionTest extends WebIntegrationTest {
     }
 
     @Test
-    @DisplayName("2개 이하 유형을 등록하면 Exception을 발생시킨다.")
+    @DisplayName("묶을 때 2개 이하 유형을 등록하면 Exception을 발생시킨다.")
     public void oneContentTest() {
         //given
         Map<ContentEnum, Integer> contentMap = new LinkedHashMap<>();
@@ -88,7 +93,9 @@ public class ExhibitionTest extends WebIntegrationTest {
         for (ContentEnum content : contentEnums) {
             contentMap.put(content, contentMap.getOrDefault(content, 0) +1);
         }
+        //when
 
+        //then
         for (ContentEnum key : contentMap.keySet()) {
             assertThrows(IllegalArgumentException.class,
                     () -> new BoValidation().BoContentValidation(contentMap.get(key), contentMap.size()));
@@ -96,7 +103,7 @@ public class ExhibitionTest extends WebIntegrationTest {
     }
 
     @Test
-    @DisplayName("선택한 유형이 없으면 Exception을 발생시킨다.")
+    @DisplayName("묶을 때 선택한 유형이 없으면 Exception을 발생시킨다.")
     public void zeroContentTest() {
         //given
         Map<ContentEnum, Integer> contentMap = new LinkedHashMap<>();
@@ -106,14 +113,81 @@ public class ExhibitionTest extends WebIntegrationTest {
             contentMap.put(content, contentMap.getOrDefault(content, 0) +1);
         }
 
+        //when
+
+        //then
         assertThrows(IllegalArgumentException.class,
                 () -> new BoValidation().BoContentValidation(0, contentMap.size()));
+    }
+
+    @Test
+    @DisplayName("전시코너명을 입력하지 않으면 Exception을 발생시킨다.")
+    public void noExhibitionTest() {
+        //given
+        String keyWord = "";
+        //when
+
+        //then
+        assertThrows(IllegalArgumentException.class, () -> new BoValidation(keyWord));
+    }
+
+    @Test
+    @DisplayName("전시코너명에 노출할 이미지를 등록하지 않으면 Exception을 발생시킨다.")
+    public void noExhibitionImageTest() {
+        //given
+        ExhibitionType imageType = ExhibitionType.IMAGE;
+        String image = "";
+        //when
+
+        //then
+        assertThrows(IllegalArgumentException.class, () -> new BoValidation().imageValidation(imageType, image));
+    }
+
+    @Test
+    @DisplayName("전시기간 및 일시를 입력하지 않으면 Exception을 발생시킨다.")
+    public void noDateTest() {
+        //given
+        YesNoStatus date_yn = YesNoStatus.Y;
+        String start = "";
+        String end = "";
+
+        //when
+
+        //then
+        assertThrows(IllegalArgumentException.class, () -> new BoValidation().dateValidation(date_yn, start, end));
+    }
+
+    @Test
+    @DisplayName("전시기간의 종료일이 시작일보다 빠르면 Exception을 발생시킨다.")
+    public void noEndDateStartDateTest() {
+        //given
+        YesNoStatus date_yn = YesNoStatus.Y;
+        String start = "2021-11-05 13:50";
+        String end = "2021-10-30 12:30";
+
+        //when
+
+        //then
+        assertThrows(IllegalArgumentException.class, () -> new BoValidation().dateValidation(date_yn, start, end));
+    }
+
+    @Test
+    @DisplayName("컨텐츠 유형을 등록하지 않으면 Exception을 발생시킨다.")
+    public void noContentTypeTest() {
+//        //given
+
+//        //when
+
+//        //then
     }
 
     @Test
     @DisplayName("전시코너 기본정보 등록 테스트 or 컨텐츠 타입 등록한 갯수가 4개인지 검증")
     public void exhibitionReqTest() {
         //given
+        LocalDateTime start = LocalDateTime.parse("2021-10-30 12:30", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+        LocalDateTime end = LocalDateTime.parse("2021-11-05 13:50", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+
         Map<ContentEnum, Integer> contentMap = new LinkedHashMap<>();
         List<ContentEnum> contentEnums = Arrays.asList(ContentEnum.PRODUCT, ContentEnum.TEXT, ContentEnum.IMAGE, ContentEnum.VIDEO);
 
@@ -125,6 +199,8 @@ public class ExhibitionTest extends WebIntegrationTest {
                 .name("이 달의 추천 도서")
                 .use_yn(random.nextInt(2) % 2 == 0 ? YesNoStatus.Y : YesNoStatus.N)
                 .date_yn(random.nextInt(2) % 2 == 0 ? YesNoStatus.Y : YesNoStatus.N)
+                .exhibition_start(start)
+                .exhibition_end(end)
                 .image(String.valueOf(Paths.get("C:/Programer/imageTest/bigImage.bmp")))
                 .exhibitionType(ExhibitionType.IMAGE)
                 .description("자유롭게 설명합니다")
