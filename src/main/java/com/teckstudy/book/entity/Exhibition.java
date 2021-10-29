@@ -5,6 +5,7 @@ import com.teckstudy.book.entity.enums.YesNoStatus;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,6 +50,12 @@ public class Exhibition extends BaseEntity{
 
     // 전시코너 Html URL
     private String url;
+
+    // 전시기간 시작 날짜
+    private LocalDateTime exhibition_start;
+
+    // 전시기간 종료 날짜
+    private LocalDateTime exhibition_end;
 
     // 컨텐츠 유형
     @OneToMany(mappedBy = "exhibition")
