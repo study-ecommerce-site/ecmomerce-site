@@ -8,15 +8,19 @@ import javax.persistence.*;
 import static javax.persistence.FetchType.LAZY;
 
 @Entity
-@Getter
-@Setter
+@Getter @Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@SequenceGenerator(
+        name = "PRODUCT_OPTION_SEQ_GENERATOR",
+        sequenceName = "PRODUCT_OPTION_SEQ", // 매핑할 데이터베이스 시퀀스 이름
+        initialValue = 10000001,
+        allocationSize = 1)
 public class ProductOption {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "PRODUCT_OPTION_SEQ_GENERATOR")
     private Long product_option_sn;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)

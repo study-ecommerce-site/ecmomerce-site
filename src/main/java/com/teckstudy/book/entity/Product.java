@@ -13,13 +13,18 @@ import static javax.persistence.FetchType.LAZY;
 
 @Entity
 @Getter @Setter
-@AllArgsConstructor
 @Builder
+@AllArgsConstructor
 @NoArgsConstructor
-public class Product {
+@SequenceGenerator(
+        name = "PRODUCT_SEQ_GENERATOR",
+        sequenceName = "PRODUCT_SEQ", // 매핑할 데이터베이스 시퀀스 이름
+        initialValue = 10000001,
+        allocationSize = 1)
+public class Product extends BaseEntity{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "PRODUCT_SEQ_GENERATOR")
     private Long product_sn;
 
     @Column(length = 30)
