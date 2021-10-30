@@ -66,7 +66,7 @@ class ProductRepositoryTest {
             System.out.println("product1 : " + product1);
         }
 
-        Optional<Product> productSn = productRepository.findById(2L);
+        Optional<Product> productSn = productRepository.findById(10000001L);
         System.out.println("productSn : " + productSn);
         String[] productOptionName = {"DB 모음집 시리즈", "파우치", "전우치"};
 
