@@ -7,9 +7,9 @@ import com.teckstudy.book.entity.Exhibition;
 import com.teckstudy.book.entity.enums.ContentEnum;
 import com.teckstudy.book.entity.enums.ExhibitionType;
 import com.teckstudy.book.entity.enums.YesNoStatus;
+import com.teckstudy.book.exhibition.repository.ContentsTypeRepository;
+import com.teckstudy.book.exhibition.repository.ExhibitionRepository;
 import com.teckstudy.book.lib.common.util.BoValidation;
-import com.teckstudy.book.product.repository.ContentsTypeRepository;
-import com.teckstudy.book.product.repository.ExhibitionRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +20,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.text.ParseException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -185,8 +182,10 @@ public class ExhibitionTest extends WebIntegrationTest {
     @DisplayName("전시코너 기본정보 등록 테스트 or 컨텐츠 타입 등록한 갯수가 4개인지 검증")
     public void exhibitionReqTest() {
         //given
-        LocalDateTime start = LocalDateTime.parse("2021-10-30 12:30", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
-        LocalDateTime end = LocalDateTime.parse("2021-11-05 13:50", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+//        LocalDateTime start = LocalDateTime.parse("2021-10-30 12:30", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+//        LocalDateTime end = LocalDateTime.parse("2021-11-05 13:50", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+        String start = "2021-10-30 12:30";
+        String end = "2021-11-05 13:50";
 
         Map<ContentEnum, Integer> contentMap = new LinkedHashMap<>();
         List<ContentEnum> contentEnums = Arrays.asList(ContentEnum.PRODUCT, ContentEnum.TEXT, ContentEnum.IMAGE, ContentEnum.VIDEO);
