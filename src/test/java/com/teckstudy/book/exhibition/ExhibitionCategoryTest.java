@@ -2,7 +2,7 @@ package com.teckstudy.book.exhibition;
 
 import com.teckstudy.book.lib.common.util.BoCategoryValidation;
 import com.teckstudy.book.lib.common.util.BoValidation;
-import com.teckstudy.book.product.repository.ExhibitionCategoryRepository;
+import com.teckstudy.book.exhibition.repository.ExhibitionCategoryRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
