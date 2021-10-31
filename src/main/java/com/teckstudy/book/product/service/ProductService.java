@@ -37,12 +37,12 @@ public class ProductService {
 
     // 상품 등록 및 상품 옵션 등록
     @Transactional
-    public Long productsSave(ProductsRequestDto productsResponseDto) {
-        Long productSn = productRepository.save(productsResponseDto.toProductEntity()).getProduct_sn();
+    public Long productsSave(ProductsRequestDto productsRequestDto) {
+        Long productSn = productRepository.save(productsRequestDto.toProductEntity()).getProduct_sn();
 
         Optional<Product> productNo = productOptionSave(productSn);
 
-        return productOptionRepository.save(productsResponseDto.toProductOptionEntity(productNo.get())).getProduct_option_sn();
+        return productOptionRepository.save(productsRequestDto.toProductOptionEntity(productNo.get())).getProduct_option_sn();
     }
 
     @Transactional
