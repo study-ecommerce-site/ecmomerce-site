@@ -14,7 +14,7 @@ import javax.persistence.*;
 @SequenceGenerator(
         name = "CONTENTS_SEQ_GENERATOR",
         sequenceName = "CONTENTS_SEQ", // 매핑할 데이터베이스 시퀀스 이름
-        initialValue = 1,
+        initialValue = 10000001,
         allocationSize = 1)
 public class ContentsType extends BaseEntity{
 
