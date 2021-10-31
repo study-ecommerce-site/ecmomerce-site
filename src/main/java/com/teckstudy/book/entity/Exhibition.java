@@ -52,17 +52,25 @@ public class Exhibition extends BaseEntity{
     private String url;
 
     // 전시기간 시작 날짜
-    private LocalDateTime exhibition_start;
+    private String exhibition_start;
 
     // 전시기간 종료 날짜
-    private LocalDateTime exhibition_end;
+    private String exhibition_end;
 
     // 컨텐츠 유형
     @OneToMany(mappedBy = "exhibition")
     @Builder.Default
     private List<ContentsType> contentsType = new ArrayList<>();
 
-    public Exhibition(String image) {
+    public Exhibition(YesNoStatus use_yn, String name, ExhibitionType exhibitionType, YesNoStatus date_yn, String image, String description, String url, String exhibition_start, String exhibition_end) {
+        this.use_yn = use_yn;
+        this.name = name;
+        this.exhibitionType = exhibitionType;
+        this.date_yn = date_yn;
         this.image = image;
+        this.description = description;
+        this.url = url;
+        this.exhibition_start = exhibition_start;
+        this.exhibition_end = exhibition_end;
     }
 }
