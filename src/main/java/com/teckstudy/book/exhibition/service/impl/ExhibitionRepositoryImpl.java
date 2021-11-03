@@ -36,11 +36,11 @@ public class ExhibitionRepositoryImpl implements ExhibitionRepositoryCustom {
                         , exhibition.url.as("url")
                         , exhibition.exhibition_start.as("exhibition_start")
                         , exhibition.exhibition_end.as("exhibition_end")
+                        , contentsType.content_sn.as("content_sn")
                         , contentsType.contentEnum.as("contentEnum")
                         , contentsType.contentCnt.as("contentCnt")
-
                 ))
-                .from(exhibition)
+                .from(contentsType)
                 .leftJoin(exhibition).on(exhibition.exhibition_sn.eq(contentsType.exhibition.exhibition_sn))
                 .where(exhibition.exhibition_sn.eq(id))
                 .fetch();

@@ -2,15 +2,14 @@ package com.teckstudy.book.exhibition.domain.dto;
 
 import com.querydsl.core.annotations.QueryProjection;
 import com.teckstudy.book.entity.Exhibition;
+import com.teckstudy.book.entity.enums.ContentEnum;
 import com.teckstudy.book.entity.enums.ExhibitionType;
 import com.teckstudy.book.entity.enums.YesNoStatus;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
 
 @Data
-@AllArgsConstructor
 @Builder
 @Getter
 public class ExhibitionResponseDto {
@@ -26,8 +25,12 @@ public class ExhibitionResponseDto {
     private String exhibition_start;
     private String exhibition_end;
 
+    private Long content_sn;
+    private ContentEnum contentEnum;
+    private int contentCnt;
+
     @QueryProjection
-    public ExhibitionResponseDto(Long exhibition_sn, YesNoStatus use_yn, String name, ExhibitionType exhibitionType, YesNoStatus date_yn, String image, String description, String url, String exhibition_start, String exhibition_end) {
+    public ExhibitionResponseDto(Long exhibition_sn, YesNoStatus use_yn, String name, ExhibitionType exhibitionType, YesNoStatus date_yn, String image, String description, String url, String exhibition_start, String exhibition_end, Long content_sn, ContentEnum contentEnum, int contentCnt) {
         this.exhibition_sn = exhibition_sn;
         this.use_yn = use_yn;
         this.name = name;
@@ -38,6 +41,9 @@ public class ExhibitionResponseDto {
         this.url = url;
         this.exhibition_start = exhibition_start;
         this.exhibition_end = exhibition_end;
+        this.content_sn = content_sn;
+        this.contentEnum = contentEnum;
+        this.contentCnt = contentCnt;
     }
 
     public ExhibitionResponseDto(Exhibition entity) {
