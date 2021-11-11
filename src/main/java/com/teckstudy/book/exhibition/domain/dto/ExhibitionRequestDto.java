@@ -5,13 +5,17 @@ import com.teckstudy.book.entity.Exhibition;
 import com.teckstudy.book.entity.enums.ContentEnum;
 import com.teckstudy.book.entity.enums.ExhibitionType;
 import com.teckstudy.book.entity.enums.YesNoStatus;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Data
-@Getter
 public class ExhibitionRequestDto {
 
     private Long exhibition_sn;
@@ -24,8 +28,6 @@ public class ExhibitionRequestDto {
     private String url;
     private String exhibition_start;
     private String exhibition_end;
-    private ContentEnum contentEnum;
-    private int contentCnt;
 
     public Exhibition toExhibitionEntity() {
         return Exhibition.builder()
@@ -41,11 +43,11 @@ public class ExhibitionRequestDto {
                 .build();
     }
 
-    public ContentsType toContentsEntity(Exhibition exhibitionNo) {
+    public ContentsType toContentsEntity(ContentsType contentsTypes, Exhibition exhibition) {
         return ContentsType.builder()
-                .exhibition(exhibitionNo)
-                .contentEnum(contentEnum)
-                .contentCnt(contentCnt)
+                .exhibition(exhibition)
+                .contentEnum(contentsTypes.getContentEnum())
+                .contentCnt(contentsTypes.getContentCnt())
                 .build();
     }
 }
