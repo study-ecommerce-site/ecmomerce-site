@@ -1,5 +1,6 @@
 package com.teckstudy.book.exhibition.service;
 
+import com.teckstudy.book.entity.ContentsType;
 import com.teckstudy.book.entity.Exhibition;
 import com.teckstudy.book.exhibition.domain.dto.ExhibitionRequestDto;
 import com.teckstudy.book.exhibition.domain.dto.ExhibitionResponseDto;
@@ -39,24 +40,31 @@ public class ExhibitionService {
      * @return
      */
     @Transactional
-    public Long exhibitionSave(ExhibitionRequestDto exhibitionRequestDto) {
-        Long exhibitionSn = exhibitionRepository.save(exhibitionRequestDto.toExhibitionEntity()).getExhibition_sn();
+    public List<ExhibitionResponseDto> exhibitionSave(ExhibitionRequestDto exhibitionRequestDto) {
 
-        Optional<Exhibition> exhibitionNo = contentsTypeSave(exhibitionSn);
-        // 컨텐츠타입 검증
-        return contentsTypeRepository.save(exhibitionRequestDto.toContentsEntity(exhibitionNo.get())).getContent_sn();
+        Exhibition exhibition = exhibitionRepository.save(exhibitionRequestDto.toExhibitionEntity());
+
+        // 컨텐츠타입 적재
+        try{
+            for(ContentsType ContentsTypes : exhibitionRequestDto.getContentsList()){
+                contentsTypeRepository.save(exhibitionRequestDto.toContentsEntity(ContentsTypes, exhibition));
+            }
+            return exhibitionRepository.findAllDesc(exhibition.getExhibition_sn());
+        }catch(Exception e){
+            return (List<ExhibitionResponseDto>) new IllegalArgumentException(ExhibitionCode.PLEASE_REGISTER_CONTENT_TYPE.getMsg() + " : " + exhibition.getExhibition_sn());
+        }
+//        컨텐츠타입 한번에 넣을수 있으나, exhibitionNo을 넣을수 없음.
+//        contentsTypeRepository.saveAll(exhibitionRequestDto.getContentsList());
+
+//        return contentsTypeRepository.save(exhibitionRequestDto.toContentsEntity(exhibitionNo.get())).getContent_sn();
     }
 
-    /**
-     * 컨텐츠타입 검증
-     * @param exhibitionSn
-     * @return
-     */
-    @Transactional
-    public Optional<Exhibition> contentsTypeSave(Long exhibitionSn) {
-
-        return ofNullable(exhibitionRepository.findById(exhibitionSn).orElseThrow(() -> new IllegalArgumentException(ExhibitionCode.PLEASE_REGISTER_CONTENT_TYPE.getMsg() + " : " + exhibitionSn)));
-    }
+//    @Transactional
+//    public Optional<Exhibition> contentsTypeSave(Long exhibitionNo) {
+//
+//        return ofNullable(exhibitionRepository.findById(exhibitionNo).orElseThrow(()
+//                -> new IllegalArgumentException(ExhibitionCode.PLEASE_REGISTER_CONTENT_TYPE.getMsg() + " : " + exhibitionNo)));
+//    }
 
     /**
      * @param id
