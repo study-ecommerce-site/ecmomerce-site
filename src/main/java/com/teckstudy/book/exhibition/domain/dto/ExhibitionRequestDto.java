@@ -28,8 +28,12 @@ public class ExhibitionRequestDto {
     private String url;
     private String exhibition_start;
     private String exhibition_end;
+    private List<ContentsType> contentsList;
+    private ContentEnum contentEnum;
+    private int contentCnt;
 
     public Exhibition toExhibitionEntity() {
+
         return Exhibition.builder()
                 .use_yn(use_yn)
                 .name(name)
@@ -44,6 +48,7 @@ public class ExhibitionRequestDto {
     }
 
     public ContentsType toContentsEntity(ContentsType contentsTypes, Exhibition exhibition) {
+
         return ContentsType.builder()
                 .exhibition(exhibition)
                 .contentEnum(contentsTypes.getContentEnum())
