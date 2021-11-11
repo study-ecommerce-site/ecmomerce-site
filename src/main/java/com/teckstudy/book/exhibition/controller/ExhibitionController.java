@@ -1,5 +1,7 @@
 package com.teckstudy.book.exhibition.controller;
 
+import com.teckstudy.book.entity.ContentsType;
+import com.teckstudy.book.entity.Exhibition;
 import com.teckstudy.book.exhibition.domain.dto.ExhibitionRequestDto;
 import com.teckstudy.book.exhibition.domain.dto.ExhibitionResponseDto;
 import com.teckstudy.book.exhibition.service.ExhibitionService;
@@ -26,7 +28,7 @@ public class ExhibitionController {
      * 전시카테고리 등록 및 컨텐츠 타입 등록
      */
     @PostMapping("/api/exhibition/post")
-    public Long registerProduct(@RequestBody ExhibitionRequestDto requestDto) {
+    public List<ExhibitionResponseDto> registerProduct(@RequestBody ExhibitionRequestDto requestDto) {
         return exhibitionService.exhibitionSave(requestDto);
     }
 
