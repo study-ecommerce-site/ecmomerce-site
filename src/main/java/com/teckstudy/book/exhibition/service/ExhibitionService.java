@@ -2,6 +2,7 @@ package com.teckstudy.book.exhibition.service;
 
 import com.teckstudy.book.entity.ContentsType;
 import com.teckstudy.book.entity.Exhibition;
+import com.teckstudy.book.exhibition.domain.dto.ContentsTypeResponseDto;
 import com.teckstudy.book.exhibition.domain.dto.ExhibitionRequestDto;
 import com.teckstudy.book.exhibition.domain.dto.ExhibitionResponseDto;
 import com.teckstudy.book.exhibition.repository.ContentsTypeRepository;
@@ -11,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -47,8 +49,11 @@ public class ExhibitionService {
                 contentsTypeRepository.save(exhibitionRequestDto.toContentsEntity(ContentsTypes, exhibition));
             }
 
-            List<ExhibitionResponseDto> exhibitionInfo = exhibitionRepository.findExhibition(exhibition.getExhibition_sn());
-            List<ExhibitionResponseDto> contents = exhibitionRepository.findContents(exhibition.getExhibition_sn());
+//            List<ExhibitionResponseDto> exhibitionInfo = exhibitionRepository.findExhibition(exhibition.getExhibition_sn());
+//            List<ContentsTypeResponseDto> contents = exhibitionRepository.findContents(exhibition.getExhibition_sn());
+
+            ExhibitionResponseDto exhibitionResponseDto = new ExhibitionResponseDto(exhibition);
+            exhibitionResponseDto.setContentsList(contentsTypeRepository.findAll());
 
             return exhibitionRepository.findExhibition(exhibition.getExhibition_sn());
         }catch(Exception e){

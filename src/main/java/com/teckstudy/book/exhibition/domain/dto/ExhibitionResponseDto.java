@@ -25,11 +25,7 @@ public class ExhibitionResponseDto {
     private String url;
     private String exhibition_start;
     private String exhibition_end;
-
     private List<ContentsType> contentsList;
-    private Long content_sn;
-    private ContentEnum contentEnum;
-    private int contentCnt;
 
     /**
      * 전시카테고리 전체 조회
@@ -46,17 +42,7 @@ public class ExhibitionResponseDto {
         this.url = url;
         this.exhibition_start = exhibition_start;
         this.exhibition_end = exhibition_end;
-    }
-
-    /**
-     * 전시카테고리 컨텐츠 조회
-     */
-    @QueryProjection
-    public ExhibitionResponseDto(Long exhibition_sn, Long content_sn, ContentEnum contentEnum, int contentCnt) {
-        this.exhibition_sn = exhibition_sn;
-        this.content_sn = content_sn;
-        this.contentEnum = contentEnum;
-        this.contentCnt = contentCnt;
+        this.contentsList = getContentsList();
     }
 
     /**
@@ -74,5 +60,7 @@ public class ExhibitionResponseDto {
         this.url = entity.getUrl();
         this.exhibition_start = entity.getExhibition_start();
         this.exhibition_end = entity.getExhibition_end();
+        this.contentsList = entity.getContentsType();
     }
+
 }

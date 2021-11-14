@@ -1,7 +1,9 @@
 package com.teckstudy.book.exhibition.service.impl;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import com.teckstudy.book.exhibition.domain.dto.ContentsTypeResponseDto;
 import com.teckstudy.book.exhibition.domain.dto.ExhibitionResponseDto;
+import com.teckstudy.book.exhibition.domain.dto.QContentsTypeResponseDto;
 import com.teckstudy.book.exhibition.domain.dto.QExhibitionResponseDto;
 import com.teckstudy.book.exhibition.repository.ExhibitionRepositoryCustom;
 import org.springframework.stereotype.Repository;
@@ -42,9 +44,9 @@ public class ExhibitionRepositoryImpl implements ExhibitionRepositoryCustom {
                 .fetch();
     }
 
-    public List<ExhibitionResponseDto> findContents(Long id) throws Exception  {
+    public List<ContentsTypeResponseDto> findContents(Long id) throws Exception  {
         return queryFactory
-                .select(new QExhibitionResponseDto(
+                .select(new QContentsTypeResponseDto(
                         exhibition.exhibition_sn.as("exhibition_sn")
                         , contentsType.content_sn.as("content_sn")
                         , contentsType.contentEnum.as("contentEnum")
