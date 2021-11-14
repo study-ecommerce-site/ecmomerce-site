@@ -1,7 +1,5 @@
 package com.teckstudy.book.exhibition.controller;
 
-import com.teckstudy.book.entity.ContentsType;
-import com.teckstudy.book.entity.Exhibition;
 import com.teckstudy.book.exhibition.domain.dto.ExhibitionRequestDto;
 import com.teckstudy.book.exhibition.domain.dto.ExhibitionResponseDto;
 import com.teckstudy.book.exhibition.service.ExhibitionService;
@@ -37,7 +35,7 @@ public class ExhibitionController {
      */
     @GetMapping("/api/exhibitionAll/{id}")
     public List<ExhibitionResponseDto> findAll (@PathVariable Long id) throws Exception {
-        List<ExhibitionResponseDto> exhibitionDtoList = exhibitionService.findAllDesc(id);
+        List<ExhibitionResponseDto> exhibitionDtoList = exhibitionService.findExhibition(id);
 
         return exhibitionDtoList;
     }

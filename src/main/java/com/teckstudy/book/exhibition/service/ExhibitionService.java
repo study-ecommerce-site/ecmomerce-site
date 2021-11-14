@@ -12,9 +12,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
-
-import static java.util.Optional.ofNullable;
 
 @Service
 @RequiredArgsConstructor
@@ -49,22 +46,15 @@ public class ExhibitionService {
             for(ContentsType ContentsTypes : exhibitionRequestDto.getContentsList()){
                 contentsTypeRepository.save(exhibitionRequestDto.toContentsEntity(ContentsTypes, exhibition));
             }
-            return exhibitionRepository.findAllDesc(exhibition.getExhibition_sn());
+
+            List<ExhibitionResponseDto> exhibitionInfo = exhibitionRepository.findExhibition(exhibition.getExhibition_sn());
+            List<ExhibitionResponseDto> contents = exhibitionRepository.findContents(exhibition.getExhibition_sn());
+
+            return exhibitionRepository.findExhibition(exhibition.getExhibition_sn());
         }catch(Exception e){
             return (List<ExhibitionResponseDto>) new IllegalArgumentException(ExhibitionCode.PLEASE_REGISTER_CONTENT_TYPE.getMsg() + " : " + exhibition.getExhibition_sn());
         }
-//        컨텐츠타입 한번에 넣을수 있으나, exhibitionNo을 넣을수 없음.
-//        contentsTypeRepository.saveAll(exhibitionRequestDto.getContentsList());
-
-//        return contentsTypeRepository.save(exhibitionRequestDto.toContentsEntity(exhibitionNo.get())).getContent_sn();
     }
-
-//    @Transactional
-//    public Optional<Exhibition> contentsTypeSave(Long exhibitionNo) {
-//
-//        return ofNullable(exhibitionRepository.findById(exhibitionNo).orElseThrow(()
-//                -> new IllegalArgumentException(ExhibitionCode.PLEASE_REGISTER_CONTENT_TYPE.getMsg() + " : " + exhibitionNo)));
-//    }
 
     /**
      * @param id
@@ -72,8 +62,8 @@ public class ExhibitionService {
      */
     // 트랜잭션 범위는 유지하되, 조회 기능만 남겨두어 조회 속도가 개선됨.
     @Transactional(readOnly = true)
-    public List<ExhibitionResponseDto> findAllDesc(Long id) throws Exception {
-        List<ExhibitionResponseDto> exhibitionResponseDtoList = exhibitionRepository.findAllDesc(id);
+    public List<ExhibitionResponseDto> findExhibition(Long id) throws Exception {
+        List<ExhibitionResponseDto> exhibitionResponseDtoList = exhibitionRepository.findExhibition(id);
 
         return exhibitionResponseDtoList;
     }
