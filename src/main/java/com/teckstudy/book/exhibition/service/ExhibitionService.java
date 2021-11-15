@@ -12,7 +12,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -39,7 +38,7 @@ public class ExhibitionService {
      * @return
      */
     @Transactional
-    public List<ExhibitionResponseDto> exhibitionSave(ExhibitionRequestDto exhibitionRequestDto) {
+    public ExhibitionResponseDto exhibitionSave(ExhibitionRequestDto exhibitionRequestDto) {
 
         Exhibition exhibition = exhibitionRepository.save(exhibitionRequestDto.toExhibitionEntity());
 
@@ -49,15 +48,14 @@ public class ExhibitionService {
                 contentsTypeRepository.save(exhibitionRequestDto.toContentsEntity(ContentsTypes, exhibition));
             }
 
-//            List<ExhibitionResponseDto> exhibitionInfo = exhibitionRepository.findExhibition(exhibition.getExhibition_sn());
-//            List<ContentsTypeResponseDto> contents = exhibitionRepository.findContents(exhibition.getExhibition_sn());
+            List<ContentsTypeResponseDto> contents = exhibitionRepository.findContents(exhibition.getExhibition_sn());
 
             ExhibitionResponseDto exhibitionResponseDto = new ExhibitionResponseDto(exhibition);
-            exhibitionResponseDto.setContentsList(contentsTypeRepository.findAll());
+            exhibitionResponseDto.setContentsList(contents);
 
-            return exhibitionRepository.findExhibition(exhibition.getExhibition_sn());
+            return exhibitionResponseDto;
         }catch(Exception e){
-            return (List<ExhibitionResponseDto>) new IllegalArgumentException(ExhibitionCode.PLEASE_REGISTER_CONTENT_TYPE.getMsg() + " : " + exhibition.getExhibition_sn());
+            return new ExhibitionResponseDto(ExhibitionCode.PLEASE_REGISTER_CONTENT_TYPE.getMsg() + " : " + exhibition.getExhibition_sn());
         }
     }
 

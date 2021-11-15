@@ -26,7 +26,7 @@ public class ExhibitionController {
      * 전시카테고리 등록 및 컨텐츠 타입 등록
      */
     @PostMapping("/api/exhibition/post")
-    public List<ExhibitionResponseDto> registerProduct(@RequestBody ExhibitionRequestDto requestDto) {
+    public ExhibitionResponseDto registerProduct(@RequestBody ExhibitionRequestDto requestDto) {
         return exhibitionService.exhibitionSave(requestDto);
     }
 

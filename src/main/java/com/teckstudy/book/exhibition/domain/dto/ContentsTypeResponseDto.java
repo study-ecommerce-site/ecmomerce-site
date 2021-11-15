@@ -6,6 +6,8 @@ import com.teckstudy.book.entity.enums.ContentEnum;
 import lombok.Data;
 import lombok.Getter;
 
+import java.util.List;
+
 @Data
 @Getter
 public class ContentsTypeResponseDto {
@@ -26,9 +28,11 @@ public class ContentsTypeResponseDto {
         this.contentCnt = contentCnt;
     }
 
-    public ContentsTypeResponseDto(ContentsType contentsType) {
-//        this.content_sn = contentsTypes.getContent_sn();
-//        this.contentEnum = contentsTypes.getContentEnum();
-//        this.contentCnt = contentsTypes.getContentCnt();
+    public void ContentsTypeResponseDto(ContentsType contentsType) {
+        this.exhibition_sn = contentsType.getExhibition().getExhibition_sn();
+        this.content_sn = contentsType.getContent_sn();
+        this.contentEnum = contentsType.getContentEnum();
+        this.contentCnt = contentsType.getContentCnt();
     }
+
 }

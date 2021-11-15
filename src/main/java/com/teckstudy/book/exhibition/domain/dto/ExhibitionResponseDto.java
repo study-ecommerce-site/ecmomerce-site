@@ -1,9 +1,7 @@
 package com.teckstudy.book.exhibition.domain.dto;
 
 import com.querydsl.core.annotations.QueryProjection;
-import com.teckstudy.book.entity.ContentsType;
 import com.teckstudy.book.entity.Exhibition;
-import com.teckstudy.book.entity.enums.ContentEnum;
 import com.teckstudy.book.entity.enums.ExhibitionType;
 import com.teckstudy.book.entity.enums.YesNoStatus;
 import lombok.Data;
@@ -25,7 +23,7 @@ public class ExhibitionResponseDto {
     private String url;
     private String exhibition_start;
     private String exhibition_end;
-    private List<ContentsType> contentsList;
+    private List<ContentsTypeResponseDto> contentsList;
 
     /**
      * 전시카테고리 전체 조회
@@ -42,7 +40,6 @@ public class ExhibitionResponseDto {
         this.url = url;
         this.exhibition_start = exhibition_start;
         this.exhibition_end = exhibition_end;
-        this.contentsList = getContentsList();
     }
 
     /**
@@ -60,7 +57,9 @@ public class ExhibitionResponseDto {
         this.url = entity.getUrl();
         this.exhibition_start = entity.getExhibition_start();
         this.exhibition_end = entity.getExhibition_end();
-        this.contentsList = entity.getContentsType();
     }
 
+    public ExhibitionResponseDto(String errorMsg) {
+
+    }
 }
