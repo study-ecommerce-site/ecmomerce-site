@@ -33,12 +33,27 @@ public class ExhibitionService {
     }
 
     /**
+     * 컨텐츠타입 조회
+     * @param exhibitionSn
+     * @return
+     */
+    public List<ContentsTypeResponseDto> findByContetnts(Long exhibitionSn) {
+        List<ContentsTypeResponseDto> contents = null;
+        try {
+            contents = exhibitionRepository.findContents(exhibitionSn);
+        } catch (Exception e) {
+            new IllegalArgumentException("전시카테고리 정보가 없습니다. id=" + exhibitionSn);
+        }
+        return contents;
+    }
+
+    /**
      * 전시카테고리 등록
      * @param exhibitionRequestDto
      * @return
      */
     @Transactional
-    public ExhibitionResponseDto exhibitionSave(ExhibitionRequestDto exhibitionRequestDto) {
+    public Long exhibitionSave(ExhibitionRequestDto exhibitionRequestDto) {
 
         Exhibition exhibition = exhibitionRepository.save(exhibitionRequestDto.toExhibitionEntity());
 
@@ -47,15 +62,9 @@ public class ExhibitionService {
             for(ContentsType ContentsTypes : exhibitionRequestDto.getContentsList()){
                 contentsTypeRepository.save(exhibitionRequestDto.toContentsEntity(ContentsTypes, exhibition));
             }
-
-            List<ContentsTypeResponseDto> contents = exhibitionRepository.findContents(exhibition.getExhibition_sn());
-
-            ExhibitionResponseDto exhibitionResponseDto = new ExhibitionResponseDto(exhibition);
-            exhibitionResponseDto.setContentsList(contents);
-
-            return exhibitionResponseDto;
+            return exhibition.getExhibition_sn();
         }catch(Exception e){
-            return new ExhibitionResponseDto(ExhibitionCode.PLEASE_REGISTER_CONTENT_TYPE.getMsg() + " : " + exhibition.getExhibition_sn());
+            return new Long(ExhibitionCode.PLEASE_REGISTER_CONTENT_TYPE.getMsg() + " : " + exhibition.getExhibition_sn());
         }
     }
 
