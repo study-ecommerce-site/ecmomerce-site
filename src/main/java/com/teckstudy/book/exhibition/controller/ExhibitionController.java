@@ -1,5 +1,6 @@
 package com.teckstudy.book.exhibition.controller;
 
+import com.teckstudy.book.entity.ContentsType;
 import com.teckstudy.book.exhibition.domain.dto.ContentsTypeResponseDto;
 import com.teckstudy.book.exhibition.domain.dto.ExhibitionRequestDto;
 import com.teckstudy.book.exhibition.domain.dto.ExhibitionResponseDto;
@@ -52,8 +53,7 @@ public class ExhibitionController {
     @PutMapping("/api/exhibition/save/{id}")
     public ExhibitionResponseDto updateExhibition(@PathVariable("id") Long id, @RequestBody ExhibitionRequestDto requestDto) {
 
-        ExhibitionRequestDto exhibitionRequestDto = ExhibitionRequestDto.builder().exhibition_sn(id).build();
-        Long exhibitionSn = exhibitionService.exhibitionSave(exhibitionRequestDto);
+        Long exhibitionSn = exhibitionService.exhibitionUpdate(id, requestDto);
 
         List<ContentsTypeResponseDto> contents = exhibitionService.findByContetnts(exhibitionSn);
 

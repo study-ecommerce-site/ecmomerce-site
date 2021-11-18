@@ -2,6 +2,7 @@ package com.teckstudy.book.entity;
 
 import com.teckstudy.book.entity.enums.ExhibitionType;
 import com.teckstudy.book.entity.enums.YesNoStatus;
+import com.teckstudy.book.exhibition.domain.dto.ExhibitionRequestDto;
 import lombok.*;
 
 import javax.persistence.*;
@@ -71,5 +72,17 @@ public class Exhibition extends BaseEntity{
         this.url = url;
         this.exhibition_start = exhibition_start;
         this.exhibition_end = exhibition_end;
+    }
+
+    public void update(ExhibitionRequestDto exhibitionRequestDto) {
+        this.use_yn = exhibitionRequestDto.getUse_yn();
+        this.name = exhibitionRequestDto.getName();
+        this.exhibitionType = exhibitionRequestDto.getExhibitionType();
+        this.date_yn = exhibitionRequestDto.getDate_yn();
+        this.image = exhibitionRequestDto.getImage();
+        this.description = exhibitionRequestDto.getDescription();
+        this.url = exhibitionRequestDto.getUrl();
+        this.exhibition_start = exhibitionRequestDto.getExhibition_start();
+        this.exhibition_end = exhibitionRequestDto.getExhibition_end();
     }
 }

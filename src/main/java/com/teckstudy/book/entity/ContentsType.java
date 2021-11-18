@@ -1,6 +1,7 @@
 package com.teckstudy.book.entity;
 
 import com.teckstudy.book.entity.enums.ContentEnum;
+import com.teckstudy.book.exhibition.domain.dto.ExhibitionRequestDto;
 import lombok.*;
 
 import javax.persistence.*;
@@ -31,4 +32,8 @@ public class ContentsType extends BaseEntity{
     @JoinColumn(name = "exhibition_sn")
     private Exhibition exhibition;
 
+    public void update(ContentsType contentsTypes) {
+        contentsTypes.setContentEnum(contentsTypes.getContentEnum());
+        contentsTypes.setContentCnt(contentsTypes.getContentCnt());
+    }
 }

@@ -30,7 +30,8 @@ public class ExhibitionService {
     // 트랜잭션 범위는 유지하되, 조회 기능만 남겨두어 조회 속도가 개선됨.
     @Transactional(readOnly = true)
     public ExhibitionResponseDto findById(Long id) {
-        Exhibition entity = exhibitionRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("전시카테고리 정보가 없습니다. id=" + id));
+        Exhibition entity = exhibitionRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("전시카테고리 정보가 없습니다. id=" + id));
         return new ExhibitionResponseDto(entity);
     }
 
@@ -57,20 +58,31 @@ public class ExhibitionService {
     @Transactional
     public Long exhibitionSave(ExhibitionRequestDto exhibitionRequestDto) {
 
-        Exhibition exhibition = exhibitionRequestDto.toExhibitionEntity();
-
-        if(exhibitionRequestDto.getExhibition_sn() == null) {
-            exhibition = exhibitionRepository.save(exhibition);
-        }
+        Exhibition exhibition = exhibitionRepository.save(exhibitionRequestDto.toExhibitionEntity());
 
         // 컨텐츠타입 적재
         try{
-            for(ContentsType ContentsTypes : exhibitionRequestDto.getContentsList()){
-                contentsTypeRepository.save(exhibitionRequestDto.toContentsEntity(ContentsTypes, exhibition));
+            for(ContentsType contentsTypes : exhibitionRequestDto.getContentsList()){
+                contentsTypeRepository.save(exhibitionRequestDto.toContentsEntity(contentsTypes, exhibition));
             }
             return exhibition.getExhibition_sn();
         }catch(Exception e){
             return new Long(ExhibitionCode.PLEASE_REGISTER_CONTENT_TYPE.getMsg() + " : " + exhibition.getExhibition_sn());
         }
+    }
+
+
+    @Transactional
+    public Long exhibitionUpdate(Long id, ExhibitionRequestDto exhibitionRequestDto) {
+        Exhibition exhibition = exhibitionRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("전시카테고리 정보가 없습니다. id=" + id));
+
+        exhibition.update(exhibitionRequestDto);
+
+        for(ContentsType contentsTypes : exhibitionRequestDto.getContentsList()){
+            contentsTypes.update(contentsTypes);
+        }
+
+        return exhibition.getExhibition_sn();
     }
 }
