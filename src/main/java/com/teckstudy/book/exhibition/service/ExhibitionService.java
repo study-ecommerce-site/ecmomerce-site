@@ -27,6 +27,8 @@ public class ExhibitionService {
      * @param id
      * @return
      */
+    // 트랜잭션 범위는 유지하되, 조회 기능만 남겨두어 조회 속도가 개선됨.
+    @Transactional(readOnly = true)
     public ExhibitionResponseDto findById(Long id) {
         Exhibition entity = exhibitionRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("전시카테고리 정보가 없습니다. id=" + id));
         return new ExhibitionResponseDto(entity);
@@ -55,7 +57,11 @@ public class ExhibitionService {
     @Transactional
     public Long exhibitionSave(ExhibitionRequestDto exhibitionRequestDto) {
 
-        Exhibition exhibition = exhibitionRepository.save(exhibitionRequestDto.toExhibitionEntity());
+        Exhibition exhibition = exhibitionRequestDto.toExhibitionEntity();
+
+        if(exhibitionRequestDto.getExhibition_sn() == null) {
+            exhibition = exhibitionRepository.save(exhibition);
+        }
 
         // 컨텐츠타입 적재
         try{
@@ -66,17 +72,5 @@ public class ExhibitionService {
         }catch(Exception e){
             return new Long(ExhibitionCode.PLEASE_REGISTER_CONTENT_TYPE.getMsg() + " : " + exhibition.getExhibition_sn());
         }
-    }
-
-    /**
-     * @param id
-     * @return
-     */
-    // 트랜잭션 범위는 유지하되, 조회 기능만 남겨두어 조회 속도가 개선됨.
-    @Transactional(readOnly = true)
-    public List<ExhibitionResponseDto> findExhibition(Long id) throws Exception {
-        List<ExhibitionResponseDto> exhibitionResponseDtoList = exhibitionRepository.findExhibition(id);
-
-        return exhibitionResponseDtoList;
     }
 }
