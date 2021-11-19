@@ -1,7 +1,6 @@
 package com.teckstudy.book.entity;
 
 import com.teckstudy.book.entity.enums.ContentEnum;
-import com.teckstudy.book.exhibition.domain.dto.ExhibitionRequestDto;
 import lombok.*;
 
 import javax.persistence.*;

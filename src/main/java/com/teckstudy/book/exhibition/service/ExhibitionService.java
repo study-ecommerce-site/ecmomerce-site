@@ -80,7 +80,7 @@ public class ExhibitionService {
         exhibition.update(exhibitionRequestDto);
 
         for(ContentsType contentsTypes : exhibitionRequestDto.getContentsList()){
-            contentsTypes.update(contentsTypes);
+            contentsTypeRepository.updateContents(contentsTypes.getContent_sn(), contentsTypes.getContentEnum(), contentsTypes.getContentCnt());
         }
 
         return exhibition.getExhibition_sn();
