@@ -76,8 +76,7 @@ public class ExhibitionService {
     public Long exhibitionUpdate(Long id, ExhibitionRequestDto exhibitionRequestDto) {
         Exhibition exhibition = exhibitionRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("전시카테고리 정보가 없습니다. id=" + id));
-
-        exhibition.update(exhibitionRequestDto);
+        exhibitionRepository.updateExhibition(exhibitionRequestDto, id);
 
         for(ContentsType contentsTypes : exhibitionRequestDto.getContentsList()){
             contentsTypeRepository.updateContents(contentsTypes.getContent_sn(), contentsTypes.getContentEnum(), contentsTypes.getContentCnt());
