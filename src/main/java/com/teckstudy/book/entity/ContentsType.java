@@ -31,8 +31,4 @@ public class ContentsType extends BaseEntity{
     @JoinColumn(name = "exhibition_sn")
     private Exhibition exhibition;
 
-    public void update(ContentsType contentsTypes) {
-        contentsTypes.setContentEnum(contentsTypes.getContentEnum());
-        contentsTypes.setContentCnt(contentsTypes.getContentCnt());
-    }
 }
