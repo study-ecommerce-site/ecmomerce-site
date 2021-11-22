@@ -6,6 +6,7 @@ import com.teckstudy.book.exhibition.domain.dto.ExhibitionRequestDto;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,6 +33,7 @@ public class Exhibition extends BaseEntity{
 
     // 전시코너명
     @Column(length = 20)
+    @NotBlank(message = "전시관리는 필수 값입니다.")
     private String name;
 
     // 전시코너 노출유형
