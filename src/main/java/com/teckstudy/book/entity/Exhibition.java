@@ -33,7 +33,6 @@ public class Exhibition extends BaseEntity{
 
     // 전시코너명
     @Column(length = 20)
-    @NotBlank(message = "전시관리는 필수 값입니다.")
     private String name;
 
     // 전시코너 노출유형
@@ -76,15 +75,4 @@ public class Exhibition extends BaseEntity{
         this.exhibition_end = exhibition_end;
     }
 
-    public void update(ExhibitionRequestDto exhibitionRequestDto) {
-        this.use_yn = exhibitionRequestDto.getUse_yn();
-        this.name = exhibitionRequestDto.getName();
-        this.exhibitionType = exhibitionRequestDto.getExhibitionType();
-        this.date_yn = exhibitionRequestDto.getDate_yn();
-        this.image = exhibitionRequestDto.getImage();
-        this.description = exhibitionRequestDto.getDescription();
-        this.url = exhibitionRequestDto.getUrl();
-        this.exhibition_start = exhibitionRequestDto.getExhibition_start();
-        this.exhibition_end = exhibitionRequestDto.getExhibition_end();
-    }
 }
