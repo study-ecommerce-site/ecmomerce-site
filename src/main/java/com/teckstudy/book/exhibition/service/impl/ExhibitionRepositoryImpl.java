@@ -51,33 +51,11 @@ public class ExhibitionRepositoryImpl implements ExhibitionRepositoryCustom {
                         , contentsType.content_sn.as("content_sn")
                         , contentsType.contentEnum.as("contentEnum")
                         , contentsType.contentCnt.as("contentCnt")
+                        , contentsType.bundleContentCnt.as("bundleContentCnt")
                 ))
                 .from(contentsType)
                 .where(contentsType.exhibition.exhibition_sn.eq(id))
                 .fetch();
     }
-
-//    public List<ExhibitionResponseDto> findAllDesc(Long id) throws Exception  {
-//        return queryFactory
-//                .select(new QExhibitionResponseDto(
-//                          exhibition.exhibition_sn.as("exhibition_sn")
-//                        , exhibition.use_yn.as("product_sn")
-//                        , exhibition.name.as("plus_price")
-//                        , exhibition.exhibitionType.as("exhibitionType")
-//                        , exhibition.date_yn.as("date_yn")
-//                        , exhibition.image.as("image")
-//                        , exhibition.description.as("description")
-//                        , exhibition.url.as("url")
-//                        , exhibition.exhibition_start.as("exhibition_start")
-//                        , exhibition.exhibition_end.as("exhibition_end")
-//                        , contentsType.content_sn.as("content_sn")
-//                        , contentsType.contentEnum.as("contentEnum")
-//                        , contentsType.contentCnt.as("contentCnt")
-//                ))
-//                .from(contentsType)
-//                .leftJoin(exhibition).on(exhibition.exhibition_sn.eq(contentsType.exhibition.exhibition_sn))
-//                .where(exhibition.exhibition_sn.eq(id))
-//                .fetch();
-//    }
 
 }

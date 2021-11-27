@@ -28,9 +28,6 @@ public class ExhibitionRequestDto {
     private String url;
     private String exhibition_start;
     private String exhibition_end;
-    private List<ContentsType> contentsList;
-    private ContentEnum contentEnum;
-    private int contentCnt;
 
     public Exhibition toExhibitionEntity() {
 
@@ -53,6 +50,7 @@ public class ExhibitionRequestDto {
                 .exhibition(exhibition)
                 .contentEnum(contentsTypes.getContentEnum())
                 .contentCnt(contentsTypes.getContentCnt())
+                .bundleContentCnt(contentsTypes.getBundleContentCnt())
                 .build();
     }
 }
