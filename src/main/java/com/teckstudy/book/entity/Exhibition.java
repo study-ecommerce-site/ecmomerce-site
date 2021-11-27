@@ -2,11 +2,9 @@ package com.teckstudy.book.entity;
 
 import com.teckstudy.book.entity.enums.ExhibitionType;
 import com.teckstudy.book.entity.enums.YesNoStatus;
-import com.teckstudy.book.exhibition.domain.dto.ExhibitionRequestDto;
 import lombok.*;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,12 +56,17 @@ public class Exhibition extends BaseEntity{
     // 전시기간 종료 날짜
     private String exhibition_end;
 
+    // 컨텐츠 타입 묶음컨텐츠 최대 개수
+    private int bundleContentCnt;
+
     // 컨텐츠 유형
     @OneToMany(mappedBy = "exhibition")
     @Builder.Default
     private List<ContentsType> contentsType = new ArrayList<>();
 
-    public Exhibition(YesNoStatus use_yn, String name, ExhibitionType exhibitionType, YesNoStatus date_yn, String image, String description, String url, String exhibition_start, String exhibition_end) {
+    public Exhibition(YesNoStatus use_yn, String name, ExhibitionType exhibitionType,
+                      YesNoStatus date_yn, String image, String description, String url,
+                      String exhibition_start, String exhibition_end, int bundleContentCnt) {
         this.use_yn = use_yn;
         this.name = name;
         this.exhibitionType = exhibitionType;
@@ -73,6 +76,7 @@ public class Exhibition extends BaseEntity{
         this.url = url;
         this.exhibition_start = exhibition_start;
         this.exhibition_end = exhibition_end;
+        this.bundleContentCnt = bundleContentCnt;
     }
 
 }

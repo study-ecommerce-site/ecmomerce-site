@@ -24,12 +24,13 @@ public class ExhibitionResponseDto {
     private String exhibition_start;
     private String exhibition_end;
     private List<ContentsTypeResponseDto> contentsList;
+    private int bundleContentCnt;
 
     /**
      * 전시카테고리 전체 조회
      */
     @QueryProjection
-    public ExhibitionResponseDto(Long exhibition_sn, YesNoStatus use_yn, String name, ExhibitionType exhibitionType, YesNoStatus date_yn, String image, String description, String url, String exhibition_start, String exhibition_end) {
+    public ExhibitionResponseDto(Long exhibition_sn, YesNoStatus use_yn, String name, ExhibitionType exhibitionType, YesNoStatus date_yn, String image, String description, String url, String exhibition_start, String exhibition_end, int bundleContentCnt) {
         this.exhibition_sn = exhibition_sn;
         this.use_yn = use_yn;
         this.name = name;
@@ -40,6 +41,7 @@ public class ExhibitionResponseDto {
         this.url = url;
         this.exhibition_start = exhibition_start;
         this.exhibition_end = exhibition_end;
+        this.bundleContentCnt = bundleContentCnt;
     }
 
     /**
@@ -57,6 +59,7 @@ public class ExhibitionResponseDto {
         this.url = entity.getUrl();
         this.exhibition_start = entity.getExhibition_start();
         this.exhibition_end = entity.getExhibition_end();
+        this.bundleContentCnt = entity.getBundleContentCnt();
     }
 
     public ExhibitionResponseDto(String errorMsg) {

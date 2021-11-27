@@ -2,9 +2,9 @@ package com.teckstudy.book.exhibition.domain.dto;
 
 import com.teckstudy.book.entity.ContentsType;
 import com.teckstudy.book.entity.Exhibition;
-import com.teckstudy.book.entity.enums.ContentEnum;
 import com.teckstudy.book.entity.enums.ExhibitionType;
 import com.teckstudy.book.entity.enums.YesNoStatus;
+import com.teckstudy.book.lib.common.message.api.ExhibitionCode;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,6 +18,8 @@ import java.util.List;
 @Data
 public class ExhibitionRequestDto {
 
+    public static final int BUNDLE_SIZE = 0;
+
     private Long exhibition_sn;
     private YesNoStatus use_yn;
     private String name;
@@ -28,8 +30,14 @@ public class ExhibitionRequestDto {
     private String url;
     private String exhibition_start;
     private String exhibition_end;
+    private List<ContentsType> contentsList;
+    private int bundleContentCnt;
 
-    public Exhibition toExhibitionEntity() {
+    public Exhibition fromExhibitionEntity() {
+
+        if(bundleContentCnt < 0) {
+            throw new IllegalArgumentException(ExhibitionCode.POSSIBLE_ONLY_NUMBER_OF_N_TO_N_MATCHING.getMsg());
+        }
 
         return Exhibition.builder()
                 .use_yn(use_yn)
@@ -41,8 +49,11 @@ public class ExhibitionRequestDto {
                 .url(url)
                 .exhibition_start(exhibition_start)
                 .exhibition_end(exhibition_end)
+                .bundleContentCnt(bundleContentCnt)
                 .build();
     }
+
+
 
     public ContentsType toContentsEntity(ContentsType contentsTypes, Exhibition exhibition) {
 
@@ -50,7 +61,6 @@ public class ExhibitionRequestDto {
                 .exhibition(exhibition)
                 .contentEnum(contentsTypes.getContentEnum())
                 .contentCnt(contentsTypes.getContentCnt())
-                .bundleContentCnt(contentsTypes.getBundleContentCnt())
                 .build();
     }
 }

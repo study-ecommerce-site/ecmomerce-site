@@ -22,12 +22,11 @@ public class ContentsTypeResponseDto {
      * 전시카테고리 컨텐츠 조회
      */
     @QueryProjection
-    public ContentsTypeResponseDto(Long exhibition_sn, Long content_sn, ContentEnum contentEnum, int contentCnt, int bundleContentCnt) {
+    public ContentsTypeResponseDto(Long exhibition_sn, Long content_sn, ContentEnum contentEnum, int contentCnt) {
         this.exhibition_sn = exhibition_sn;
         this.content_sn = content_sn;
         this.contentEnum = contentEnum;
         this.contentCnt = contentCnt;
-        this.bundleContentCnt = bundleContentCnt;
     }
 
     public void ContentsTypeResponseDto(ContentsType contentsType) {
@@ -35,7 +34,6 @@ public class ContentsTypeResponseDto {
         this.content_sn = contentsType.getContent_sn();
         this.contentEnum = contentsType.getContentEnum();
         this.contentCnt = contentsType.getContentCnt();
-        this.bundleContentCnt = contentsType.getBundleContentCnt();
     }
 
 }

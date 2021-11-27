@@ -14,6 +14,7 @@ public interface ExhibitionRepository extends JpaRepository<Exhibition, Long>, E
             "p.exhibitionType = :#{#exhibitionRequestDto.exhibitionType}, p.date_yn = :#{#exhibitionRequestDto.date_yn}, " +
             "p.image = :#{#exhibitionRequestDto.image}, p.description = :#{#exhibitionRequestDto.description}, " +
             "p.url = :#{#exhibitionRequestDto.url}, p.exhibition_start = :#{#exhibitionRequestDto.exhibition_start}, " +
-            "p.exhibition_end = :#{#exhibitionRequestDto.exhibition_end} WHERE p.exhibition_sn = :id")
+            "p.exhibition_end = :#{#exhibitionRequestDto.exhibition_end}, p.bundleContentCnt = :#{#exhibitionRequestDto.bundleContentCnt} " +
+            "WHERE p.exhibition_sn = :id")
     void updateExhibition(@Param("exhibitionRequestDto") ExhibitionRequestDto exhibitionRequestDto, @Param("id")Long id);
 }

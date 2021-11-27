@@ -58,7 +58,7 @@ public class ExhibitionService {
     @Transactional
     public Long exhibitionSave(ExhibitionRequestDto exhibitionRequestDto) {
 
-        Exhibition exhibition = exhibitionRepository.save(exhibitionRequestDto.toExhibitionEntity());
+        Exhibition exhibition = exhibitionRepository.save(exhibitionRequestDto.fromExhibitionEntity());
 
         // 컨텐츠타입 적재
         try{
@@ -82,8 +82,7 @@ public class ExhibitionService {
             contentsTypeRepository.updateContents(
                     contentsTypes.getContent_sn(),
                     contentsTypes.getContentEnum(),
-                    contentsTypes.getContentCnt(),
-                    contentsTypes.getBundleContentCnt()
+                    contentsTypes.getContentCnt()
             );
         }
 
