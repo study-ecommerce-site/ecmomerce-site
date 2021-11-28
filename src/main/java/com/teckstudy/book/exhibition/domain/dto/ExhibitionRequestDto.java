@@ -5,6 +5,7 @@ import com.teckstudy.book.entity.Exhibition;
 import com.teckstudy.book.entity.enums.ExhibitionType;
 import com.teckstudy.book.entity.enums.YesNoStatus;
 import com.teckstudy.book.lib.common.message.api.ExhibitionCode;
+import com.teckstudy.book.lib.common.util.BoValidation;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,8 +18,6 @@ import java.util.List;
 @Builder
 @Data
 public class ExhibitionRequestDto {
-
-    public static final int BUNDLE_SIZE = 0;
 
     private Long exhibition_sn;
     private YesNoStatus use_yn;
@@ -34,10 +33,6 @@ public class ExhibitionRequestDto {
     private int bundleContentCnt;
 
     public Exhibition fromExhibitionEntity() {
-
-        if(bundleContentCnt < 0) {
-            throw new IllegalArgumentException(ExhibitionCode.POSSIBLE_ONLY_NUMBER_OF_N_TO_N_MATCHING.getMsg());
-        }
 
         return Exhibition.builder()
                 .use_yn(use_yn)

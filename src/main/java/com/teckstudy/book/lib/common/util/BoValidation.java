@@ -2,6 +2,7 @@ package com.teckstudy.book.lib.common.util;
 
 import com.teckstudy.book.entity.enums.ExhibitionType;
 import com.teckstudy.book.entity.enums.YesNoStatus;
+import com.teckstudy.book.exhibition.domain.dto.ExhibitionRequestDto;
 import com.teckstudy.book.lib.common.message.api.ExhibitionCode;
 
 import java.time.LocalDateTime;
@@ -17,21 +18,37 @@ public class BoValidation {
     private static final int CONTENT_ZERO = 0;
     private static final int CONTENT_MIN = 1;
     private static final int MAX_SIZE = 10485760;
+    private static final int BUNDLE_SIZE = 0;
 
     public BoValidation() {
 
     }
 
-    public BoValidation(String word) {
-        validation(word);
+    public BoValidation(ExhibitionRequestDto exhibitionRequestDto) {
+
+        // 글자 벨리데이션
+        nameValidation(exhibitionRequestDto.getName());
+
+        // 컨텐츠 벨리데이션(컨텐츠 최대갯수, 컨텐츠 묶음갯수)
+        boContentValidation(exhibitionRequestDto.getContentsList().size(), exhibitionRequestDto.getBundleContentCnt(), exhibitionRequestDto.getBundleContentCnt());
+
+        // 전시기간 벨리데이션
+        dateValidation(exhibitionRequestDto.getDate_yn(), exhibitionRequestDto.getExhibition_start(), exhibitionRequestDto.getExhibition_end());
+
+        // 이미지 벨리데이션
+        imageValidation(exhibitionRequestDto.getExhibitionType(), exhibitionRequestDto.getImage());
+
+        // 파일 사이즈 체크
+//        multiFileUpload(exhibitionRequestDto long megabyte);
     }
 
     /**
      * 컨텐츠 벨리데이션
-     * @param bundleCnt
-     * @param count
+     * @param duplicateCnt 중복 갯수
+     * @param count 컨텐츠 전체 갯수
+     * @param bundleMaxCnt 컨텐츠 최대 갯수
      */
-    public void BoContentValidation(int bundleCnt, int count) {
+    public void boContentValidation(int count, int duplicateCnt, int bundleMaxCnt) {
         if (count == CONTENT_ZERO) {
             throw new IllegalArgumentException(ExhibitionCode.NO_SELECT_CONTENT_AGAIN.getMsg());
         }
@@ -40,10 +57,13 @@ public class BoValidation {
             throw new IllegalArgumentException(ExhibitionCode.PLEASE_SELECT_TWO_CONTENT.getMsg());
         }
 
-        if (bundleCnt > CONTENT_DUPLICATE) {
+        if (duplicateCnt > CONTENT_DUPLICATE) {
             throw new IllegalArgumentException(ExhibitionCode.DUPLICATE_CONTENT.getMsg());
         }
 
+        if(bundleMaxCnt < BUNDLE_SIZE) {
+            throw new IllegalArgumentException(ExhibitionCode.POSSIBLE_ONLY_NUMBER_OF_N_TO_N_MATCHING.getMsg());
+        }
     }
 
     /**
@@ -60,7 +80,7 @@ public class BoValidation {
      * 글자 벨리데이션
      * @param word
      */
-    public void validation(String word) {
+    public void nameValidation(String word) {
         int wordSize = word.length();
 
         if(wordSize == WORD_ZERO) {

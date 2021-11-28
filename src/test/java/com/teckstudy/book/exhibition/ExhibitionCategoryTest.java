@@ -28,7 +28,7 @@ public class ExhibitionCategoryTest {
 
         //then
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> new BoValidation(keyWord));
+                .isThrownBy(() -> new BoValidation().nameValidation(keyWord));
     }
 
     @Test

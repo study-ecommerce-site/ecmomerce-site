@@ -52,7 +52,7 @@ public class ExhibitionTest extends WebIntegrationTest {
         //when
 
         //then
-        assertThrows(IllegalArgumentException.class, () -> new BoValidation(keyWord));
+        assertThrows(IllegalArgumentException.class, () -> new BoValidation().nameValidation(keyWord));
 //        assertThatExceptionOfType(IllegalArgumentException.class)
 //                .isThrownBy(() -> new BoValidation(keyWord));
     }
@@ -63,6 +63,7 @@ public class ExhibitionTest extends WebIntegrationTest {
         //given
         Map<ContentEnum, Integer> contentMap = new LinkedHashMap<>();
         List<ContentEnum> contentEnums = Arrays.asList(ContentEnum.PRODUCT, ContentEnum.PRODUCT, ContentEnum.TEXT, ContentEnum.IMAGE, ContentEnum.VIDEO);
+        int bundleMaxCnt = 3;
 
         for (ContentEnum content : contentEnums) {
             contentMap.put(content, contentMap.getOrDefault(content, 0) +1);
@@ -73,7 +74,7 @@ public class ExhibitionTest extends WebIntegrationTest {
         for (ContentEnum key : contentMap.keySet()) {
             if(contentMap.get(key).equals(2)) {
                 assertThrows(IllegalArgumentException.class,
-                        () -> new BoValidation().BoContentValidation(contentMap.get(key), contentMap.size()));
+                        () -> new BoValidation().boContentValidation(contentMap.size(), contentMap.get(key), bundleMaxCnt));
                 System.out.println("key : " + key + ", value : " + contentMap.get(key));
                 break;
             }
@@ -86,6 +87,7 @@ public class ExhibitionTest extends WebIntegrationTest {
         //given
         Map<ContentEnum, Integer> contentMap = new LinkedHashMap<>();
         List<ContentEnum> contentEnums = Arrays.asList(ContentEnum.PRODUCT);
+        int bundleMaxCnt = 3;
 
         for (ContentEnum content : contentEnums) {
             contentMap.put(content, contentMap.getOrDefault(content, 0) +1);
@@ -95,7 +97,7 @@ public class ExhibitionTest extends WebIntegrationTest {
         //then
         for (ContentEnum key : contentMap.keySet()) {
             assertThrows(IllegalArgumentException.class,
-                    () -> new BoValidation().BoContentValidation(contentMap.get(key), contentMap.size()));
+                    () -> new BoValidation().boContentValidation(contentMap.size(), contentMap.get(key), bundleMaxCnt));
         }
     }
 
@@ -105,6 +107,7 @@ public class ExhibitionTest extends WebIntegrationTest {
         //given
         Map<ContentEnum, Integer> contentMap = new LinkedHashMap<>();
         List<ContentEnum> contentEnums = new ArrayList<>();
+        int bundleMaxCnt = 3;
 
         for (ContentEnum content : contentEnums) {
             contentMap.put(content, contentMap.getOrDefault(content, 0) +1);
@@ -114,7 +117,7 @@ public class ExhibitionTest extends WebIntegrationTest {
 
         //then
         assertThrows(IllegalArgumentException.class,
-                () -> new BoValidation().BoContentValidation(0, contentMap.size()));
+                () -> new BoValidation().boContentValidation(contentMap.size(),0, bundleMaxCnt));
     }
 
     @Test
@@ -125,7 +128,7 @@ public class ExhibitionTest extends WebIntegrationTest {
         //when
 
         //then
-        assertThrows(IllegalArgumentException.class, () -> new BoValidation(keyWord));
+        assertThrows(IllegalArgumentException.class, () -> new BoValidation().nameValidation(keyWord));
     }
 
     @Test
