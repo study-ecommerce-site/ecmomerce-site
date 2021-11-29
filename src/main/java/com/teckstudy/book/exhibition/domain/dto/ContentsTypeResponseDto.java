@@ -16,7 +16,6 @@ public class ContentsTypeResponseDto {
     private Long content_sn;
     private ContentEnum contentEnum;
     private int contentCnt;
-    private int bundleContentCnt;
 
     /**
      * 전시카테고리 컨텐츠 조회

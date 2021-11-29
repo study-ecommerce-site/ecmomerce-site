@@ -1,5 +1,6 @@
 package com.teckstudy.book.lib.common.util;
 
+import com.teckstudy.book.entity.enums.ContentEnum;
 import com.teckstudy.book.entity.enums.ExhibitionType;
 import com.teckstudy.book.entity.enums.YesNoStatus;
 import com.teckstudy.book.exhibition.domain.dto.ExhibitionRequestDto;
@@ -7,6 +8,7 @@ import com.teckstudy.book.lib.common.message.api.ExhibitionCode;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 public class BoValidation {
@@ -24,13 +26,13 @@ public class BoValidation {
 
     }
 
-    public BoValidation(ExhibitionRequestDto exhibitionRequestDto) {
+    public BoValidation(ExhibitionRequestDto exhibitionRequestDto, Map<ContentEnum, Integer> contentInfo) {
 
         // 글자 벨리데이션
         nameValidation(exhibitionRequestDto.getName());
 
-        // 컨텐츠 벨리데이션(컨텐츠 최대갯수, 컨텐츠 묶음갯수)
-        boContentValidation(exhibitionRequestDto.getContentsList().size(), exhibitionRequestDto.getBundleContentCnt(), exhibitionRequestDto.getBundleContentCnt());
+        // 컨텐츠 벨리데이션(컨텐츠정보, 컨텐츠 최대갯수, 컨텐츠 묶음갯수)
+        boContentValidation(contentInfo, exhibitionRequestDto.getContentsList().size(), exhibitionRequestDto.getBundleContentCnt());
 
         // 전시기간 벨리데이션
         dateValidation(exhibitionRequestDto.getDate_yn(), exhibitionRequestDto.getExhibition_start(), exhibitionRequestDto.getExhibition_end());
@@ -44,11 +46,11 @@ public class BoValidation {
 
     /**
      * 컨텐츠 벨리데이션
-     * @param duplicateCnt 중복 갯수
-     * @param count 컨텐츠 전체 갯수
+     * @param contentInfo 컨텐츠 전체 갯수
+     * @param count 중복 갯수
      * @param bundleMaxCnt 컨텐츠 최대 갯수
      */
-    public void boContentValidation(int count, int duplicateCnt, int bundleMaxCnt) {
+    public void boContentValidation(Map<ContentEnum, Integer> contentInfo, int count, int bundleMaxCnt) {
         if (count == CONTENT_ZERO) {
             throw new IllegalArgumentException(ExhibitionCode.NO_SELECT_CONTENT_AGAIN.getMsg());
         }
@@ -57,8 +59,12 @@ public class BoValidation {
             throw new IllegalArgumentException(ExhibitionCode.PLEASE_SELECT_TWO_CONTENT.getMsg());
         }
 
-        if (duplicateCnt > CONTENT_DUPLICATE) {
-            throw new IllegalArgumentException(ExhibitionCode.DUPLICATE_CONTENT.getMsg());
+        if (contentInfo.size() > CONTENT_DUPLICATE) {
+            for (ContentEnum key : contentInfo.keySet()) {
+                if(contentInfo.get(key).equals(2)) {
+                    throw new IllegalArgumentException(ExhibitionCode.DUPLICATE_CONTENT.getMsg());
+                }
+            }
         }
 
         if(bundleMaxCnt < BUNDLE_SIZE) {
@@ -82,8 +88,9 @@ public class BoValidation {
      */
     public void nameValidation(String word) {
         int wordSize = word.length();
+        boolean matchesWord = word.trim().isEmpty();
 
-        if(wordSize == WORD_ZERO) {
+        if(wordSize == WORD_ZERO || matchesWord == true) {
             throw new IllegalArgumentException(ExhibitionCode.PLEASE_ENTER_NAME_EXHIBITION.getMsg());
         }
 
@@ -94,9 +101,6 @@ public class BoValidation {
 
         // 문자의 한글,띄어쓰기 여부를 체크한다. 사용안함
 //        boolean matchesWord = Pattern.matches("^[가-힣\\s]*$", word);
-//        if(matchesWord == false) {
-//            throw new IllegalArgumentException(ExhibitionCode.TWENTY_KOREAN_MENU.getMsg());
-//        }
     }
 
     /**

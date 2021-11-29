@@ -23,8 +23,8 @@ public class ExhibitionResponseDto {
     private String url;
     private String exhibition_start;
     private String exhibition_end;
-    private List<ContentsTypeResponseDto> contentsList;
     private int bundleContentCnt;
+    private List<ContentsTypeResponseDto> contentsList;
 
     /**
      * 전시카테고리 전체 조회
