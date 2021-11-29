@@ -74,7 +74,7 @@ public class ExhibitionTest extends WebIntegrationTest {
         for (ContentEnum key : contentMap.keySet()) {
             if(contentMap.get(key).equals(2)) {
                 assertThrows(IllegalArgumentException.class,
-                        () -> new BoValidation().boContentValidation(contentMap.size(), contentMap.get(key), bundleMaxCnt));
+                        () -> new BoValidation().boContentValidation(contentMap, contentMap.size(), bundleMaxCnt));
                 System.out.println("key : " + key + ", value : " + contentMap.get(key));
                 break;
             }
@@ -97,7 +97,7 @@ public class ExhibitionTest extends WebIntegrationTest {
         //then
         for (ContentEnum key : contentMap.keySet()) {
             assertThrows(IllegalArgumentException.class,
-                    () -> new BoValidation().boContentValidation(contentMap.size(), contentMap.get(key), bundleMaxCnt));
+                    () -> new BoValidation().boContentValidation(contentMap, contentMap.size(), bundleMaxCnt));
         }
     }
 
@@ -117,7 +117,7 @@ public class ExhibitionTest extends WebIntegrationTest {
 
         //then
         assertThrows(IllegalArgumentException.class,
-                () -> new BoValidation().boContentValidation(contentMap.size(),0, bundleMaxCnt));
+                () -> new BoValidation().boContentValidation(contentMap, contentMap.size(), bundleMaxCnt));
     }
 
     @Test
