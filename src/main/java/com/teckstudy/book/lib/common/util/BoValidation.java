@@ -51,6 +51,10 @@ public class BoValidation {
      * @param bundleMaxCnt 컨텐츠 최대 갯수
      */
     public void boContentValidation(Map<ContentEnum, Integer> contentInfo, int count, int bundleMaxCnt) {
+        if(bundleMaxCnt <= BUNDLE_SIZE) {
+            throw new IllegalArgumentException(ExhibitionCode.POSSIBLE_ONLY_NUMBER_OF_N_TO_N_MATCHING.getMsg());
+        }
+
         if (count == CONTENT_ZERO) {
             throw new IllegalArgumentException(ExhibitionCode.NO_SELECT_CONTENT_AGAIN.getMsg());
         }
@@ -65,10 +69,6 @@ public class BoValidation {
                     throw new IllegalArgumentException(ExhibitionCode.DUPLICATE_CONTENT.getMsg());
                 }
             }
-        }
-
-        if(bundleMaxCnt < BUNDLE_SIZE) {
-            throw new IllegalArgumentException(ExhibitionCode.POSSIBLE_ONLY_NUMBER_OF_N_TO_N_MATCHING.getMsg());
         }
     }
 
