@@ -4,14 +4,18 @@ import com.teckstudy.book.exhibition.domain.dto.ContentsTypeResponseDto;
 import com.teckstudy.book.exhibition.domain.dto.ExhibitionRequestDto;
 import com.teckstudy.book.exhibition.domain.dto.ExhibitionResponseDto;
 import com.teckstudy.book.exhibition.service.ExhibitionService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Api(value = "ExhibitionController v1")
 @RequiredArgsConstructor
 @RestController
+@RequestMapping(value = "/v1")
 public class ExhibitionController {
 
     private final ExhibitionService exhibitionService;
@@ -19,6 +23,7 @@ public class ExhibitionController {
     /**
      * 전시카테고리 조회
      */
+    @ApiOperation(value = "전시카테고리 조회", notes = "전시카테고리 조회하기")
     @GetMapping("/api/exhibition/{id}")
     public ResponseEntity<ExhibitionResponseDto> findById (@PathVariable("id") Long id) {
 
@@ -33,6 +38,7 @@ public class ExhibitionController {
     /**
      * 전시카테고리 등록 및 컨텐츠 타입 등록
      */
+    @ApiOperation(value = "전시카테고리 등록", notes = "전시카테고리 등록 및 컨텐츠 타입 등록")
     @PostMapping("/api/exhibition/save")
     public ResponseEntity<ExhibitionResponseDto> registerExhibition(@RequestBody ExhibitionRequestDto requestDto) {
 
@@ -47,8 +53,9 @@ public class ExhibitionController {
     }
 
     /**
-     * 전시카테고리 등록 및 컨텐츠 타입 수정
+     * 전시카테고리 & 컨텐츠 타입 수정
      */
+    @ApiOperation(value = "전시카테고리 & 컨텐츠 타입 수정", notes = "전시카테고리 & 컨텐츠 타입 수정")
     @PutMapping("/api/exhibition/save/{id}")
     public ResponseEntity<ExhibitionResponseDto> updateExhibition(@PathVariable("id") Long id, @RequestBody ExhibitionRequestDto requestDto) {
 

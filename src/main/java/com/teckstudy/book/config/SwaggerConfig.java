@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
@@ -18,11 +19,23 @@ public class SwaggerConfig {
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
+                .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.teckstudy.book"))
+                .apis(RequestHandlerSelectors.basePackage("com.teckstudy.book.exhibition.controller"))
                 .paths(PathSelectors.any())
+                .paths(PathSelectors.ant("/v1/**"))
                 .build()
-                .apiInfo(new ApiInfoBuilder().title(TITLE).termsOfServiceUrl(TERMS_OF_SERVICE_URL).build())
-                .pathMapping("/");
+                .useDefaultResponseMessages(false);
+//                .apiInfo(new ApiInfoBuilder().title(TITLE).termsOfServiceUrl(TERMS_OF_SERVICE_URL).build())
+//                .pathMapping("/");
     }
+
+    private ApiInfo apiInfo() {
+        return new ApiInfoBuilder().title("babyBoook Test With Swagger2")
+                .description("유아도서 쇼핑몰 사용되는 서버 API에 대한 연동 문서입니다")
+                .license("BabyBook API")
+                .version("1.0")
+                .build();
+    }
+
 }
