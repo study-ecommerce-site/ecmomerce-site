@@ -20,7 +20,8 @@ public class BoValidation {
     private static final int CONTENT_ZERO = 0;
     private static final int CONTENT_MIN = 1;
     private static final int MAX_SIZE = 10485760;
-    private static final int BUNDLE_SIZE = 0;
+    private static final int BUNDLE_ZERO = 0;
+    private static final int BUNDLE_MAX = 99;
 
     public BoValidation() {
 
@@ -51,8 +52,8 @@ public class BoValidation {
      * @param bundleMaxCnt 컨텐츠 최대 갯수
      */
     public void boContentValidation(Map<ContentEnum, Integer> contentInfo, int count, int bundleMaxCnt) {
-        if(bundleMaxCnt <= BUNDLE_SIZE) {
-            throw new IllegalArgumentException(ExhibitionCode.POSSIBLE_ONLY_NUMBER_OF_N_TO_N_MATCHING.getMsg());
+        if(bundleMaxCnt <= BUNDLE_ZERO || bundleMaxCnt > BUNDLE_MAX) {
+            throw new IllegalArgumentException(ExhibitionCode.BUNDLE_SIZE_ERROR.getMsg());
         }
 
         if (count == CONTENT_ZERO) {
