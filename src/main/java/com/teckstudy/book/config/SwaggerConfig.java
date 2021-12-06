@@ -22,12 +22,11 @@ public class SwaggerConfig {
                 .apiInfo(apiInfo())
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.teckstudy.book.exhibition.controller"))
+                .apis(RequestHandlerSelectors.any())
                 .paths(PathSelectors.any())
                 .paths(PathSelectors.ant("/v1/**"))
                 .build()
                 .useDefaultResponseMessages(false);
-//                .apiInfo(new ApiInfoBuilder().title(TITLE).termsOfServiceUrl(TERMS_OF_SERVICE_URL).build())
-//                .pathMapping("/");
     }
 
     private ApiInfo apiInfo() {

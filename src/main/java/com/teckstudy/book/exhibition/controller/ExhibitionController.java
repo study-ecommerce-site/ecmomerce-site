@@ -5,6 +5,7 @@ import com.teckstudy.book.exhibition.domain.dto.ExhibitionRequestDto;
 import com.teckstudy.book.exhibition.domain.dto.ExhibitionResponseDto;
 import com.teckstudy.book.exhibition.service.ExhibitionService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +25,7 @@ public class ExhibitionController {
      * 전시카테고리 조회
      */
     @ApiOperation(value = "전시카테고리 조회", notes = "전시카테고리 조회하기")
+    @ApiImplicitParam(name = "id", value = "전시관리번호", required = true)
     @GetMapping("/api/exhibition/{id}")
     public ResponseEntity<ExhibitionResponseDto> findById (@PathVariable("id") Long id) {
 
@@ -56,6 +58,7 @@ public class ExhibitionController {
      * 전시카테고리 & 컨텐츠 타입 수정
      */
     @ApiOperation(value = "전시카테고리 & 컨텐츠 타입 수정", notes = "전시카테고리 & 컨텐츠 타입 수정")
+    @ApiImplicitParam(name = "id", value = "전시관리번호", dataType = "long", required = true)
     @PutMapping("/api/exhibition/save/{id}")
     public ResponseEntity<ExhibitionResponseDto> updateExhibition(@PathVariable("id") Long id, @RequestBody ExhibitionRequestDto requestDto) {
 
