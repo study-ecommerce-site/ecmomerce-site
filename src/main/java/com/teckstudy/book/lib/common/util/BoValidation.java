@@ -1,5 +1,6 @@
 package com.teckstudy.book.lib.common.util;
 
+import com.teckstudy.book.entity.ContentsType;
 import com.teckstudy.book.entity.enums.ContentEnum;
 import com.teckstudy.book.entity.enums.ExhibitionType;
 import com.teckstudy.book.entity.enums.YesNoStatus;
@@ -8,6 +9,7 @@ import com.teckstudy.book.lib.common.message.api.ExhibitionCode;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
@@ -33,7 +35,7 @@ public class BoValidation {
         nameValidation(exhibitionRequestDto.getName());
 
         // 컨텐츠 벨리데이션(컨텐츠정보, 컨텐츠 최대갯수, 컨텐츠 묶음갯수)
-        boContentValidation(contentInfo, exhibitionRequestDto.getContentsList().size(), exhibitionRequestDto.getBundleContentCnt());
+        boContentValidation(contentInfo, exhibitionRequestDto.getContentsList(), exhibitionRequestDto.getBundleContentCnt());
 
         // 전시기간 벨리데이션
         dateValidation(exhibitionRequestDto.getDate_yn(), exhibitionRequestDto.getExhibition_start(), exhibitionRequestDto.getExhibition_end());
@@ -48,10 +50,12 @@ public class BoValidation {
     /**
      * 컨텐츠 벨리데이션
      * @param contentInfo 컨텐츠 전체 갯수
-     * @param count 중복 갯수
+     * @param contentsList 중복 갯수
      * @param bundleMaxCnt 컨텐츠 최대 갯수
      */
-    public void boContentValidation(Map<ContentEnum, Integer> contentInfo, int count, int bundleMaxCnt) {
+    public void boContentValidation(Map<ContentEnum, Integer> contentInfo, List<ContentsType> contentsList, int bundleMaxCnt) {
+        int count = contentsList.size();
+
         if(bundleMaxCnt <= BUNDLE_ZERO || bundleMaxCnt > BUNDLE_MAX) {
             throw new IllegalArgumentException(ExhibitionCode.BUNDLE_SIZE_ERROR.getMsg());
         }
