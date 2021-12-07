@@ -68,17 +68,45 @@ public class ExhibitionTest extends WebIntegrationTest {
         for (ContentEnum content : contentEnums) {
             contentMap.put(content, contentMap.getOrDefault(content, 0) +1);
         }
+
         //when
+        String start = "2021-10-30 12:30";
+        String end = "2021-11-05 13:50";
+        Exhibition exData = Exhibition.builder()
+                .name("이 달의 추천 도서")
+                .use_yn(random.nextInt(2) % 2 == 0 ? YesNoStatus.Y : YesNoStatus.N)
+                .date_yn(random.nextInt(2) % 2 == 0 ? YesNoStatus.Y : YesNoStatus.N)
+                .exhibition_start(start)
+                .exhibition_end(end)
+                .image(String.valueOf(Paths.get("C:/Programer/imageTest/bigImage.bmp")))
+                .exhibitionType(ExhibitionType.IMAGE)
+                .description("자유롭게 설명합니다")
+                .url("www.naver.com")
+                .build();
+        exhibitionRepository.save(exData);
+
+        Optional<Exhibition> exhibitionSn = exhibitionRepository.findById(10000001L);
+
+        for (ContentEnum contentEnum : contentMap.keySet()) {
+            ContentsType contentsData = ContentsType.builder()
+                    .exhibition(exhibitionSn.get())
+                    .contentEnum(contentEnum)
+                    .contentCnt(contentMap.get(contentEnum))
+                    .build();
+            contentsTypeRepository.save(contentsData);
+        }
+
+        List<ContentsType> contentsTypeList = contentsTypeRepository.findAll();
 
         //then
-//        for (ContentEnum key : contentMap.keySet()) {
-//            if(contentMap.get(key).equals(2)) {
-//                assertThrows(IllegalArgumentException.class,
-//                        () -> new BoValidation().boContentValidation(contentMap, contentMap, bundleMaxCnt));
-//                System.out.println("key : " + key + ", value : " + contentMap.get(key));
-//                break;
-//            }
-//        }
+        for (ContentEnum key : contentMap.keySet()) {
+            if(contentMap.get(key).equals(2)) {
+                assertThrows(IllegalArgumentException.class,
+                        () -> new BoValidation().boContentValidation(contentMap, contentsTypeList, bundleMaxCnt));
+                System.out.println("key : " + key + ", value : " + contentMap.get(key));
+                break;
+            }
+        }
     }
 
     @Test
@@ -93,12 +121,39 @@ public class ExhibitionTest extends WebIntegrationTest {
             contentMap.put(content, contentMap.getOrDefault(content, 0) +1);
         }
         //when
+        String start = "2021-10-30 12:30";
+        String end = "2021-11-05 13:50";
+        Exhibition exData = Exhibition.builder()
+                .name("이 달의 추천 도서")
+                .use_yn(random.nextInt(2) % 2 == 0 ? YesNoStatus.Y : YesNoStatus.N)
+                .date_yn(random.nextInt(2) % 2 == 0 ? YesNoStatus.Y : YesNoStatus.N)
+                .exhibition_start(start)
+                .exhibition_end(end)
+                .image(String.valueOf(Paths.get("C:/Programer/imageTest/bigImage.bmp")))
+                .exhibitionType(ExhibitionType.IMAGE)
+                .description("자유롭게 설명합니다")
+                .url("www.naver.com")
+                .build();
+        exhibitionRepository.save(exData);
+
+        Optional<Exhibition> exhibitionSn = exhibitionRepository.findById(10000001L);
+
+        for (ContentEnum contentEnum : contentMap.keySet()) {
+            ContentsType contentsData = ContentsType.builder()
+                    .exhibition(exhibitionSn.get())
+                    .contentEnum(contentEnum)
+                    .contentCnt(contentMap.get(contentEnum))
+                    .build();
+            contentsTypeRepository.save(contentsData);
+        }
+
+        List<ContentsType> contentsTypeList = contentsTypeRepository.findAll();
 
         //then
-//        for (ContentEnum key : contentMap.keySet()) {
-//            assertThrows(IllegalArgumentException.class,
-//                    () -> new BoValidation().boContentValidation(contentMap, contentMap.size(), bundleMaxCnt));
-//        }
+        for (ContentEnum key : contentMap.keySet()) {
+            assertThrows(IllegalArgumentException.class,
+                    () -> new BoValidation().boContentValidation(contentMap, contentsTypeList, bundleMaxCnt));
+        }
     }
 
     @Test
@@ -114,10 +169,37 @@ public class ExhibitionTest extends WebIntegrationTest {
         }
 
         //when
+        String start = "2021-10-30 12:30";
+        String end = "2021-11-05 13:50";
+        Exhibition exData = Exhibition.builder()
+                .name("이 달의 추천 도서")
+                .use_yn(random.nextInt(2) % 2 == 0 ? YesNoStatus.Y : YesNoStatus.N)
+                .date_yn(random.nextInt(2) % 2 == 0 ? YesNoStatus.Y : YesNoStatus.N)
+                .exhibition_start(start)
+                .exhibition_end(end)
+                .image(String.valueOf(Paths.get("C:/Programer/imageTest/bigImage.bmp")))
+                .exhibitionType(ExhibitionType.IMAGE)
+                .description("자유롭게 설명합니다")
+                .url("www.naver.com")
+                .build();
+        exhibitionRepository.save(exData);
+
+        Optional<Exhibition> exhibitionSn = exhibitionRepository.findById(10000001L);
+
+        for (ContentEnum contentEnum : contentMap.keySet()) {
+            ContentsType contentsData = ContentsType.builder()
+                    .exhibition(exhibitionSn.get())
+                    .contentEnum(contentEnum)
+                    .contentCnt(contentMap.get(contentEnum))
+                    .build();
+            contentsTypeRepository.save(contentsData);
+        }
+
+        List<ContentsType> contentsTypeList = contentsTypeRepository.findAll();
 
         //then
-//        assertThrows(IllegalArgumentException.class,
-//                () -> new BoValidation().boContentValidation(contentMap, contentMap.size(), bundleMaxCnt));
+        assertThrows(IllegalArgumentException.class,
+                () -> new BoValidation().boContentValidation(contentMap, contentsTypeList, bundleMaxCnt));
     }
 
     @Test

@@ -54,17 +54,17 @@ public class BoValidation {
      * @param bundleMaxCnt 컨텐츠 최대 갯수
      */
     public void boContentValidation(Map<ContentEnum, Integer> contentInfo, List<ContentsType> contentsList, int bundleMaxCnt) {
-        int count = contentsList.size();
+        int contentsCount = contentsList.size();
 
         if(bundleMaxCnt <= BUNDLE_ZERO || bundleMaxCnt > BUNDLE_MAX) {
             throw new IllegalArgumentException(ExhibitionCode.BUNDLE_SIZE_ERROR.getMsg());
         }
 
-        if (count == CONTENT_ZERO) {
+        if (contentsCount == CONTENT_ZERO) {
             throw new IllegalArgumentException(ExhibitionCode.NO_SELECT_CONTENT_AGAIN.getMsg());
         }
 
-        if (count == CONTENT_MIN) {
+        if (contentsCount == CONTENT_MIN) {
             throw new IllegalArgumentException(ExhibitionCode.PLEASE_SELECT_TWO_CONTENT.getMsg());
         }
 
@@ -75,6 +75,14 @@ public class BoValidation {
                 }
             }
         }
+
+        // 버튼 선택 시 컨텐츠 최대개수를 미입력한 경우
+        for (ContentsType contentsType : contentsList) {
+           if(contentsType.getContentCnt() == CONTENT_ZERO) {
+                throw new IllegalArgumentException(ExhibitionCode.ENTER_MAXIMUM_NUMBER_EACH_CONTENT.getMsg());
+            }
+       }
+
     }
 
     /**
